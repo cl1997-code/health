@@ -4,11 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>四模型健康建议 · 患者阅读版</title>
-<meta name="description" content="循证膳食、生活方式与用药科普的患者阅读版，可按主题浏览并切换字号。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="四模型健康建议 · 患者阅读版">
-<meta property="og:description" content="循证膳食、生活方式与用药科普的患者阅读版，可按主题浏览并切换字号。">
+<title>五模型健康建议 · 患者阅读版</title>
 <style>
 @page{size:A5; margin:12mm 10mm}
 :root{
@@ -51,8 +47,8 @@ strong,b{font-weight:700; color:var(--fg)}
 .tabs .inner{max-width:820px; margin:0 auto; display:flex; overflow-x:auto;
   -webkit-overflow-scrolling:touch; scrollbar-width:none}
 .tabs .inner::-webkit-scrollbar{display:none}
-.tabbtn{flex:0 0 auto; border:0; border-bottom:3px solid transparent; background:none;
-  color:var(--muted); padding:.65rem .75rem; font-size:.8rem; font-family:inherit;
+.tabbtn{flex:1 1 0; min-width:0; border:0; border-bottom:3px solid transparent; background:none;
+  color:var(--muted); padding:.65rem .2rem; font-size:.78rem; font-family:inherit;
   cursor:pointer; white-space:nowrap; min-height:2.9rem}
 .tabbtn.on{color:var(--accent); border-bottom-color:var(--accent); font-weight:700}
 main{padding-top:1rem}
@@ -81,7 +77,7 @@ p{margin:.7rem 0}
 .notice-info{background:var(--info-bg)}
 .tag{display:inline-block; font-size:.62rem; font-weight:700; color:#fff;
   border-radius:5px; padding:.05em .4em; margin:0 .12em; vertical-align:.08em; white-space:nowrap}
-.tag.oe{background:#2563eb}.tag.ge{background:#7c3aed}
+.tag.af{background:#be123c}.tag.oe{background:#2563eb}.tag.ge{background:#7c3aed}
 .tag.cg{background:#059669}.tag.cl{background:#ea580c}
 .prio{display:flex; gap:.75rem; background:var(--card); border-radius:var(--r);
   padding:1rem; margin:.75rem 0; box-shadow:var(--shadow)}
@@ -92,6 +88,7 @@ p{margin:.7rem 0}
 .prio-body h3{margin:.05rem 0 .35rem; font-size:1rem}
 .prio-body p{font-size:.86rem; margin:.35rem 0}
 .prio-body .src{font-size:.7rem; color:var(--muted); line-height:1.6}
+.prio-body .src .tag{font-size:.56rem; padding:.05em .26em; margin:0 .05em}
 .kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr)); gap:.6rem; margin:1rem 0}
 .kpi{background:var(--card); border-radius:var(--r); padding:.8rem .9rem;
   box-shadow:var(--shadow); border-top:3px solid var(--accent)}
@@ -252,6 +249,10 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
   /* 表格：白底、黑线、加大字号 */
   .tw{overflow:visible!important; border:1px solid #000}
   .tw table{min-width:0!important; width:100%; table-layout:fixed; font-size:10pt}
+  /* 六列分歧矩阵：A5 纸上收紧字距，保证五家都在同一页宽内可读 */
+  .tw table.diff{font-size:8.4pt; line-height:1.35}
+  .tw table.diff th,.tw table.diff td{padding:2.5pt 3pt; word-break:break-all}
+  .tw table.diff th:first-child,.tw table.diff td:first-child{width:17%}
   .tw th,.tw td{padding:4pt 5pt; word-break:break-word; line-height:1.5;
     border-bottom:1px solid #333}
   .tw th{font-weight:800; border-bottom:1.5px solid #000}
@@ -277,8 +278,8 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <body class="print-brief">
 <header class="topbar no-print"><div class="inner">
   <div class="brand">
-    <h1>四模型健康建议 · 患者阅读版</h1>
-    <p>OpenEvidence / Gemini / ChatGPT / Claude 四份建议的对照整理 · 大字号 · 离线可用</p>
+    <h1>五模型健康建议 · 患者阅读版</h1>
+    <p>蚂蚁阿福 / OpenEvidence / Gemini / ChatGPT / Claude 五份建议的对照整理 · 大字号 · 离线可用</p>
   </div>
   <div class="tools">
     <button class="btn" data-fs-step="-1" type="button" title="缩小字号">A−</button>
@@ -288,40 +289,40 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
   </div>
 </div></header>
 <nav class="tabs no-print"><div class="inner">
-<button class="tabbtn on" data-tab="brief" type="button">📌 先看这里</button>
-<button class="tabbtn" data-tab="check" type="button">✅ 每日清单</button>
-<button class="tabbtn" data-tab="compare" type="button">⚖️ 共识与分歧</button>
-<button class="tabbtn" data-tab="topics" type="button">📖 分主题对照</button>
-<button class="tabbtn" data-tab="full" type="button">📚 四家全文</button>
+<button class="tabbtn on" data-tab="brief" title="先看这里" type="button">📌 速览</button>
+<button class="tabbtn" data-tab="check" title="每日清单" type="button">✅ 清单</button>
+<button class="tabbtn" data-tab="compare" title="共识与分歧" type="button">⚖️ 分歧</button>
+<button class="tabbtn" data-tab="topics" title="分主题对照" type="button">📖 主题</button>
+<button class="tabbtn" data-tab="full" title="五家全文" type="button">📚 全文</button>
 </div></nav><div class="wrap"><div class="print-cover">
     <div class="cv cv-brief">
-      <h1>四模型健康建议 · 患者随身手册</h1>
-      <p class="cv-sub">OpenEvidence / Gemini / ChatGPT / Claude 四份建议的对照整理</p>
-      <p><b>怎么用这份手册：</b>先读「最要紧的四件事」与「立即去急诊」的红旗症状；日常按「一天怎么过」的清单打勾；带去门诊时翻「共识与分歧」，把四家说法不一致的地方请医生定夺。四家原文全文见同目录的网页文件 <code>患者版_四模型建议.html</code>。</p>
+      <h1>五模型健康建议 · 患者随身手册</h1>
+      <p class="cv-sub">蚂蚁阿福 / OpenEvidence / Gemini / ChatGPT / Claude 五份建议的对照整理</p>
+      <p><b>怎么用这份手册：</b>先读「最要紧的四件事」与「立即去急诊」的红旗症状；日常按「一天怎么过」的清单打勾；带去门诊时翻「共识与分歧」，把五家说法不一致的地方请医生定夺。五家原文全文见同目录的网页文件 <code>患者版_五模型建议.html</code>。</p>
       <p class="cv-warn">本材料不是诊断或处方，不替代医生面诊；文中数值未经独立核实。</p>
     </div>
     <div class="cv cv-full">
-      <h1>四模型健康建议 · 原文全文存档版</h1>
-      <p class="cv-sub">OpenEvidence / Gemini / ChatGPT / Claude 四份建议，逐字照录</p>
-      <p>本册按模型分卷收录四份全文（含表格、参考文献与免责声明），供需要核对原句时查阅。患者日常使用请改看《患者版_随身手册.pdf》或同名网页。Claude 一份已由英文原文完整译为中文；英文原句可在网页中切换查看，或查阅「原文备份」目录。</p>
-      <p class="cv-warn">本材料不是诊断或处方；四家说法存在分歧，以接诊医师判断为准。</p>
+      <h1>五模型健康建议 · 原文全文存档版</h1>
+      <p class="cv-sub">蚂蚁阿福 / OpenEvidence / Gemini / ChatGPT / Claude 五份建议，逐字照录</p>
+      <p>本册按模型分卷收录五份全文（含表格、参考文献与免责声明），供需要核对原句时查阅。患者日常使用请改看《患者版_随身手册.pdf》或同名网页。Claude 一份已由英文原文完整译为中文；英文原句可在网页中切换查看，或查阅「原文备份」目录。</p>
+      <p class="cv-warn">本材料不是诊断或处方；五家说法存在分歧，以接诊医师判断为准。</p>
     </div>
     </div><main>
-<section id="tab-brief" class="panel on"><!-- 患者速览：人工整理自《建议.txt》四家原文，所有数值均出自原文 -->
+<section id="tab-brief" class="panel on"><!-- 患者速览：整合《建议.txt》五家原文（AFU / OE / GEMINI / CHATGPT / CLAUDE）后人工整理，所有数值均出自原文 -->
 <div class="notice notice-warn">
   <strong>请先读这一句</strong>
-  <p>这是一份由四个 AI 模型分别给出的<strong>健康科普整理</strong>，不是诊断、不是处方，也不能代替医生面诊。所有用药、检查与治疗决定，请由接诊医师结合您的完整病史做出。四家说法不完全一致，有分歧的地方已在「共识与分歧」页逐条列出。</p>
+  <p>这是一份由五个 AI 模型分别给出的<strong>健康科普整理</strong>，不是诊断、不是处方，也不能代替医生面诊。所有用药、检查与治疗决定，请由接诊医师结合您的完整病史做出。五家说法不完全一致，方向相同但严格度、数字口径有差别的地方，已在「共识与分歧」页逐家列出。</p>
 </div>
 
 <h2 class="sec-title">最要紧的四件事</h2>
-<p class="lead">按四家模型共同强调、且优先度最高的顺序排列。</p>
+<p class="lead">按五家共同强调、且优先度最高的顺序排列。每条末尾的色标表示这一条由哪几家的原文支撑，口径不同处在正文里写明。</p>
 
 <div class="prio">
   <div class="prio-num">1</div>
   <div class="prio-body">
     <h3>把酒戒掉，尤其是啤酒</h3>
-    <p>啤酒会同时推高尿酸、加重肝脏负担、升高血压；换成白酒或红酒并不能解决问题，无醇啤酒也不能当替代。每天喝 2 瓶以上啤酒，痛风风险约为不喝者的 2.5 倍。</p>
-    <p class="src">四家一致 <span class="tag oe">OE</span><span class="tag ge">GEMINI</span><span class="tag cg">CHATGPT</span><span class="tag cl">CLAUDE</span></p>
+    <p>啤酒会同时推高尿酸、加重肝脏负担、升高血压；换成白酒或红酒并不能解决问题，无醇啤酒也不能当替代。每天喝 2 瓶以上啤酒，痛风风险约为不喝者的 2.5 倍。<strong>蚂蚁阿福的措辞稍缓</strong>：写的是「酒精应尽量不饮，尤其避免暴饮」，并特别提醒「如已存在酒精依赖，应在专业支持下戒酒」——长期大量饮酒者<strong>不要自行骤停</strong>，请和医生一起安排。</p>
+    <p class="src">五家同向，严格度不同 <span class="tag af">AFU</span><span class="tag oe">OE</span><span class="tag ge">GEMINI</span><span class="tag cg">CHATGPT</span><span class="tag cl">CLAUDE</span></p>
   </div>
 </div>
 
@@ -329,8 +330,8 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
   <div class="prio-num">2</div>
   <div class="prio-body">
     <h3>尽快到心内科评估血脂，不要只靠饮食等 3–6 个月</h3>
-    <p>LDL-C <b>5.03 mmol/L</b>、总胆固醇 <b>7.87 mmol/L</b>，已达到中国血脂指南「不用评分、直接列为高危」的界值，需要医生判断是否需要药物，并排查家族性高胆固醇血症。饮食是基础，但不能替代这次评估。</p>
-    <p class="src">四家一致；<span class="tag oe">OE</span> 明确写「饮食不能代替医生评估是否用药」，<span class="tag cg">CHATGPT</span> 也强调不宜等到 3–6 个月才首次评估</p>
+    <p>LDL-C <b>5.03 mmol/L</b>、总胆固醇 <b>7.87 mmol/L</b>，已达到中国血脂指南「不用评分、直接列为高危」的界值，需要医生判断是否需要药物，并排查家族性高胆固醇血症。饮食是基础，但不能替代这次评估。阿福补充了两个可带走问医生的点：指南以 <b>LDL-C ≥4.9 mmol/L</b> 作为需结合总体心血管风险积极评估的界值；<b>脂肪肝并非他汀的绝对禁忌</b>，但用药前后要结合肝功能与症状监测（属药物类别科普，不是让您自行用药）。</p>
+    <p class="src">五家一致；<span class="tag oe">OE</span> 明确「饮食不能代替医生评估是否用药」，<span class="tag cg">CHATGPT</span> 强调不宜等到 3–6 个月才首次评估，<span class="tag af">AFU</span> 给出 4.1 药物类别表 <span class="tag ge">GEMINI</span><span class="tag cl">CLAUDE</span></p>
   </div>
 </div>
 
@@ -338,17 +339,17 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
   <div class="prio-num">3</div>
   <div class="prio-body">
     <h3>用「限能量 + 少盐少油」的吃法，慢慢减重</h3>
-    <p>目标 6 个月减重 <b>5–10%</b>（75 kg → 约 67.5–71 kg），每周约 0.5–1.0 kg。食盐 &lt;5 g/天、烹调油 20–25 g/天、蔬菜 ≥500 g、奶 300–400 mL。<strong>不要生酮、不要长时间断食、不要饿得太快</strong>——减重过快会让尿酸一过性升高，容易诱发痛风。</p>
-    <p class="src">方向四家一致；具体热量数字各家不同，见「共识与分歧」</p>
+    <p>目标 <b>3–6 个月减重 5–10%</b>（75 kg → 约 67.5–71 kg），每周约 0.5–1.0 kg。食盐 &lt;5 g/天、烹调油 20–25 g/天、蔬菜 ≥500 g、奶 300–400 mL。<strong>不要生酮、不要长时间断食、不要饿得太快</strong>——减重过快会让尿酸一过性升高，容易诱发痛风；阿福还特别点了<strong>营养不足与胆结石风险</strong>。另外，<strong>低钠盐／含钾盐不是随手换的</strong>：阿福两处提醒，若肾功能异常或正在用影响血钾的药，换盐前先由医生评估。</p>
+    <p class="src">五家同向；热量数字 OE / GEMINI / CLAUDE 给 1500–1700 kcal，CHATGPT 明确拒绝给精确数字，<span class="tag af">AFU</span> 只给减重比例不给 kcal <span class="tag oe">OE</span><span class="tag ge">GEMINI</span><span class="tag cg">CHATGPT</span><span class="tag cl">CLAUDE</span></p>
   </div>
 </div>
 
 <div class="prio">
   <div class="prio-num">4</div>
   <div class="prio-body">
-    <h3>先花 5–7 天把血压测准，同时大量饮水</h3>
-    <p>体检是单次读数 <b>150/89 mmHg</b>，需要用上臂式血压计连续 5–7 天、早晚各测 2 次来确认；家庭平均 ≥135/85 mmHg 即为高血压。无心衰、无限液医嘱时，每天分次饮水约 <b>2–3 L</b>，八成在 19 点前喝完，兼顾结石与夜尿。</p>
-    <p class="src">四家一致；夜间饮水折中方案 <span class="tag oe">OE</span><span class="tag ge">GEMINI</span> 标注为专家意见（证据有限）</p>
+    <h3>先花 5–7 天把血压测准，同时足量饮水</h3>
+    <p>体检是单次读数 <b>150/89 mmHg</b>，<strong>五家都写明不能仅凭这一次的读数确诊</strong>；用上臂式血压计连续 5–7 天、早晚各测 2 次，家庭平均 ≥135/85 mmHg 可作为诊断依据之一。饮水这一项<strong>五家分成两种口径，不要同时当硬指标</strong>：OE / GEMINI / CHATGPT / CLAUDE 按「喝多少」给 <b>2–3 L/天</b>（八成在 19 点前，兼顾结石与夜尿）；阿福按「尿量」给 <b>约 2.0–2.5 L/日</b>，GEMINI 也用尿量 &gt;2000 mL 作参照。心衰、肾功能不全、夜尿明显或医生要求限液时，两边都要重新调整。</p>
+    <p class="src">五家一致（饮水口径分两派）<span class="tag af">AFU</span><span class="tag oe">OE</span><span class="tag ge">GEMINI</span><span class="tag cg">CHATGPT</span><span class="tag cl">CLAUDE</span></p>
   </div>
 </div>
 
@@ -360,22 +361,22 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
   <div class="kpi"><span class="kpi-k">血尿酸</span><span class="kpi-v">504</span><span class="kpi-u">μmol/L · 需非同日复查</span></div>
   <div class="kpi"><span class="kpi-k">BMI（166 cm / 75 kg）</span><span class="kpi-v">27.22</span><span class="kpi-u">超重，接近肥胖线</span></div>
   <div class="kpi"><span class="kpi-k">同型半胱氨酸</span><span class="kpi-v">20.0</span><span class="kpi-u">μmol/L · 偏高</span></div>
-  <div class="kpi"><span class="kpi-k">右肾结石</span><span class="kpi-v">6×4</span><span class="kpi-u">mm · 多发、成分未知</span></div>
-  <div class="kpi"><span class="kpi-k">AST / ALT</span><span class="kpi-v">47 / 27</span><span class="kpi-u">U/L · 建议查肝弹性</span></div>
+  <div class="kpi"><span class="kpi-k">右肾结石</span><span class="kpi-v">6×4</span><span class="kpi-u">mm · 多发、无输尿管扩张</span></div>
+  <div class="kpi"><span class="kpi-k">ALT / AST 同工酶</span><span class="kpi-v">27 / 47</span><span class="kpi-u">U/L · 建议评估肝纤维化</span></div>
 </div>
-<p class="fine">以上数值为四家模型转述的体检报告内容，<strong>原始体检报告未随附，无法核对</strong>。就诊时请带上报告原件与影像。</p>
+<p class="fine">以上数值为五家模型转述的体检报告内容，<strong>原始体检报告未随附，无法核对</strong>。阿福把这两项肝酶写作「丙氨酸氨基转移酶 27 U/L、天冬氨酸氨基转移酶同工酶 47 U/L」，与其余四份的 AST 47 / ALT 27 表述略有差别，<strong>就诊时请核对检验项目全称</strong>。五家还都提到以随访为主的发现：双肺多发微小结节（Lung-RADS 2 类，年度复查）、左肝囊肿约 10×10 mm、前列腺增大伴钙化（有排尿症状再就诊）。就诊时请带上报告原件与影像。</p>
 
 <div class="notice notice-danger">
   <strong>🚨 出现以下任何情况，立即去急诊，不要等门诊</strong>
   <ul>
-    <li>突发剧烈腰腹／腰背绞痛，尤其伴发热、寒战、肉眼血尿或尿不出来</li>
-    <li>胸痛、明显气短、晕厥；口角歪斜、单侧肢体无力、言语不清、剧烈头痛</li>
-    <li>血压反复达到约 <b>180/110 mmHg</b>（有模型写 180/120），或伴上述神经症状</li>
-    <li>关节突然红、肿、热、剧痛（多为大脚趾根部），提示痛风急性发作</li>
+    <li>突发剧烈腰腹／腰背绞痛，尤其伴发热、寒战、肉眼血尿、<b>少尿或无尿</b></li>
+    <li>胸痛、明显气短、晕厥；口角歪斜、单侧肢体无力、言语不清、剧烈头痛；<b>血压显著升高并伴上述任一症状</b></li>
+    <li>血压反复达到约 <b>180/110 mmHg</b>（CHATGPT 一处写 180/120）；阿福不给数值，只写「显著升高伴症状」</li>
+    <li>关节突然红、肿、热、剧痛（多为大脚趾根部）；<b>首次发作或伴发热时还要与感染鉴别</b></li>
     <li>咯血、呕血、黑便、皮肤或眼白发黄；完全排不出尿</li>
     <li>戒酒后出现明显手抖、出汗、心慌或幻觉</li>
   </ul>
-  <p class="fine">四家模型都列出了急症清单，措辞略有差异；此处为合并去重，完整原文见「四家全文」。</p>
+  <p class="fine">五家都列了急症清单，此处合并去重。阿福的一份最精简（三类：血压显著升高伴症状／结石伴梗阻感染／首次急性痛风样关节炎），但特别强调「少尿或无尿」与「首次发作伴发热需鉴别感染」。完整原文见「五家全文」。</p>
 </div>
 
 <h2 class="sec-title">2–4 周内建议挂的号</h2>
@@ -383,42 +384,44 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <table>
 <thead><tr><th>科室</th><th>要解决什么</th><th>建议带去／补查</th></tr></thead>
 <tbody>
-<tr><td><b>心血管内科</b></td><td>是否启动降脂治疗；确认是不是高血压</td><td>7 天家庭血压记录、Lp(a)、TSH、eGFR、HbA1c、早发心血管病家族史</td></tr>
-<tr><td><b>消化科 / 肝病科</b></td><td>脂肪肝有没有纤维化</td><td>肝弹性检测（VCTE）；饮酒量评估；核对 AST 检验项目名称</td></tr>
-<tr><td><b>泌尿外科</b></td><td>结石代谢评估；前列腺评估</td><td>24 小时尿代谢、结石成分分析、tPSA/fPSA</td></tr>
+<tr><td><b>心血管内科</b></td><td>是否启动降脂治疗；确认是不是高血压并完成危险分层</td><td>7 天家庭血压记录、Lp(a)、TSH、eGFR、HbA1c、早发心血管病家族史</td></tr>
+<tr><td><b>消化科 / 肝病科</b></td><td>脂肪肝有没有纤维化；转氨酶异常模式怎么读</td><td>肝弹性检测（VCTE）；饮酒量评估；核对 AST 检验项目名称</td></tr>
+<tr><td><b>泌尿外科</b></td><td>结石成分、代谢因素与复发预防；前列腺评估</td><td>24 小时尿代谢、结石成分分析、tPSA/fPSA</td></tr>
 <tr><td><b>内分泌 / 风湿科</b></td><td>确认高尿酸血症；讨论要不要降尿酸</td><td>非同日第二次空腹尿酸</td></tr>
-<tr><td><b>睡眠门诊 / 呼吸科</b></td><td>排查睡眠呼吸暂停（打鼾、白天嗜睡）</td><td>STOP-Bang、Epworth 量表；睡眠监测</td></tr>
+<tr><td><b>营养科 / 体重管理门诊</b></td><td>多病共存时的个体化饮食与运动处方</td><td>3 天饮食记录、体重与腰围曲线；带上本页清单</td></tr>
+<tr><td><b>睡眠门诊 / 呼吸科</b></td><td>排查睡眠呼吸暂停（打鼾、憋醒、白天嗜睡）</td><td>STOP-Bang、Epworth 量表；睡眠监测</td></tr>
 </tbody>
 </table>
 </div>
-<p class="fine">科室与补查清单主要依据 <span class="tag oe">OE</span> 第五节，并与 <span class="tag ge">GEMINI</span> 5.2 分诊路径、<span class="tag cl">CLAUDE</span> 第五节合并。睡眠门诊一项各家重视程度不同，见「共识与分歧」。</p>
+<p class="fine">按五家「就诊建议」章节合并。前三行 OE / GEMINI / CHATGPT / CLAUDE / AFU 都提到；<b>营养科／体重管理门诊</b>由 <span class="tag af">AFU</span> 明确列为应尽快就诊的四科之一，其余四份多写在执行层面；<b>睡眠门诊</b>各家重视程度不同（见「共识与分歧」）。阿福明确要求「脂肪肝合并转氨酶异常模式需评估肝纤维化风险」。</p>
 
 <h2 class="sec-title">大致的复查节奏</h2>
 <div class="tw">
 <table>
 <thead><tr><th>时间</th><th>做什么</th></tr></thead>
 <tbody>
-<tr><td><b>现在起 5–7 天</b></td><td>家庭血压早晚各测 2 次并记录；记录清晨空腹体重与腰围</td></tr>
+<tr><td><b>现在起 5–7 天</b></td><td>家庭血压早晚各测 2 次、取平均值；记录清晨空腹体重与腰围</td></tr>
 <tr><td><b>2 周内</b></td><td>第二次空腹尿酸、Lp(a)、TSH、eGFR、HbA1c、维生素 B12、叶酸、PSA、腰围</td></tr>
-<tr><td><b>1 个月内</b></td><td>肝弹性检测、24 小时尿代谢、睡眠监测（按医生安排）</td></tr>
-<tr><td><b>用药后 4–6 周</b></td><td>血脂、ALT/AST，必要时查肌酸激酶 CK（仅在医生开药后）</td></tr>
+<tr><td><b>1 个月内</b></td><td>肝弹性检测与肝纤维化评估、24 小时尿代谢、睡眠监测（按医生安排）</td></tr>
+<tr><td><b>用药后 4–6 周</b></td><td>血脂、ALT/AST，必要时查肌酸激酶 CK（仅在医生开药后；启动降脂治疗者按医嘱更早复查并监测安全性）</td></tr>
 <tr><td><b>3 个月</b></td><td>血脂、尿酸、肝功能、体重、腰围；阶段目标减重约 3–4 kg</td></tr>
+<tr><td><b>3–6 个月</b></td><td>尿酸与肾功能、肝功能与肝脏评估；若启动降尿酸治疗或出现症状，按医嘱更密切复查</td></tr>
 <tr><td><b>6 个月</b></td><td>上述指标 + 同型半胱氨酸、肾功能、肝胆与泌尿系超声</td></tr>
-<tr><td><b>12 个月</b></td><td>胸部低剂量 CT（肺结节年度随访）、前列腺超声 + PSA</td></tr>
+<tr><td><b>12 个月</b></td><td>胸部低剂量 CT（肺结节年度随访）、前列腺超声 + PSA；泌尿系影像按泌尿外科建议</td></tr>
 </tbody>
 </table>
 </div>
-<p class="fine">综合 <span class="tag oe">OE</span> 第五节、<span class="tag ge">GEMINI</span> 5.3、<span class="tag cg">CHATGPT</span> 第六节；各家时间点略有出入，<strong>以接诊医师排期为准</strong>。</p>
+<p class="fine">综合 OE 第五节、GEMINI 5.3、CHATGPT 第六节、CLAUDE 第五节与 AFU 5.3 的六类复查。<b>阿福的清单更精简</b>：血压／血脂／尿酸与肾功能／肝功能与肝脏评估／泌尿系影像与代谢评估／肺结节年度复查，明确要评估肝纤维化风险与 24 小时尿代谢，但未写 PSA、未写「低剂量」CT、未列 Lp(a) 等基线化验。各家用语与时间点略有出入，<strong>以接诊医师排期为准</strong>。</p>
 
 <div class="notice notice-info">
   <strong>关于这份材料的边界</strong>
-  <p>四家模型都没有看到体检报告原件，年龄、吸烟饮酒史、家族史、腰围、既往用药等信息由提问时补充，其余为模型转述。文献引用与证据等级是各模型自述，未逐条独立核实。本页只做整理与对照，<strong>不新增任何医学判断</strong>。</p>
+  <p>五家模型都没有看到体检报告原件，年龄、吸烟饮酒史、家族史、腰围、既往用药等信息由提问时补充，其余为模型转述。文献引用与证据等级是各模型自述，未逐条独立核实。本页只做整理与对照，<strong>不新增任何医学判断</strong>。五份的写法各有侧重：阿福结构最规整、量化数字最少，但给出药物类别表、五类食物清单与可点击引用；OE 附 79 条编号文献；GEMINI 指南条文最细；CHATGPT 最谨慎，拒绝给报告推不出的精确数字；CLAUDE 全文已译为中文，可一键切回英文核对。详见「共识与分歧」与「五家全文」。</p>
 </div>
 <div class="no-print" style="margin:1rem 0;font-size:.75rem;color:var(--muted)">字号快捷档：<button class="btn fs-btn" data-fs="16" type="button" style="margin:.15rem">16px</button><button class="btn fs-btn" data-fs="18" type="button" style="margin:.15rem">18px</button><button class="btn fs-btn" data-fs="20" type="button" style="margin:.15rem">20px</button><button class="btn fs-btn" data-fs="22" type="button" style="margin:.15rem">22px</button><button class="btn fs-btn" data-fs="24" type="button" style="margin:.15rem">24px</button>　（默认 18px，设置会被记住）</div></section>
-<section id="tab-check" class="panel"><!-- 每日执行清单：主要依据 OE 2.3 与 GEMINI 2.3 示范食谱，四家共识部分另标 -->
+<section id="tab-check" class="panel"><!-- 每日执行清单：整合五家原文（OE 2.3 / GEMINI 2.3 / AFU 2.3 与 2.2 / CHATGPT / CLAUDE），人工整理 -->
 <div class="notice notice-info">
   <strong>怎么用这一页</strong>
-  <p>点一下方框就能打勾，勾选状态会记在这台手机上，换天可以点「重置今日」重新开始。下面的分量主要来自 <span class="tag oe">OE</span> 的华中口味示范食谱与 <span class="tag ge">GEMINI</span> 的示范食谱，两份略有差别（例如早餐主食、鱼肉克数），<strong>请以医生或临床营养师给您的份量为准</strong>；肾功能、心功能或医生要求限液时，饮水量必须另行调整。</p>
+  <p>点一下方框就能打勾，勾选状态会记在这台手机上，换天可以点「重置今日」重新开始。下面带克数的分量，主要来自 <span class="tag oe">OE</span> 的华中口味示范食谱与 <span class="tag ge">GEMINI</span> 的示范食谱，两份略有差别（例如早餐主食、鱼肉克数）；<span class="tag af">AFU</span> 2.3 给的是<strong>不带克数的框架</strong>，明确「可按口味替换同类食物，但尽量保持结构与份量」；<span class="tag cg">CHATGPT</span> 与 <span class="tag cl">CLAUDE</span> 用份量／食物表描述。本页把五份对齐成一天，<strong>请以医生或临床营养师给您的份量为准</strong>；肾功能、心功能或医生要求限液时，饮水量必须另行调整。文末另有一张五家清单合并的「食物替换速查」。</p>
   <p class="fine">此页是执行提示，不是新的医嘱；勾完不代表做到了治疗目标。</p>
 </div>
 
@@ -438,23 +441,24 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 
 <div class="daygroup">
   <h3><span class="time">07:00–07:30</span> 早餐</h3>
-  <label class="chk"><input type="checkbox" data-id="d3"><span>燕麦片 40–45 g，用脱脂／低脂奶 <b>250 mL</b> 冲泡或煮粥</span></label>
-  <label class="chk"><input type="checkbox" data-id="d4"><span>鸡蛋 <b>1 个</b>（每周只吃 3–4 个全蛋，其余日子改吃 2 个蛋白）</span></label>
-  <label class="chk"><input type="checkbox" data-id="d5"><span>凉拌黄瓜／番茄／莴笋等蔬菜约 <b>100 g</b>，少盐或不放盐</span></label>
+  <label class="chk"><input type="checkbox" data-id="d3"><span>燕麦片或全麦主食 40–45 g，用脱脂／低脂奶 <b>250 mL</b> 冲泡，或无糖酸奶</span></label>
+  <label class="chk"><input type="checkbox" data-id="d4"><span>水煮蛋 <b>1 个</b>：OE / GEMINI 建议每周 3–4 个全蛋、其余日子改吃蛋白；<span class="tag af">AFU</span> 写「蛋量结合血脂情况个体化」，不设周上限</span></label>
+  <label class="chk"><input type="checkbox" data-id="d5"><span>凉拌黄瓜／番茄／莴笋等低草酸蔬菜约 <b>100 g</b>，少盐或不放盐</span></label>
+  <label class="chk"><input type="checkbox" data-id="d24"><span><span class="tag af">AFU</span> 主食尽量全谷物；<b>不喝浓肉汤</b>，早餐也不要配果汁</span></label>
 </div>
 
 <div class="daygroup">
   <h3><span class="time">09:30–11:30</span> 上午</h3>
   <label class="chk"><input type="checkbox" data-id="d6"><span>分次喝白水或淡柠檬水约 <b>600 mL</b></span></label>
-  <label class="chk"><input type="checkbox" data-id="d7"><span>10:00 吃完整水果 <b>150 g</b>（樱桃、草莓、柑橘、橙子；不榨汁）</span></label>
+  <label class="chk"><input type="checkbox" data-id="d7"><span>10:00 吃<b>完整水果</b> 150 g（樱桃、草莓、柑橘、橙子；阿福 2.3 优先柑橘类、苹果、梨）——<b>不榨汁</b>，不用果汁替代整果</span></label>
   <label class="chk"><input type="checkbox" data-id="d8"><span>若喝咖啡：纸滤或速溶黑咖啡 1 杯，不加糖奶精，<b>14 点前</b>喝完</span></label>
 </div>
 
 <div class="daygroup">
   <h3><span class="time">12:00–12:30</span> 午餐</h3>
-  <label class="chk"><input type="checkbox" data-id="d9"><span>杂粮饭（生重约 <b>75 g</b>，全谷物占一半以上）</span></label>
-  <label class="chk"><input type="checkbox" data-id="d10"><span>清蒸鱼 60–80 g，或去皮禽肉／瘦牛肉 40–60 g；<b>先焯水、不喝汤</b></span></label>
-  <label class="chk"><input type="checkbox" data-id="d11"><span>蔬菜 <b>250 g</b> + 北豆腐 50–100 g</span></label>
+  <label class="chk"><input type="checkbox" data-id="d9"><span>杂粮饭（生重约 <b>75 g</b>，全谷物／杂豆占一半以上）</span></label>
+  <label class="chk"><input type="checkbox" data-id="d10"><span>清蒸鱼 60–80 g，或去皮禽肉／瘦牛肉 40–60 g；<b>先焯水、不喝汤</b>。阿福 2.3 同段写的是「清蒸鱼或去皮禽肉 + 清炒低草酸蔬菜 + 豆腐汤」</span></label>
+  <label class="chk"><input type="checkbox" data-id="d11"><span>蔬菜 <b>250 g</b> + 北豆腐 50–100 g，优先低草酸蔬菜</span></label>
   <label class="chk"><input type="checkbox" data-id="d12"><span>烹调油 ≤<b>10 g</b>、盐 ≤<b>2 g</b>；吃饭顺序：先菜 → 再蛋白 → 最后主食</span></label>
   <label class="chk"><input type="checkbox" data-id="d13"><span>餐前或餐后喝水约 <b>300 mL</b></span></label>
 </div>
@@ -462,107 +466,159 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <div class="daygroup">
   <h3><span class="time">14:30–17:30</span> 下午</h3>
   <label class="chk"><input type="checkbox" data-id="d14"><span>分次喝水 <b>700–800 mL</b></span></label>
-  <label class="chk"><input type="checkbox" data-id="d15"><span>15:30 加餐：无糖酸奶 100–150 g + 原味核桃仁约 10 g</span></label>
+  <label class="chk"><input type="checkbox" data-id="d15"><span>15:30 加餐：无糖酸奶 100–150 g + 原味核桃仁约 10 g；<span class="tag af">AFU</span> 写「无糖酸奶或一小把坚果，控制总量、避免盐焗与糖衣」</span></label>
 </div>
 
 <div class="daygroup">
   <h3><span class="time">17:30–18:30</span> 晚餐</h3>
-  <label class="chk"><input type="checkbox" data-id="d16"><span>山药／红薯 100–200 g，或杂粮约 50 g</span></label>
-  <label class="chk"><input type="checkbox" data-id="d17"><span>少量瘦肉／鱼 40–75 g 或豆腐 50 g</span></label>
-  <label class="chk"><input type="checkbox" data-id="d18"><span>低草酸蔬菜 <b>200–250 g</b>（油菜、冬瓜、卷心菜、西兰花等）</span></label>
-  <label class="chk"><input type="checkbox" data-id="d19"><span>烹调油 ≤<b>10 g</b>、盐 ≤<b>1.5 g</b>；<b>19:00 后不再进食</b></span></label>
+  <label class="chk"><input type="checkbox" data-id="d16"><span>山药／红薯 100–200 g，或杂粮约 50 g；阿福 2.3 用<b>荞麦面或玉米糁</b>作同类替换</span></label>
+  <label class="chk"><input type="checkbox" data-id="d17"><span>少量瘦肉／鱼 40–75 g 或豆腐 50 g；<b>豆制品替代部分红肉</b></span></label>
+  <label class="chk"><input type="checkbox" data-id="d18"><span>低草酸蔬菜 <b>200–250 g</b>（油菜、冬瓜、卷心菜、西兰花等）+ 番茄蛋花汤</span></label>
+  <label class="chk"><input type="checkbox" data-id="d19"><span>烹调油 ≤<b>10 g</b>、盐 ≤<b>1.5 g</b>；<b>19:00 后不再进食</b>，晚餐清淡、<b>避免夜宵与酒精</b></span></label>
 </div>
 
 <div class="daygroup">
   <h3><span class="time">睡前</span> 饮水与作息</h3>
   <label class="chk"><input type="checkbox" data-id="d20"><span>核对全天：盐 &lt;5 g、油 20–25 g、奶 300–400 mL、蔬菜 ≥500 g、水约 <b>2.5–3 L</b></span></label>
+  <label class="chk"><input type="checkbox" data-id="d25"><span>换个口径再核一次：<span class="tag af">AFU</span> 以<b>每日尿量约 2.0–2.5 L</b> 为目标（GEMINI 也用尿量 &gt;2000 mL），不必硬凑饮水量；<b>心衰、肾功能不全或夜尿明显时</b>，饮水时间与总量由医生个体化调整</span></label>
   <label class="chk"><input type="checkbox" data-id="d21"><span>约 <b>80%</b> 的水在 19 点前喝完；夜尿 ≤1 次可睡前再喝 150–200 mL</span></label>
   <label class="chk"><input type="checkbox" data-id="d22"><span>夜尿 ≥2 次：睡前 2–3 小时停止饮水，并告知泌尿科</span></label>
-  <label class="chk"><input type="checkbox" data-id="d23"><span>23:00 前上床，保证 7–8 小时睡眠；侧卧；睡前 4 小时不喝酒</span></label>
+  <label class="chk"><input type="checkbox" data-id="d23"><span>23:00 前上床，保证 7–8 小时睡眠、固定作息、侧卧；睡前 4 小时不喝酒。<b>若有打鼾、憋醒、白天嗜睡</b>，请提出评估睡眠呼吸暂停风险</span></label>
 </div>
 
 <h2 class="sec-title">每周与定期</h2>
 <div class="daygroup">
-  <label class="chk"><input type="checkbox" data-id="w1"><span>每周 <b>5 天</b>中等强度有氧，每次 40–60 分钟（快走、游泳、固定单车）——"能说话、不能唱歌"</span></label>
-  <label class="chk"><input type="checkbox" data-id="w2"><span>每周 <b>2–3 次</b>抗阻训练（弹力带、自重），<b>用力时呼气，绝不憋气</b>，不做大重量</span></label>
-  <label class="chk"><input type="checkbox" data-id="w3"><span>运动前测血压：静息 ≥160/100 只散步；>200/110 禁止高强度运动</span></label>
-  <label class="chk"><input type="checkbox" data-id="w4"><span>运动前喝 200–300 mL，运动中每 15–20 分钟喝 100–200 mL</span></label>
+  <label class="chk"><input type="checkbox" data-id="w1"><span>每周 <b>至少 150 分钟</b>中等强度有氧，或 75 分钟高强度有氧（快走、慢跑、骑行、游泳）；<span class="tag af">AFU</span> 与四家口径一致</span></label>
+  <label class="chk"><input type="checkbox" data-id="w2"><span>每周 <b>2–3 次</b>抗阻训练（弹力带、自重），可加柔韧与平衡训练；<b>用力时呼气，绝不憋气</b>，不做大重量</span></label>
+  <label class="chk"><input type="checkbox" data-id="w9"><span>强度判断（五家用语一致）：<b>呼吸加快、微微出汗，仍能说话、不能唱歌</b>；阿福 3.1 写「运动前先完成血压确认与分层，静息血压明显升高先控制再逐步加量」</span></label>
+  <label class="chk"><input type="checkbox" data-id="w3"><span>运动前测血压：静息 ≥160/100 只散步；&gt;200/110 禁止高强度运动</span></label>
+  <label class="chk"><input type="checkbox" data-id="w4"><span>运动前喝 200–300 mL，运动中每 15–20 分钟喝 100–200 mL；结石患者运动前后都要补水</span></label>
   <label class="chk"><input type="checkbox" data-id="w5"><span>每天晨起空腹称重（看<b>每周平均</b>，不看单日）；每 2 周量一次腰围</span></label>
-  <label class="chk"><input type="checkbox" data-id="w6"><span>连续 5–7 天家庭血压：早晚各测 2 次，测前静坐 5 分钟，30 分钟内不喝咖啡、不运动</span></label>
+  <label class="chk"><input type="checkbox" data-id="w6"><span>连续 5–7 天家庭血压：早晚各测 2 次，测前静坐 5 分钟，30 分钟内不喝咖啡、不运动；去掉首日取平均带去门诊</span></label>
   <label class="chk"><input type="checkbox" data-id="w7"><span>应酬前先喝一杯奶／吃份水果／喝 500 mL 水；点菜要求少盐少油；不喝酒、不喝汤、不吃夜宵</span></label>
+  <label class="chk"><input type="checkbox" data-id="w8"><span><b>用药前后主动告知医生</b>：是否在用利尿剂（可能升高尿酸）、他汀用药前后查肝功能、别自行长期大剂量维 C、想换低钠盐／含钾盐先看肾功能与合并用药</span></label>
 </div>
 
 <div class="notice notice-danger">
   <strong>⛔ 这些不要做</strong>
   <ul>
-    <li><b>任何酒</b>（啤酒、黄酒、米酒、白酒、红酒、无醇啤酒）、含糖饮料、果汁、奶茶、蜂蜜水</li>
-    <li>动物内脏、浓肉汤／火锅汤底／鱼汤、贝类、蟹黄、鱼籽、腊味香肠、肥肉</li>
-    <li>菠菜、苋菜、甜菜等高草酸菜大量吃（偶尔吃须焯水并与奶同餐）</li>
-    <li>自行服用大剂量维生素 C 补充片、红曲类"天然降脂"产品、大剂量鱼油、钙片</li>
-    <li>生酮饮食、长时间断食、极低热量节食、每周减重超过 1 kg</li>
-    <li><b>用跳绳／跳跃／拍打腰背来"排石"</b>——四家模型本轮都不建议作为常规手段，可能诱发肾绞痛</li>
+    <li><b>任何酒</b>（啤酒、黄酒、米酒、白酒、红酒、无醇啤酒）、含糖饮料、果汁、奶茶、蜂蜜水、高果糖饮料与甜点；<b>尤其不要用果汁替代整果</b></li>
+    <li>动物内脏、浓肉汤／火锅汤底／鱼汤、沙丁鱼、凤尾鱼、贝类、蟹黄、鱼籽、腊味香肠、肥肉</li>
+    <li>菠菜、苋菜、甜菜等高草酸菜大量吃（偶尔吃须焯水并与奶同餐）；<b>更不要「大量高草酸食物 + 低钙饮食」同时出现</b></li>
+    <li><b>盲目低钙饮食</b>：五家都要求保持正常膳食钙、尽量随餐摄入，阿福 2.4 特别说明低钙会增加草酸吸收</li>
+    <li>自行服用大剂量维生素 C 补充片、红曲类"天然降脂"产品、大剂量鱼油、钙片；阿福 4.2 明确大剂量维 C 可能增加结石风险</li>
+    <li><b>自行改用低钠盐／含钾盐</b>：肾功能异常或正在用影响血钾的药物时，先由医生评估</li>
+    <li>生酮饮食、长时间断食、极低热量节食、每周减重超过 1 kg；阿福未出现「生酮」字样，但两处写「避免极端节食与快速减重」</li>
+    <li><b>用跳绳／跳跃／拍打腰背来"排石"</b>：五家都不作为常规手段；阿福写「证据并不一致，若考虑采用，先与泌尿外科确认结石位置、大小与梗阻风险」，其余四份明确不建议或标注存在冲突</li>
     <li>血压未确认前做憋气发力、大重量举重、高强度冲刺</li>
   </ul>
 </div>
 
 <h2 class="sec-title">什么情况要暂停并联系医生</h2>
 <ul class="plain">
-  <li>运动中出现胸痛、头晕、心悸、异常气短 → 立即停止并就医</li>
-  <li>关节突然红肿热痛、腰腹绞痛、发热寒战、血尿 → 见「先看这里」急症清单</li>
-  <li>减重超过每周 1 kg，或出现手抖、出汗、心慌等戒酒反应 → 放慢节奏并就医</li>
+  <li>运动中出现胸痛、头晕、心悸、异常气短或血压显著升高 → 立即停止并就医评估</li>
+  <li>结石相关腰腹绞痛、肉眼血尿、发热 → 先就医处理，<b>再恢复运动</b></li>
+  <li>关节突然红肿热痛（首次发作或伴发热需鉴别感染）、腰腹绞痛、发热寒战、血尿 → 见「先看这里」急症清单</li>
+  <li>减重超过每周 1 kg，或出现手抖、出汗、心慌等戒酒反应 → 放慢节奏并就医；酒精依赖者在专业支持下戒酒</li>
   <li>出现水肿、尿量明显减少，或医生要求限液 → 停止大量饮水方案</li>
 </ul>
+
+<h2 class="sec-title">食物替换速查（五家清单合并）</h2>
+<p class="lead">按阿福 2.2 的五类三档作骨架，把 OE / GEMINI / CHATGPT / CLAUDE 各自点名的食物并入同一张表。同类之内可以替换，跨档要谨慎。</p>
+<div class="tw">
+<table>
+<thead><tr><th>食物类别</th><th>推荐食用</th><th>限量食用</th><th>不推荐／避免</th></tr></thead>
+<tbody>
+<tr><td><b>谷薯类</b></td><td>全谷物、杂豆、薯类替代部分精白米面（燕麦、糙米、荞麦、玉米糁）</td><td>白米饭、白面馒头、精制糕点</td><td>含糖饮料、甜点、油条、酥皮点心、果葡糖浆饮料</td></tr>
+<tr><td><b>蔬菜水果类</b></td><td>多样化蔬菜、优先低草酸蔬菜；整果适量（柑橘、苹果、梨、樱桃、草莓）</td><td>高糖水果、果汁、果脯</td><td>腌制蔬菜、咸菜、泡菜、酱菜；果汁替代整果</td></tr>
+<tr><td><b>肉蛋水产类</b></td><td>去皮禽肉、鱼虾适量，豆制品替代部分红肉；水煮蛋（按血脂情况个体化）</td><td>红肉、动物内脏、浓肉汤、部分高嘌呤海鲜、全蛋（每周 3–4 个）</td><td>沙丁鱼、凤尾鱼、贝类、动物内脏、火锅老汤、腊味香肠、肥肉</td></tr>
+<tr><td><b>奶豆类</b></td><td>低脂／脱脂奶、无糖酸奶，大豆及其制品；<b>正常膳食钙随餐摄入</b></td><td>全脂奶、加糖酸奶、炼乳</td><td>奶精、植脂末、高糖奶饮；盲目低钙饮食</td></tr>
+<tr><td><b>油脂与调味</b></td><td>植物油适量、清淡烹调（每天 20–25 g）</td><td>动物油、黄油、奶油、椰子油、坚果（每周 50–70 g，分次）</td><td>反式脂肪、重口味蘸料、咸味零食、浓汤；<b>自行换低钠盐／含钾盐</b></td></tr>
+</tbody>
+</table>
+</div>
+<p class="fine">五家的份量与严格度不同：例如坚果，OE / CLAUDE 给每周克数，阿福只写「控制总量、避免盐焗与糖衣」；鸡蛋，OE / GEMINI 给每周 3–4 个，阿福写「结合血脂个体化」。<strong>本表用于替换同类食物，不是新的饮食处方</strong>；完整原文见「五家全文」与「分主题对照」。</p>
+
+<h2 class="sec-title">用药前后要问医生的四件事</h2>
+<p class="lead">五家的用药章节都只是「类别科普」，不给药名剂量、不建议自行启动。阿福 4.2 把相互作用单独列了四条，最适合带去门诊逐条问：</p>
+<ul class="plain">
+  <li><b>降压药与高尿酸</b>：部分利尿剂可能升高尿酸，合并高尿酸或痛风要主动告知，便于个体化选药。</li>
+  <li><b>他汀与肝功能</b>：脂肪肝并非他汀绝对禁忌，但用药前后需结合肝功能与症状监测。</li>
+  <li><b>补充剂与结石</b>：大剂量维生素 C 补充剂可能增加结石风险，不建议自行长期大剂量服用。</li>
+  <li><b>低钠盐与肾功能</b>：考虑低钠盐或含钾盐，需结合肾功能与用药情况由医生评估。</li>
+</ul>
+<p class="fine">阿福 4.1 另有一张「异常指标 → 常用药物类别 → 循证获益／不良反应／适用人群」的四行表（他汀类、CCB/ACEI/ARB/利尿剂、抑制生成或促排泄降尿酸药、叶酸及 B 族）；OE / GEMINI / CHATGPT / CLAUDE 的同类内容以文字段落写在各自第四节。<strong>是否用药、用哪种、用多久，一律由接诊医师决定。</strong></p>
 </section>
-<section id="tab-compare" class="panel"><!-- 共识与分歧：逐项核对《建议.txt》四家原文后整理 -->
+<section id="tab-compare" class="panel"><!-- 共识与分歧：五家原文（AFU / OE / GEMINI / CHATGPT / CLAUDE）逐项核对后整合 -->
 <div class="notice notice-warn">
   <strong>为什么单列这一页</strong>
-  <p>四个模型是各自独立生成的，<strong>结论并不完全一致</strong>。方向一致的部分可以放心作为谈资带去门诊；数字或口径不一致的部分，请不要自行挑一个照做，交给医生定。下表右列注明各家原文位置，可在「分主题对照」里直接查。</p>
+  <p>五个模型是各自独立生成的，<strong>结论并不完全一致</strong>。下方先列五家同向的部分，再把 12 处口径差别按「议题 × 五家」摊开——每家都占一列，没有谁被放在附录里。方向一致的可以作为谈资带去门诊；数字或严格度不一致的，请不要自行挑一个照做，交给医生定。右表可左右滑动，也可在「分主题对照」里直接查各家原句。</p>
 </div>
 
-<h2 class="sec-title">四家基本一致的 12 件事</h2>
-<div class="consensus">
-  <div class="cs"><span class="cs-n">01</span><p><b>完全戒酒</b>，尤其啤酒；无醇啤酒、换白酒／红酒都不算替代。</p></div>
-  <div class="cs"><span class="cs-n">02</span><p><b>LDL-C 5.03 mmol/L 已达直接高危</b>；饮食不能代替医生评估是否用降脂药，应尽快（数周内）看心内科。</p></div>
-  <div class="cs"><span class="cs-n">03</span><p><b>限能量、缓慢减重</b>：6 个月减 5–10%（约 67.5–71 kg），每周约 0.5–1.0 kg；反对生酮、断食、极低热量与减重过快。</p></div>
-  <div class="cs"><span class="cs-n">04</span><p><b>DASH／中国心脏健康膳食</b>：限盐（约 &lt;5 g/天）、控油（约 20–25 g/天）、多蔬菜、低脂奶、全谷物。</p></div>
-  <div class="cs"><span class="cs-n">05</span><p><b>分次大量饮水</b>（约 2–3 L/天），主要放在白天，兼顾结石、尿酸与前列腺夜尿；心肾功能异常或医生限液时不适用。</p></div>
-  <div class="cs"><span class="cs-n">06</span><p><b>限嘌呤 + 保持正常膳食钙</b>：钙从食物随餐摄入、不要自行吃钙片；选低草酸蔬菜、柑橘类；不自行服用大剂量维 C、红曲类"天然降脂"产品。</p></div>
-  <div class="cs"><span class="cs-n">07</span><p><b>运动以中等强度有氧为主</b>，配合轻量抗阻；<b>用力时呼气、严禁憋气</b>，血压未控制前不做大重量与高强度。</p></div>
-  <div class="cs"><span class="cs-n">08</span><p><b>用家庭血压确认高血压</b>：上臂式血压计，连续 5–7 天、早晚各测 2 次，平均 ≥135/85 mmHg 需就医。</p></div>
-  <div class="cs"><span class="cs-n">09</span><p><b>不把跳跃／跳绳／拍打腰背当"排石"手段</b>：本轮 OE 明确不作为常规、GEMINI 标注"存在冲突需审慎"、CHATGPT 明确不采用指定跳跃次数、CLAUDE 未列入。</p></div>
-  <div class="cs"><span class="cs-n">10</span><p><b>列急症红旗清单</b>：肾绞痛伴发热／血尿、胸痛与卒中症状、血压 ≥180/110、急性痛风、尿潴留、咯血等立即急诊。</p></div>
-  <div class="cs"><span class="cs-n">11</span><p><b>复查要素相同</b>：非同日第二次空腹尿酸、肝纤维化评估（肝弹性／FIB-4）、24 小时尿与结石成分、PSA、12 个月低剂量 CT。</p></div>
-  <div class="cs"><span class="cs-n">12</span><p><b>药物章节都只是"类别科普"</b>：不给药名剂量、不建议自行启动，是否用药由接诊医师决定。</p></div>
-</div>
-
-<h2 class="sec-title">有分歧、需要医生定的 8 处</h2>
+<h2 class="sec-title">五份原文各是什么样</h2>
 <div class="tw">
-<table class="diff">
-<thead><tr><th>议题</th><th><span class="tag oe">OE</span></th><th><span class="tag ge">GEMINI</span></th><th><span class="tag cg">CHATGPT</span></th><th><span class="tag cl">CLAUDE</span></th></tr></thead>
+<table>
+<thead><tr><th>模型</th><th>结构与篇幅</th><th>量化程度</th><th>证据与特色</th></tr></thead>
+<tbody>
+<tr><td><span class="tag af">AFU</span></td><td>6,752 字符，五节 + 证据来源汇总 + 免责 + 8 条引用，最精简规整</td><td>几乎不给热量、蛋白克数、急诊血压阈值；但给出结石 6×4 mm、ALT 27 / AST 同工酶 47、Lung-RADS 2 等报告数值</td><td>4.1 药物类别表、4.2 相互作用四条、2.2 五类食物清单；6 条可点击链接，正文无编号角标</td></tr>
+<tr><td><span class="tag oe">OE</span></td><td>32,230 字符，六节（含「对多模型分歧的裁定」表），篇幅最全</td><td>数字最密：1500–1600 kcal、70–80 g 蛋白、每周 3–4 个全蛋、2500–3000 mL 水</td><td>正文 79 条 <code>[n]</code> 角标 + 完整文献题名、期刊、DOI 与 1/2/3 级证据等级</td></tr>
+<tr><td><span class="tag ge">GEMINI</span></td><td>29,561 字符，五节，指南条文最细</td><td>1500–1650 kcal、食谱 1550–1600 kcal、尿量 &gt;2000 mL</td><td>逐条标「证据等级 1 级／3 级」并写出指南名称；华中口味示范食谱与分诊路径</td></tr>
+<tr><td><span class="tag cg">CHATGPT</span></td><td>14,155 字符，八节（含复查表、证据来源、免责）</td><td><b>最谨慎</b>：明确拒绝给报告推不出的精确数字，改用「每餐半个至一个掌心」等份量描述</td><td>关键处附指南可点击链接；明确指出「睡眠呼吸暂停不能从现有报告推断」</td></tr>
+<tr><td><span class="tag cl">CLAUDE</span></td><td>英文 25,193 字符 / 中文译文 11,506 字，六节 + 免责，网页可一键切换</td><td>约 1600–1700 kcal（注明手工估算 ±10–15%）、饮水 2.5–3 L 取结石高值</td><td>第六节「Sources and limits」集中说明依据与局限；以指南名称为主，无编号文献表</td></tr>
+</tbody>
+</table>
+</div>
+<p class="fine">篇幅与数字均为各模型自述，用于说明「为什么同一件事会有不同写法」，不是质量排名。</p>
+
+<h2 class="sec-title">五家基本一致的 12 件事</h2>
+<p class="lead">「一致」指方向与结论同向；括号里写明哪一家的口径或严格度不同，不抹平差别。</p>
+<div class="consensus">
+  <div class="cs"><span class="cs-n">01</span><p><b>限酒</b>：五家都把酒列为首要干预，啤酒尤其；换白酒／红酒、无醇啤酒都不算替代。<b>严格度不同</b>——OE / GEMINI / CHATGPT / CLAUDE 写「完全戒酒」，AFU 写「尽量不饮、尤其避免暴饮」，并提醒酒精依赖者应在专业支持下戒酒。</p></div>
+  <div class="cs"><span class="cs-n">02</span><p><b>LDL-C 5.03 mmol/L 已达直接高危</b>：五家都要求尽快（数周内）看心内科，饮食不能代替医生评估是否用降脂药。AFU 另给 <b>≥4.9 mmol/L</b> 界值与 4.1 药物类别表，并说明脂肪肝并非他汀绝对禁忌但需监测肝功能。</p></div>
+  <div class="cs"><span class="cs-n">03</span><p><b>限能量、缓慢减重</b>：五家都写 3–6 个月减 <b>5–10%</b>、避免快速减重与极端节食（OE 与 GEMINI 还专门反对生酮、断食、极低热量）。<b>量化粒度不同</b>：OE / GEMINI / CLAUDE 给 1500–1700 kcal，CHATGPT 明确拒绝给精确数字，AFU 只给减重比例、不给 kcal，并额外提示营养不足与胆结石风险。</p></div>
+  <div class="cs"><span class="cs-n">04</span><p><b>DASH／中国心脏健康膳食</b>：限盐（约 &lt;5 g/天）、控油（约 20–25 g/天）、多蔬果、低脂奶、全谷物、减少饱和与反式脂肪。AFU 2.1 把五条原则各配「✅ 潜在获益 / ⚠️ 注意事项」两行，其中特别提到<b>低钠盐／含钾盐须由医生结合肾功能评估</b>。</p></div>
+  <div class="cs"><span class="cs-n">05</span><p><b>足量饮水</b>，主要放在白天，兼顾结石、尿酸与夜尿；心肾功能异常或医生限液时不适用。<b>口径分两派</b>：OE / CHATGPT / CLAUDE 给饮水量 2–3 L/天，GEMINI 与 AFU 用尿量 &gt;2000 mL、约 2.0–2.5 L/日作目标；AFU 不给总饮水量，也没有「19 点前喝完八成」的时段方案。</p></div>
+  <div class="cs"><span class="cs-n">06</span><p><b>限嘌呤 + 保持正常膳食钙</b>：钙从食物随餐摄入、不要自行吃钙片；选低草酸蔬菜、柑橘类；不自行服用大剂量维 C、红曲类"天然降脂"产品。AFU 2.4 明确「肾结石患者不宜盲目低钙饮食」，4.2 说明大剂量维 C 可能增加结石风险，并列出五类食物「推荐／限量／不推荐」三档。</p></div>
+  <div class="cs"><span class="cs-n">07</span><p><b>运动以中等强度有氧为主</b>，配合抗阻；<b>用力时呼气、严禁憋气</b>，血压未控制前不做大重量与高强度。AFU 3.1 与其余四家口径一致（每周 ≥150 分钟中等强度或 75 分钟高强度 + 2–3 次抗阻），另加柔韧平衡训练，并要求运动前先完成血压确认与分层。</p></div>
+  <div class="cs"><span class="cs-n">08</span><p><b>用家庭血压确认高血压</b>：单次 150/89 不能确诊，上臂式血压计连续 5–7 天、早晚各测 2 次，平均 ≥135/85 mmHg 需就医。AFU 的措辞几乎相同：「不能仅凭单次体检读数」「家庭血压连续 5 到 7 天平均达到或超过 135/85 可作为诊断依据之一」。</p></div>
+  <div class="cs"><span class="cs-n">09</span><p><b>不把跳跃／跳绳／拍打腰背当"排石"手段</b>：五家都不作为常规。OE 明确不作为常规、需先经泌尿外科同意；GEMINI 标注「存在冲突、需审慎」；CHATGPT 明确不采用指定跳跃次数；CLAUDE 未列入；AFU 写「证据并不一致，若考虑采用，先与泌尿外科确认结石位置、大小与梗阻风险」。</p></div>
+  <div class="cs"><span class="cs-n">10</span><p><b>列急症红旗清单</b>：肾绞痛伴发热／血尿、胸痛与卒中症状、血压 ≥180/110、急性痛风、尿潴留、咯血等立即急诊。AFU 的一份最精简（三类），但强调「少尿或无尿」与「首次痛风样发作伴发热需鉴别感染」；<b>只有它完全不给血压触发数值</b>。</p></div>
+  <div class="cs"><span class="cs-n">11</span><p><b>复查要素相同</b>：非同日第二次空腹尿酸、肝纤维化评估、24 小时尿与结石成分、肺结节年度复查。<b>颗粒度不同</b>：OE / GEMINI / CHATGPT / CLAUDE 还列 Lp(a) / TSH / HbA1c / FIB-4 / PSA / 12 个月低剂量 CT；AFU 只列六类，未写 PSA、未写「低剂量」CT、未列基线化验，但明确要评估肝纤维化风险。</p></div>
+  <div class="cs"><span class="cs-n">12</span><p><b>药物章节都只是"类别科普"</b>：不给药名剂量、不建议自行启动，是否用药由接诊医师决定。AFU 4.1 用四行表列「循证获益／不良反应与禁忌／适用人群」，4.2 单列四条相互作用（利尿剂与尿酸、他汀与肝功能、补充剂与结石、低钠盐与肾功能）——是五家里最结构化的一份。</p></div>
+</div>
+
+<h2 class="sec-title">有分歧、需要医生定的 12 处</h2>
+<div class="tw">
+<table class="diff" style="min-width:52rem">
+<thead><tr><th>议题</th><th><span class="tag af">AFU</span></th><th><span class="tag oe">OE</span></th><th><span class="tag ge">GEMINI</span></th><th><span class="tag cg">CHATGPT</span></th><th><span class="tag cl">CLAUDE</span></th></tr></thead>
 <tbody>
 <tr>
   <td><b>每日热量</b></td>
+  <td>只写「控制总能量摄入，循序渐进减重」与 3–6 个月减 5–10%，<b>无 kcal</b>，未说明为何不给</td>
   <td>约 <b>1500–1600 kcal</b></td>
   <td><b>1500–1650 kcal</b>；食谱 1550–1600</td>
   <td><b>明确不给精确数字</b>：报告缺年龄／活动量，先按份量调整、观察 2–4 周趋势</td>
-  <td>约 <b>1600–1700 kcal</b>（范围 1500–1800），注明为手工估算 ±10–15%</td>
+  <td>约 <b>1600–1700 kcal</b>（范围 1500–1800），注明手工估算 ±10–15%</td>
 </tr>
 <tr>
   <td><b>每日蛋白质</b></td>
+  <td>无克数；食物清单写「豆制品替代部分红肉」，强调避免极端节食</td>
   <td>约 <b>70–80 g</b>，动物蛋白不超过一半（第六节裁定表）</td>
   <td><b>70–80 g</b>，占供能 15–20%，约 1.0 g/kg</td>
-  <td>按"每餐半个至一个掌心"的份量描述，不设克数</td>
+  <td>按「每餐半个至一个掌心」的份量描述，不设克数</td>
   <td>见全文 2.1「Core principles」</td>
 </tr>
 <tr>
   <td><b>每周全蛋数</b></td>
+  <td>食谱早餐「水煮蛋 1 个」，注明<b>蛋量结合血脂情况个体化</b>，无周上限</td>
   <td><b>3–4 个</b>，其余天数吃蛋白</td>
   <td><b>3–4 个</b>，其余天数吃 1–2 个蛋白</td>
-  <td>说"指南没有根据这份报告给出个人每周蛋数"；不建议每日多颗蛋黄</td>
+  <td>说「指南没有根据这份报告给出个人每周蛋数」；不建议每日多颗蛋黄</td>
   <td>见全文 2.2「Food selection table」</td>
 </tr>
 <tr>
   <td><b>急诊血压阈值</b></td>
+  <td><b>不给数值</b>：只写「血压显著升高并伴胸痛、呼吸困难、神经系统症状等」</td>
   <td>≥<b>180/110</b> mmHg</td>
   <td>≥<b>180/110</b> mmHg</td>
   <td>急诊段落写 <b>180/120</b>，运动段落又写 180/110 暂缓运动（<b>内部不一致</b>）</td>
@@ -570,47 +626,79 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 </tr>
 <tr>
   <td><b>睡眠呼吸暂停</b></td>
+  <td>有条件筛查：「若存在打鼾、憋醒、白天嗜睡，建议进一步评估风险」</td>
   <td>STOP-Bang 已有 4 项属<b>高风险</b>，列为优先事项并建议挂睡眠门诊</td>
   <td>建议 23:00 前睡、7–8 小时、侧卧与 OSA 筛查</td>
-  <td>明确说"是否存在睡眠呼吸暂停<b>不能从现有报告推断</b>"，是否检查取决于症状</td>
+  <td>明确说「是否存在睡眠呼吸暂停<b>不能从现有报告推断</b>」，是否检查取决于症状</td>
   <td>未设专门章节</td>
 </tr>
 <tr>
   <td><b>饮水量口径</b></td>
+  <td><b>每日尿量约 2.0–2.5 L</b>，不给总饮水量；心衰／肾功能不全／夜尿明显时个体化调整</td>
   <td><b>2500–3000 mL</b>，80% 在 19 点前</td>
   <td><b>2000–3000 mL</b>（食谱约 2600–2800），维持尿量 &gt;2000 mL</td>
-  <td><b>2–3 L</b>，强调"无医生限液前提"与水肿／少尿时调整</td>
+  <td><b>2–3 L</b>，强调「无医生限液前提」与水肿／少尿时调整</td>
   <td><b>2.5–3 L</b>，因结石取高值</td>
 </tr>
 <tr>
   <td><b>跳跃"排石"</b></td>
+  <td>「证据并不一致」，若采用先与泌尿外科确认<b>结石位置、大小与梗阻风险</b></td>
   <td><b>不作为常规手段</b>，如需尝试先经泌尿外科同意</td>
-  <td>"存在冲突、需审慎"，证据主要来自碎石术后残石排出</td>
-  <td>明确<b>不采用</b>"指定跳跃次数排石"</td>
+  <td>「存在冲突、需审慎」，证据主要来自碎石术后残石排出</td>
+  <td>明确<b>不采用</b>「指定跳跃次数排石」</td>
   <td>未列入运动方案</td>
 </tr>
 <tr>
   <td><b>生酮 / 断食</b></td>
+  <td>「避免极端节食与快速减重」「避免快速减重与极端饮食」，<b>未出现「生酮」字样</b></td>
   <td>表格单列一行「<b>不推荐</b>」并给出荟萃分析理由</td>
-  <td>明确"切忌极低热量饥饿节食或生酮"，说明酮体抑制尿酸排泄</td>
+  <td>明确「切忌极低热量饥饿节食或生酮」，说明酮体抑制尿酸排泄</td>
   <td>避免快速节食、长时间断食或极端饮食</td>
   <td>见全文 2.4「Benefits, evidence strength, and cautions」</td>
+</tr>
+<tr>
+  <td><b>戒酒严格度</b><br><span class="fine">阿福加入后才显现</span></td>
+  <td>「酒精应<b>尽量不饮</b>，尤其避免暴饮」；依赖者需专业支持戒酒</td>
+  <td><b>完全戒酒</b>，无醇啤酒也不算替代</td>
+  <td><b>完全戒酒</b>，列举啤酒／黄酒／米酒等</td>
+  <td>建议停酒，含应酬场景的具体替代做法</td>
+  <td>完全停酒，把戒酒列为第一优先</td>
+</tr>
+<tr>
+  <td><b>复查清单颗粒度</b><br><span class="fine">阿福加入后才显现</span></td>
+  <td><b>六类</b>：血压／血脂／尿酸与肾功能／肝功能与肝脏评估／泌尿系影像与代谢／肺结节年度；无 PSA、无「低剂量」CT、无 Lp(a) 等基线化验</td>
+  <td>第五节含基线化验、FIB-4／肝弹性、PSA、12 个月低剂量 CT</td>
+  <td>5.3 分阶段随访表，时间点最细</td>
+  <td>单列「复查随访计划表」章节</td>
+  <td>第五节按项目列复查与监测</td>
+</tr>
+<tr>
+  <td><b>用药科普写法</b><br><span class="fine">阿福加入后才显现</span></td>
+  <td><b>4.1 四行表</b>（他汀／CCB·ACEI·ARB·利尿剂／降尿酸药／叶酸 B 族）+ <b>4.2 四条相互作用</b>，最结构化</td>
+  <td>第四节按指标分条，附证据等级与裁定表</td>
+  <td>按药物类别逐条写适应证与注意</td>
+  <td>偏保守，反复强调「由医生决定是否启动」</td>
+  <td>「Medication education」章节，附依据与局限</td>
+</tr>
+<tr>
+  <td><b>换盐与补充剂</b><br><span class="fine">阿福加入后才显现</span></td>
+  <td><b>明确单列</b>：低钠盐／含钾盐须结合肾功能与用药由医生评估；大剂量维 C 增加结石风险；利尿剂可能升尿酸；他汀需监测肝功能</td>
+  <td>不自行服大剂量维 C、红曲、鱼油、钙片</td>
+  <td>同类补剂提示，写在膳食注意事项</td>
+  <td>对补充剂持谨慎态度，未单列换盐</td>
+  <td>见 2.4 注意事项</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p class="fine">表中"见全文"表示本页未逐项核定该模型的表述，请点「分主题对照」查看对应章节，<strong>不要据此推断该模型未提及</strong>。所有数值均为模型自述，未经独立核实。</p>
-
-<div class="notice notice-info">
-  <strong>⚠️ 一个容易混淆的地方</strong>
-  <p><span class="tag oe">OE</span> 全文第六节附了一份「对多模型分歧的裁定」表（跳跃排石、全蛋数、蛋白质量、靶心率、生酮警示、咖啡、急诊阈值、结石类型、H 型高血压阈值共 9 条）。<strong>那是基于更早一轮的对比知识库写的，和本页这四份新生成的建议不是同一批文本</strong>，仅作为 OE 的推理依据保留在「四家全文」里，不应当作对本轮分歧的裁定。</p>
-</div>
+<p class="fine">表中「见全文」表示本页未逐项核定该模型的表述，请点「分主题对照」查看对应章节，<strong>不要据此推断该模型未提及</strong>。「未设专门章节」指原文没有独立标题，不等于没有相关内容。所有数值均为模型自述，未经独立核实，原始体检报告未随附。</p>
 
 <h2 class="sec-title">证据标注方式的差别</h2>
 <div class="tw">
 <table>
 <thead><tr><th>模型</th><th>怎么标证据</th><th>能不能回溯到原文</th></tr></thead>
 <tbody>
+<tr><td><span class="tag af">AFU</span></td><td>「证据来源汇总」列 9 条指南名；文末「全部引用」<b>8 条（6 条带 URL、2 条链接为空）</b>；<b>正文没有编号角标</b></td><td><b>能找到文献，但无法把某条结论对应到某篇</b>——8 条引用与 9 条汇总也不一一对应</td></tr>
 <tr><td><span class="tag oe">OE</span></td><td>正文用 <code>[n]</code> 角标，附 <b>79 条</b>完整文献（题名、期刊、年份、DOI）+ 1/2/3 级证据等级</td><td><b>可以</b>，编号对应文末 References</td></tr>
 <tr><td><span class="tag ge">GEMINI</span></td><td>逐条标「证据等级：1 级／3 级」并写出指南名称</td><td>指南名称可查，但<b>无文献清单</b></td></tr>
 <tr><td><span class="tag cg">CHATGPT</span></td><td>标「证据：1 级」并在关键处附指南 <b>可点击链接</b></td><td>部分可以（链接指向指南 PDF／PMC）</td></tr>
@@ -618,22 +706,33 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 </tbody>
 </table>
 </div>
+<p class="fine">AFU 与 OE 恰好互补：一个有可点击链接却没有角标，一个有 79 条编号角标与完整题名却没有链接。涉及具体数值与效应量时，仍请回到指南原文或由接诊医师核对。</p>
+
+<div class="notice notice-info">
+  <strong>⚠️ 一个容易混淆的地方</strong>
+  <p><span class="tag oe">OE</span> 全文第六节附了一份「对多模型分歧的裁定」表（跳跃排石、全蛋数、蛋白质量、靶心率、生酮警示、咖啡、急诊阈值、结石类型、H 型高血压阈值共 9 条）。<strong>那是基于更早一轮的对比知识库写的，和本页这五份新生成的建议不是同一批文本</strong>，仅作为 OE 的推理依据保留在「五家全文」里，不应当作对本轮分歧的裁定。</p>
+</div>
 
 <div class="notice notice-warn">
-  <strong>还有两点没被任何一家补上</strong>
-  <p>① <b>原始体检报告未随附</b>，四家的数值都是转述，无法核对；② 年龄、吸烟史、家族史、既往用药在报告里缺失，部分信息由提问时补充（46 岁、华中饮食、经常应酬、规律喝啤酒、打鼾或白天嗜睡），各模型对"哪些信息可用"的判断不同——这也是上面若干分歧的根源。</p>
+  <strong>五家都没能补上的两点</strong>
+  <p>① <b>原始体检报告未随附</b>，五家的数值都是转述，无法核对；② 年龄、吸烟史、家族史、既往用药在报告里缺失，部分信息由提问时补充（46 岁、华中饮食、经常应酬、规律喝啤酒、打鼾或白天嗜睡），各模型对「哪些信息可用」的判断不同——这也是上面若干分歧的根源。</p>
+</div>
+
+<div class="notice notice-warn">
+  <strong>⚠️ 版本提示：另有一份不同的「蚂蚁阿福」</strong>
+  <p>本页所有 AFU 结论一律取自本次 <code>建议.txt</code> 首段（6,752 字符、五节、8 条引用）。<code>AI诊断1知识库</code> 里收录的是<b>另一份</b>阿福输出（8,800 字符、九节、23 条引用），在<strong>血压是否需复测确诊、跳跃排石、引用条数</strong>上都不相同：那份写「1 级高血压已达诊断范围」并认可有条件跳跃，这一份明确写「不能仅凭单次读数确诊」并说跳跃证据不一致。<strong>两份都是用户提供的原文，请勿混用结论</strong>；本网页一律以 <code>建议.txt</code> 这一版为准。</p>
 </div>
 </section>
 <section id="tab-topics" class="panel hide-brief">
-  <h2 class="sec-title">按主题，把四家说法放在一起看</h2>
-  <p class="lead">七个主题是按四家共有的章节结构对齐的。点主题切换，点模型卡片展开原文；也可一次全部展开。</p>
+  <h2 class="sec-title">按主题，把五家说法放在一起看</h2>
+  <p class="lead">七个主题按各家的章节内容归并；蚂蚁阿福的章节编号与其余四家不同，但主题已对齐。点主题切换，点模型卡片展开原文；也可一次全部展开。</p>
   <div class="chips no-print" id="topicChips"><button class="chip" data-topic="0" type="button">0 · 开场与总体结论</button><button class="chip" data-topic="1" type="button">1 · 异常指标与风险</button><button class="chip" data-topic="2" type="button">2 · 膳食干预方案</button><button class="chip" data-topic="3" type="button">3 · 生活方式干预</button><button class="chip" data-topic="4" type="button">4 · 用药科普提示</button><button class="chip" data-topic="5" type="button">5 · 预警与就医</button><button class="chip" data-topic="6" type="button">6 · 附录 · 裁定 · 来源</button></div>
   <div class="subbar no-print">
     <button class="btn" data-expand="1" type="button">展开全部</button>
     <button class="btn" data-expand="0" type="button">收起全部</button>
   </div>
   <div id="topicDescs"><div class="topic-desc" data-tdesc="0" style="display:block">各模型的开场说明、总体判断与证据等级口径</div><div class="topic-desc" data-tdesc="1" style="display:none">体检数值怎么读、有哪些潜在风险</div><div class="topic-desc" data-tdesc="2" style="display:none">核心原则、食物清单、一日示范食谱、获益与注意事项</div><div class="topic-desc" data-tdesc="3" style="display:none">运动、作息、饮水节律、家庭血压与体重监测</div><div class="topic-desc" data-tdesc="4" style="display:none">药物类别与相互作用 —— 仅为科普，不是处方</div><div class="topic-desc" data-tdesc="5" style="display:none">急症红旗、就诊科室、复查随访节奏</div><div class="topic-desc" data-tdesc="6" style="display:none">分歧裁定、证据来源、参考文献、免责声明</div></div>
-  <div class="topic-pane" data-pane="0"><details class="mcard" open style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">各模型的开场说明、总体判断与证据等级口径 · 796 字</span></summary><div class="mbody"><div class="raw"><p>这次的建议取决于几件事：哪些药物类别适合这位患者同时存在的问题（尿酸、结石、肝脏、前列腺），饮食与药物、化验之间的相互作用，以及知识库里各病种食养指南的具体条文。下面先查药物类别的证据，同时核对知识库原文。</p>
+  <div class="topic-pane" data-pane="0"><p class="fine">本主题五家原文并列，默认展开 <b>蚂蚁阿福</b> 一份；七个主题按五家轮换默认展开，点任意卡片可换读，也可用「展开全部」一次看齐。</p><details class="mcard" open style="--mc:#be123c"><summary><span class="badge">AFU</span><span>蚂蚁阿福</span><span class="mdesc">各模型的开场说明、总体判断与证据等级口径 · 147 字</span></summary><div class="mbody"><div class="raw"><p>这份体检结果提示“代谢异常聚集”：超重、1级高血压、以低密度脂蛋白胆固醇升高为主的血脂异常、尿酸升高、同型半胱氨酸升高，同时合并脂肪肝和右肾多发结石。当前最有证据、也最能同时改善多项问题的措施是：限盐、减重、规律运动、足量饮水、优化饮食结构、限酒，并尽快完成血压与血脂的规范评估与分层管理。</p></div></div></details><details class="mcard" style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">各模型的开场说明、总体判断与证据等级口径 · 796 字</span></summary><div class="mbody"><div class="raw"><p>这次的建议取决于几件事：哪些药物类别适合这位患者同时存在的问题（尿酸、结石、肝脏、前列腺），饮食与药物、化验之间的相互作用，以及知识库里各病种食养指南的具体条文。下面先查药物类别的证据，同时核对知识库原文。</p>
 <p>药物类别还剩两点待确认：中国指南在合并结石时首选哪类降尿酸药，以及患者可能自行购买的"天然降脂"产品的安全性。</p>
 <h2 id="t0-oe-0-h1">46 岁男性多重代谢异常：循证膳食、生活方式与药物科普方案</h2>
 <h3 id="t0-oe-0-h2">先说结论</h3>
@@ -658,7 +757,26 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <p><strong>与第一次答复相比的修改（指南规定 与 我原先的说法）：</strong></p>
 <ul class="lst"><li>脂肪供能比为 20–25%（血脂与肥胖指南），不是 25–30%。</li><li>减重速度从每周约 0.5 kg 起步，可在每周 0.5–1 kg 区间。我原先说的是 0.25–0.5 kg。</li><li>腰围：男性正常为 &lt;85 cm，中心性肥胖为 ≥90 cm。</li><li>Hb 158、Hct 49.4、RBC 5.39 都在范围内但接近上限。我原先把血常规归在「可放心」一类，现在改列为值得留意。</li><li>全蛋每周 3–5 个，比指南上限更严，因为 LDL-C 是 5.03。</li><li>静息血压 ≥160/100 时我就把运动限制为轻度步行，不再只等到 ≥180/110 才限制。</li></ul>
 <hr></div></div></details></div>
-<div class="topic-pane" data-pane="1"><details class="mcard" open style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">体检数值怎么读、有哪些潜在风险 · 1,717 字</span></summary><div class="mbody"><div class="raw"><h3 id="t1-oe-0-h1">一、异常指标梳理与风险提示</h3>
+<div class="topic-pane" data-pane="1"><p class="fine">本主题五家原文并列，默认展开 <b>OpenEvidence</b> 一份；七个主题按五家轮换默认展开，点任意卡片可换读，也可用「展开全部」一次看齐。</p><details class="mcard" style="--mc:#be123c"><summary><span class="badge">AFU</span><span>蚂蚁阿福</span><span class="mdesc">体检数值怎么读、有哪些潜在风险 · 1,063 字</span></summary><div class="mbody"><div class="raw"><h3 id="t1-af-0-h1">一、异常指标梳理与风险提示</h3>
+<p>本部分为指标解读，不构成疾病诊断。</p>
+<h4 id="t1-af-0-h2">1. 需要优先关注的异常</h4>
+<ul class="lst"><li><strong>低密度脂蛋白胆固醇 5.03 mmol/L，总胆固醇 7.87 mmol/L</strong></li></ul>
+<p>低密度脂蛋白胆固醇是动脉粥样硬化性心血管疾病的重要危险因素，指南将其作为血脂干预的首要靶点。当低密度脂蛋白胆固醇达到或超过 4.9 mmol/L 时，通常需要结合总体心血管风险进行更积极的评估与管理。<br>潜在风险：动脉粥样硬化性心血管疾病风险升高。</p>
+<ul class="lst"><li><strong>血压 150/89 mmHg</strong></li></ul>
+<p>高血压诊断需依据规范测量，不能仅凭单次体检读数；家庭血压连续 5 到 7 天平均达到或超过 135/85 mmHg 可作为诊断依据之一。<br>潜在风险：心脑血管事件风险升高，且风险会随合并危险因素增加而进一步上升。</p>
+<ul class="lst"><li><strong>尿酸 504 μmol/L</strong></li></ul>
+<p>高尿酸血症常用定义为正常嘌呤饮食状态下，非同日 2 次空腹血尿酸大于 420 μmol/L。<br>潜在风险：与痛风、尿酸性肾结石、肾功能损害及心血管事件风险相关。</p>
+<ul class="lst"><li><strong>右肾多发结石，较大者约 6×4 mm，无输尿管扩张</strong></li></ul>
+<p>多发结石提示复发风险需要重视，建议泌尿外科进一步评估结石成分与代谢因素。<br>潜在风险：肾绞痛、梗阻、感染、复发。</p>
+<h4 id="t1-af-0-h3">2. 需要同步管理的异常</h4>
+<ul class="lst"><li><strong>脂肪肝，丙氨酸氨基转移酶 27 U/L，天冬氨酸氨基转移酶同工酶 47 U/L</strong></li></ul>
+<p>脂肪肝常与肥胖、血脂异常、高血压、糖代谢异常并存，需要综合代谢管理。<br>潜在风险：部分患者可进展为脂肪性肝炎、肝纤维化，且心血管疾病风险增加。</p>
+<ul class="lst"><li><strong>同型半胱氨酸 20.0 μmol/L</strong></li></ul>
+<p>与高血压并存时，脑卒中风险可能增加；其升高与饮食、维生素状态、肾功能、甲状腺功能和药物等因素相关。<br>潜在风险：心脑血管事件风险可能增加，但干预获益需结合人群与基线营养状态判断。</p>
+<ul class="lst"><li><strong>超重，BMI 27.22 kg/m²</strong></li></ul>
+<p>超重与高血压、血脂异常、脂肪肝、高尿酸、结石风险均相关。<br>潜在风险：代谢综合征相关疾病风险升高。</p>
+<h4 id="t1-af-0-h4">3. 以随访为主的发现</h4>
+<ul class="lst"><li><strong>双肺多发微小结节，Lung-RADS 2 类</strong>：建议年度复查。</li><li><strong>左肝囊肿约 10×10 mm</strong>：小且无症状者多定期复查。</li><li><strong>前列腺增大伴多发钙化灶</strong>：无明显排尿症状者可先观察，出现夜尿增多、排尿困难等再就诊。</li></ul></div></div></details><details class="mcard" open style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">体检数值怎么读、有哪些潜在风险 · 1,717 字</span></summary><div class="mbody"><div class="raw"><h3 id="t1-oe-0-h1">一、异常指标梳理与风险提示</h3>
 <blockquote><strong>本部分为指标解读，不构成疾病诊断。</strong></blockquote>
 <div class="tw"><table><thead><tr><th>指标</th><th>本例数值（参考范围）</th><th>偏离情况</th><th>潜在健康风险</th><th>证据等级</th><th>参考文献</th></tr></thead><tbody><tr><td>LDL-C</td><td>5.03 mmol/L（1.8–3.37）</td><td>超出上限约 49%，达到 ≥4.9 的直接高危界值</td><td>动脉粥样硬化性心血管病（ASCVD）。降脂治疗中，LDL-C 每降低 1 mmol/L，主要血管事件约减少 22%</td><td>1 级</td><td><sup class="cite" data-ref="5">5</sup>, <sup class="cite" data-ref="8">8</sup></td></tr><tr><td>总胆固醇</td><td>7.87 mmol/L（3.1–5.18）</td><td>达到 ≥7.2 的直接高危界值</td><td>同上；需排查家族性高胆固醇血症</td><td>1 级</td><td><sup class="cite" data-ref="5">5</sup>, <sup class="cite" data-ref="9">9</sup></td></tr><tr><td>甘油三酯</td><td>1.82 mmol/L（0.4–1.7）</td><td>轻度升高（知识库高脂血症食养指南以 ≥1.7 为异常）</td><td>与饮酒、超重、脂肪肝相关；即使少量饮酒也可能使甘油三酯进一步升高</td><td>1 级</td><td>知识库·高脂血症食养指南</td></tr><tr><td>血压</td><td>150/89 mmHg，单次测量</td><td>落在 1 级区间（140–159/90–99）</td><td>心脑血管事件风险；单次读数需要复核确认</td><td>1 级</td><td><sup class="cite" data-ref="10">10</sup>, <sup class="cite" data-ref="11">11</sup>；知识库·高血压食养指南附录 5</td></tr><tr><td>血尿酸</td><td>504 μmol/L（208–428）</td><td>单次超过 420 μmol/L（即尿酸盐饱和浓度）</td><td>痛风、尿酸性结石；诊断需要非同日第二次空腹复查</td><td>1 级</td><td><sup class="cite" data-ref="12">12</sup>；知识库·高尿酸食养指南</td></tr><tr><td>AST / ALT</td><td>47 U/L（15–40）/ 27 U/L（0–26）</td><td>AST/ALT 比值约 1.74。按 46 岁计算，FIB-4 = 46×47÷(227×√27) ≈ <strong>1.83</strong>，落在 1.3–2.67 的不确定区</td><td>比值 &gt;1 提示可能有饮酒参与或纤维化进展；需要做肝弹性检查。报告中该项目名为"天冬氨酸氨基转移酶同工酶"，建议先向检验科确认是否就是总 AST</td><td>1 级</td><td><sup class="cite" data-ref="13">13</sup>, <sup class="cite" data-ref="14">14</sup>, <sup class="cite" data-ref="15">15</sup></td></tr><tr><td>脂肪肝（超声）</td><td>回声增强、远场衰减</td><td>—</td><td>合并规律饮酒，符合代谢功能障碍合并酒精相关肝病（MetALD）的风险背景</td><td>1 级</td><td><sup class="cite" data-ref="16">16</sup>, <sup class="cite" data-ref="17">17</sup></td></tr><tr><td>右肾多发结石</td><td>最大 6×4 mm，无积水；尿 pH 6.0，尿比重 1.015</td><td>多发结石属于复发高危特征</td><td>肾绞痛、梗阻、感染；结石成分未知</td><td>1 级</td><td><sup class="cite" data-ref="6">6</sup>, <sup class="cite" data-ref="7">7</sup></td></tr><tr><td>同型半胱氨酸</td><td>20.0 μmol/L（≤15）</td><td>升高</td><td>与卒中风险相关</td><td>1 级</td><td><sup class="cite" data-ref="18">18</sup>, <sup class="cite" data-ref="19">19</sup></td></tr><tr><td>BMI</td><td>27.22（166 cm、75 kg）</td><td>超重（24.0–27.9），接近 28 的肥胖界值；腰围未测</td><td>上述多项异常的共同驱动因素</td><td>1 级</td><td>知识库·体重管理指导原则</td></tr><tr><td>血红蛋白 / 红细胞压积</td><td>158 g/L / 49.4%（均接近上限）</td><td>正常高值</td><td>加上打鼾和白天嗜睡，需警惕睡眠呼吸暂停或饮水不足造成的血液浓缩</td><td>3 级</td><td><sup class="cite" data-ref="2">2</sup>, <sup class="cite" data-ref="20">20</sup></td></tr><tr><td>前列腺</td><td>50×42 mm，伴钙化；未查 PSA</td><td>增大</td><td>下尿路症状；需结合 tPSA/fPSA 判断</td><td>3 级</td><td><sup class="cite" data-ref="21">21</sup></td></tr><tr><td>肺结节</td><td>Lung-RADS 2 类</td><td>低风险</td><td>恶性概率 &lt;1%，年度复查即可</td><td>1 级</td><td><sup class="cite" data-ref="22">22</sup></td></tr><tr><td>肝囊肿</td><td>10 mm</td><td>良性表现</td><td>定期观察</td><td>3 级</td><td>—</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
 <p>报告中还有一组正常结果：空腹血糖 4.39 mmol/L、肌酐 82.7 μmol/L、尿蛋白阴性、心电图正常、CEA 和 AFP 正常。这意味着目前<strong>没有依据改用《成人慢性肾脏病食养指南》的低蛋白方案</strong>。如果后续 eGFR &lt;60 或出现白蛋白尿，饮食方案需要整体调整，届时以肾病指南为准（知识库·成人慢性肾脏病食养指南 2024）。</p>
@@ -674,7 +792,29 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <div class="tw"><table><thead><tr><th>指标</th><th>与参考范围对照</th><th>潜在风险（证据等级 · 来源）</th></tr></thead><tbody><tr><td><strong>LDL-C 5.03</strong>、TC 7.87（非 HDL-C 6.57，我据此推算）</td><td>LDL-C 高于上限 1.66，TC 高于上限 2.69</td><td>LDL-C 是动脉粥样硬化性心血管病的因果性危险因素。中国血脂指南把 LDL-C ≥4.9 mmol/L 者直接列入高危组，2023 版指南还细化了家族性高胆固醇血症的筛查。（1级）该层级的常用目标是 LDL-C &lt;2.6 且降幅 ≥50%（凭记忆，1级）。</td></tr><tr><td>TG 1.82、HDL 1.30</td><td>TG 高于上限 0.12；HDL 正常</td><td>《成人高脂血症食养指南》把 TG ≥1.7 定义为升高。属轻度、优先级较低（1级）。</td></tr><tr><td><strong>血压 150/89</strong>（单次读数；脉搏 89）</td><td>高于 140/90</td><td>报告写的「1 级」对应传统的 140–159/90–99 区间。2024 版指南明确需在非同日复测后才能确诊高血压。较新的框架会把这个读数分得更高：2022 年中国临床实践指南把阈值下调到 130/80，并把 ≥140/90 称为 2 级；ACC/AHA 2017 也称之为 2 期。（1级，各指南存在分歧）在国家高血压食养指南的分层表中，1 级伴 1–2 个其他危险因素为中危，伴 ≥3 个为高危；你的血脂异常与 Hcy ≥15 已算两项，年龄、吸烟、腰围未知。</td></tr><tr><td><strong>同型半胱氨酸 20.0</strong></td><td>参考 ≤15</td><td>中国专家共识（2016）把高血压合并 Hcy ≥10 称为「H 型高血压」。（3级）较新的研究用 &gt;15 作为切点。若高血压确诊，按两种口径你都符合。</td></tr><tr><td><strong>尿酸 504</strong></td><td>化验单上限 428；诊断线 &gt;420</td><td>食养指南把高尿酸血症定义为非同日两次空腹 &gt;420。报告里「尚未达到诊断标准」的措辞看起来不一致。你需要的是第二次空腹数值，而不是一个更高的数值（1级）。</td></tr><tr><td><strong>脂肪肝</strong>（超声与 CT）、AST 47、ALT 27</td><td>AST 高于上限 7；ALT 高于上限 1；AST/ALT ≈ 1.74</td><td>AST 高于 ALT 的模式需要做肝纤维化分期，报告没有提到这一点。指南推荐先用 FIB-4 逐步筛查。FIB-4 = 年龄 × AST ÷（血小板 × √ALT）。代入你的数值约为 <strong>年龄 × 0.040</strong>：40 岁 ≈1.6，50 岁 ≈2.0，60 岁 ≈2.4（我的计算）。常用的「不确定区」是 1.3–2.67（凭记忆），落入该区间应进一步做肝弹性检测。CK 与 CK-MB 正常，AST 来自肌肉的可能性不大（1级）。</td></tr><tr><td><strong>右肾结石</strong>，最大 6×4 mm，无肾积水；尿 pH 6.0、比重 1.015（取自报告）</td><td>不适用</td><td>无梗阻。结石成分未知。风险为肾绞痛、梗阻合并感染与复发（1级，AUA/EAU）。</td></tr><tr><td>前列腺 50×42 mm 伴钙化</td><td>未查 PSA</td><td>钙化很常见。缺的是 PSA 与排尿症状（3级，本次未检索）。</td></tr><tr><td><strong>肺结节</strong>，其中一枚磨玻璃结节（右肺中叶），「Lung-RADS 2」</td><td>未写明大小</td><td>30 mm 以下的非实性结节归为 2 类，报告建议的年度 CT 与此相符。结节大小以及是纯磨玻璃还是混合磨玻璃仍需确认（1级）。</td></tr><tr><td>BMI 27.22</td><td>超重为 24–27.9；腰围未测</td><td>是血压、血脂、尿酸与肝脏各项异常的共同核心因素。《体重管理指导原则（2024）》（1级）。</td></tr><tr><td>Hb 158、Hct 49.4、RBC 5.39</td><td>在化验范围内，接近上限</td><td>可能与血液浓缩、吸烟或睡眠呼吸暂停有关。优先级低（3级）。</td></tr><tr><td>肝囊肿 10×10 mm</td><td>不适用</td><td>低风险。</td></tr><tr><td><strong>可放心的一组</strong></td><td>不适用</td><td>空腹血糖 4.39、肌酐 82.7、尿蛋白阴性、心电图正常、CEA/AFP 正常、CK 正常、胆红素与白蛋白正常。</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
 <p><strong>报告中缺少的信息：</strong> 年龄（因此无法计算 eGFR）、吸烟饮酒史、家族史、腰围、症状、目前用药、血钙、甲状腺功能、B12/叶酸、PSA、结节大小。</p>
 <hr></div></div></details></div>
-<div class="topic-pane" data-pane="2"><details class="mcard" open style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">核心原则、食物清单、一日示范食谱、获益与注意事项 · 4,362 字</span></summary><div class="mbody"><div class="raw"><h3 id="t2-oe-0-h1">二、个性化膳食干预方案</h3>
+<div class="topic-pane" data-pane="2"><p class="fine">本主题五家原文并列，默认展开 <b>Gemini</b> 一份；七个主题按五家轮换默认展开，点任意卡片可换读，也可用「展开全部」一次看齐。</p><details class="mcard" style="--mc:#be123c"><summary><span class="badge">AFU</span><span>蚂蚁阿福</span><span class="mdesc">核心原则、食物清单、一日示范食谱、获益与注意事项 · 1,809 字</span></summary><div class="mbody"><div class="raw"><h3 id="t2-af-0-h1">二、个性化膳食干预方案</h3>
+<p>以下建议优先依据内置知识库中的官方食养指南整合，并兼顾高血压、血脂异常、脂肪肝、高尿酸与肾结石的多目标管理。</p>
+<h4 id="t2-af-0-h2">2.1 核心膳食原则</h4>
+<ol class="lst"><li value="1"><strong>控制总能量摄入，循序渐进减重</strong></li></ol>
+<p>超重和肥胖管理强调通过控制总能量摄入并增加身体活动实现体重下降，长期维持健康体重。<br>✅ 潜在获益：有助于降低血压、改善血脂、减轻脂肪肝、降低尿酸与结石风险。<br>⚠️ 注意事项：避免极端节食与快速减重，以免营养不足、尿酸波动或胆结石风险增加。</p>
+<ol class="lst"><li value="2"><strong>限盐，优先选择天然低钠食物</strong></li></ol>
+<p>高血压食养强调限制钠盐摄入，减少腌制食品、加工食品与高盐调味品。<br>✅ 潜在获益：有助于降低血压，并可能减少尿钙排泄，从而对结石预防有利。<br>⚠️ 注意事项：若考虑使用低钠盐或含钾盐，需结合肾功能与用药情况，由医生评估后决定。</p>
+<ol class="lst"><li value="3"><strong>优化脂肪结构，减少饱和脂肪与反式脂肪</strong></li></ol>
+<p>高脂血症食养强调减少饱和脂肪与反式脂肪，增加富含不饱和脂肪酸的食物来源。<br>✅ 潜在获益：有助于降低低密度脂蛋白胆固醇与总体心血管风险。<br>⚠️ 注意事项：控制总脂肪摄入，避免以高脂加工食品替代健康脂肪来源。</p>
+<ol class="lst"><li value="4"><strong>增加蔬菜、水果、全谷物与豆类，保证膳食纤维</strong></li></ol>
+<p>高血压与高脂血症食养均强调多蔬果、全谷物与豆类，增加膳食纤维摄入。<br>✅ 潜在获益：有助于血压、血脂与体重管理。<br>⚠️ 注意事项：合并肾结石者应优先选择低草酸蔬菜，并保证正常膳食钙摄入，避免“低钙饮食”增加草酸吸收。</p>
+<ol class="lst"><li value="5"><strong>限制高嘌呤食物与酒精，避免含糖饮料与高果糖负荷</strong></li></ol>
+<p>高尿酸血症与痛风食养强调限制高嘌呤食物、限制饮酒，减少含糖饮料与高果糖摄入。<br>✅ 潜在获益：有助于降低尿酸水平并减少痛风发作风险。<br>⚠️ 注意事项：避免以果汁替代整果；酒精应尽量不饮，尤其避免暴饮。</p>
+<h4 id="t2-af-0-h3">2.2 食物选择清单</h4>
+<div class="tw"><table><thead><tr><th>食物类别</th><th>推荐食用</th><th>限量食用</th><th>不推荐/避免</th></tr></thead><tbody><tr><td>谷薯类</td><td>全谷物、杂豆、薯类替代部分精白米面</td><td>白米饭、白面馒头、精制糕点</td><td>含糖饮料、甜点、油条、酥皮点心</td></tr><tr><td>蔬菜水果类</td><td>多样化蔬菜，优先低草酸蔬菜；整果适量</td><td>高糖水果、果汁、果脯</td><td>腌制蔬菜、咸菜、泡菜</td></tr><tr><td>肉蛋水产类</td><td>去皮禽肉、鱼虾适量，豆制品替代部分红肉</td><td>红肉、动物内脏、浓肉汤、部分高嘌呤海鲜</td><td>沙丁鱼、凤尾鱼、贝类、动物内脏、火锅老汤</td></tr><tr><td>奶豆类</td><td>低脂或脱脂奶、酸奶，大豆及其制品</td><td>全脂奶、加糖酸奶、炼乳</td><td>奶精、植脂末、高糖奶饮</td></tr><tr><td>油脂/调味品</td><td>植物油适量，清淡烹调</td><td>动物油、黄油、奶油、椰子油</td><td>反式脂肪来源、重口味蘸料、咸味零食</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
+<h4 id="t2-af-0-h4">2.3 一日膳食参考</h4>
+<p>以下为多病共存人群的示例框架，可按口味替换同类食物，但尽量保持结构与份量。</p>
+<div class="tw"><table><thead><tr><th>餐次</th><th>示例搭配</th><th>说明</th></tr></thead><tbody><tr><td>早餐</td><td>燕麦或全麦主食 + 低脂奶或无糖酸奶 + 水煮蛋 1 个 + 凉拌蔬菜</td><td>主食尽量全谷物，蛋量结合血脂情况个体化</td></tr><tr><td>加餐</td><td>整果 1 份</td><td>优先柑橘类、苹果、梨等，避免果汁</td></tr><tr><td>午餐</td><td>杂粮饭 + 清蒸鱼或去皮禽肉 + 清炒低草酸蔬菜 + 豆腐汤</td><td>少油少盐，不喝浓肉汤</td></tr><tr><td>加餐</td><td>无糖酸奶或一小把坚果</td><td>坚果控制总量，避免盐焗与糖衣</td></tr><tr><td>晚餐</td><td>荞麦面或玉米糁 + 豆制品或少量瘦肉 + 大量蔬菜 + 番茄蛋花汤</td><td>晚餐清淡，避免夜宵与酒精</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
+<h4 id="t2-af-0-h5">2.4 膳食干预的获益与注意事项</h4>
+<ul class="lst"><li><strong>获益</strong></li></ul>
+<p>以限盐、多蔬果、全谷物、低饱和脂肪、限制酒精与含糖饮料为核心的饮食模式，可同时改善血压、血脂、体重与尿酸水平，属于多项指南共同推荐的生活方式基础。</p>
+<ul class="lst"><li><strong>注意事项</strong></li></ul>
+<ol class="lst"><li class="li-sub" value="1">肾结石患者不宜盲目低钙饮食，应保证正常膳食钙摄入，并尽量随餐摄入，以减少草酸吸收。</li><li class="li-sub" value="2">高尿酸人群应避免暴饮暴食与快速减重，以免诱发尿酸波动。</li><li class="li-sub" value="3">若合并肾功能异常或正在使用影响血钾的药物，调整低钠盐、补钾或补充剂前需先咨询医生。</li></ol></div></div></details><details class="mcard" style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">核心原则、食物清单、一日示范食谱、获益与注意事项 · 4,362 字</span></summary><div class="mbody"><div class="raw"><h3 id="t2-oe-0-h1">二、个性化膳食干预方案</h3>
 <h4 id="t2-oe-0-h2">2.1 核心膳食原则</h4>
 <ol class="lst"><li value="1"><strong>控制总能量，缓慢减重。</strong></li></ol>
 <ul class="lst"><li class="li-sub">全天约 <strong>1500–1600 kcal</strong>，三餐能量按 3:4:3 分配，晚餐在 17:00–19:00 吃完。</li><li class="li-sub">每周减 0.5–1.0 kg，6 个月减 5–10%，即从 75 kg 降到约 67.5–71 kg。</li><li class="li-sub">来源：《成人肥胖食养指南（2024年版）》《成人高尿酸血症与痛风食养指南（2024年版）》《体重管理指导原则（2024年版）》。</li></ul>
@@ -699,7 +839,7 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <h4 id="t2-oe-0-h5">2.4 膳食干预的获益与注意事项</h4>
 <div class="tw"><table><thead><tr><th>干预措施</th><th>✅ 潜在获益</th><th>证据等级</th><th>⚠️ 风险 / 限制 / 需监测</th><th>参考文献</th></tr></thead><tbody><tr><td>限能量 DASH 饮食</td><td>超重合并高尿酸男性 12 周平均减重 9.3%，血尿酸下降约 0.79 mg/dL；DASH 荟萃分析显示血尿酸下降 0.25 mg/dL</td><td>2 级、1 级</td><td>第 1 周血尿酸一过性升高，第 0–2 周痛风发作较集中，这段时间要多喝水</td><td><sup class="cite" data-ref="4">4</sup>, <sup class="cite" data-ref="28">28</sup></td></tr><tr><td>中国心脏健康膳食 / 减盐</td><td>4 周内收缩压下降约 10 mmHg</td><td>2 级</td><td>外出就餐时很难控盐；含钾代盐需要肾功能正常</td><td><sup class="cite" data-ref="3">3</sup>, <sup class="cite" data-ref="29">29</sup></td></tr><tr><td>戒酒</td><td>减酒平均降压 3.1/2.0 mmHg；脂肪肝患者即使少量饮酒，纤维化风险也会升高</td><td>1 级</td><td>若出现手抖、出汗、失眠等戒断症状，需就医评估</td><td><sup class="cite" data-ref="30">30</sup>, <sup class="cite" data-ref="31">31</sup>, <sup class="cite" data-ref="32">32</sup></td></tr><tr><td>减重 5–10%</td><td>≥5% 减少肝脂肪，7–10% 改善肝脏炎症，≥10% 改善纤维化；AHI 下降约 38–49%</td><td>1 级</td><td>减重过快会诱发痛风或胆结石</td><td><sup class="cite" data-ref="16">16</sup>, <sup class="cite" data-ref="33">33</sup>, <sup class="cite" data-ref="34">34</sup></td></tr><tr><td>大量饮水</td><td>预防结石证据等级最高；促进尿酸排泄</td><td>1 级</td><td>前列腺增大者夜尿可能增多；心衰或需限液者不适用</td><td><sup class="cite" data-ref="6">6</sup>, <sup class="cite" data-ref="7">7</sup></td></tr><tr><td>食物钙保持正常、随餐摄入</td><td>低钙饮食反而增加结石复发</td><td>1 级</td><td>不要自行加服钙片</td><td><sup class="cite" data-ref="7">7</sup></td></tr><tr><td>樱桃</td><td>两天内吃樱桃者痛风发作风险较低（OR 0.65）</td><td>3 级</td><td>属于观察性数据，计入每日水果总量</td><td><sup class="cite" data-ref="24">24</sup></td></tr><tr><td><strong>生酮饮食 / 长时间断食（不推荐）</strong></td><td>荟萃分析显示生酮饮食对血尿酸总体无改善，起始阶段可能一过性升高；限时进食在限能量基础上没有显著额外减重</td><td>1 级、2 级</td><td>对尿酸性结石风险的担忧主要来自机制和观察性资料（3 级）；饱和脂肪往往随之增加，与 LDL 目标冲突</td><td><sup class="cite" data-ref="28">28</sup>, <sup class="cite" data-ref="35">35</sup></td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
 <p><strong>需要监测的指标：</strong> 每周体重平均值；每 2 周测一次腰围；3 个月复查血脂、尿酸、肝功能。若减重速度超过每周 1 kg，或出现关节红肿，应放慢节奏。</p>
-<hr></div></div></details><details class="mcard" style="--mc:#7c3aed"><summary><span class="badge">GEMINI</span><span>Gemini</span><span class="mdesc">核心原则、食物清单、一日示范食谱、获益与注意事项 · 8,852 字</span></summary><div class="mbody"><div class="raw"><h3 id="t2-ge-0-h1">二、个性化膳食干预方案</h3>
+<hr></div></div></details><details class="mcard" open style="--mc:#7c3aed"><summary><span class="badge">GEMINI</span><span>Gemini</span><span class="mdesc">核心原则、食物清单、一日示范食谱、获益与注意事项 · 8,852 字</span></summary><div class="mbody"><div class="raw"><h3 id="t2-ge-0-h1">二、个性化膳食干预方案</h3>
 <h4 id="t2-ge-0-h2">2.1 核心膳食原则</h4>
 <p>基于您提供的「内置知识库」官方指南，针对您同时存在超重、高脂血症、高尿酸血症、血压偏高、脂肪肝及肾结石的多重特征，制定以下 5 条核心膳食原则：</p>
 <ol class="lst"><li value="1"><strong>限制总能量摄入，循序渐进安全减重（每日能量设定为 1500–1650 kcal）</strong>：您身高 166 cm、体重 75 kg，按公式 <code>理想体重(kg) = 身高(cm) − 105</code> 计算，理想体重为 <strong>61 kg</strong>。依据《成人肥胖食养指南（2024年版）》与《体重管理指导原则（2024年版）》，超重人群可通过每日减少 500–1000 kcal（或减少 30% 总能量），或按理想体重乘以轻体力活动能量系数（25 kcal/kg·d ≈ 1525 kcal）来设定能量负平衡；同时《成人高尿酸血症与痛风食养指南（2024年版）》与《成人高脂血症食养指南（2023年版）》指出，超重人群每天减少 250–500 kcal 能量摄入，以每周减重 0.5–1.0 kg、每月减重 2–4 kg、6 个月内减轻当前体重的 5%–10%（即先减至 67.5–71 kg，长期逐步靠近 BMI &lt; 24 kg/m² 的 66 kg）最为稳妥，切忌极低热量饥饿节食或生酮饮食，以免酮体抑制尿酸排泄并诱发痛风或胆石症（来源：《成人肥胖食养指南（2024年版）》《体重管理指导原则（2024年版）》《成人高尿酸血症与痛风食养指南（2024年版）》《肥胖症诊疗指南（2024年版）》，<strong>证据等级：1级</strong>）。</li><li value="2"><strong>严控脂肪总量与饱和脂肪酸，足量摄入水溶性膳食纤维与植物甾醇</strong>：依据《成人高脂血症食养指南（2023年版）》，高胆固醇合并高甘油三酯人群全天膳食脂肪供能比应控制在 <strong>20%–25%</strong>（约 <strong>35–45 g/天</strong>），其中<strong>每日烹调油不超过 20–25 g</strong>；高胆固醇血症者<strong>饱和脂肪酸摄入量应低于总能量的 7%</strong>（约 <strong>&lt;12 g/天</strong>），<strong>每日膳食胆固醇摄入量少于 200 mg</strong>，反式脂肪酸低于总能量的 1%（&lt;2 g/天）；同时主食中全谷物和杂豆应占 1/3 至 1/2 以上，每日补充 25–40 g 膳食纤维（其中包含 7–13 g 水溶性膳食纤维）及约 <strong>2 g 植物甾醇</strong>（存在于植物油、全谷物、大豆及深色蔬果中），以在肠道结合胆汁酸、减少胆固醇吸收（来源：《成人高脂血症食养指南（2023年版）》《成人肥胖食养指南（2024年版）》，<strong>证据等级：1级</strong>）。</li><li value="3"><strong>调和“脂肪肝/减重”与“高尿酸/肾结石”的蛋白质矛盾，优选奶豆白肉、限制嘌呤</strong>：原体检报告对脂肪肝建议“高蛋白饮食”，但这与高尿酸和肾结石管理存在冲突。依据《成人高尿酸血症与痛风食养指南（2024年版）》与《成人慢性肾脏病食养指南（2024年版）》的分期营养原则，过量动物蛋白与高嘌呤肉类会显著增加尿酸生成和尿钙、尿尿酸排泄。因此本方案将蛋白质供能比控制在 <strong>15%–20%（每日约 70–80 g，约合实际体重 1.0 g/kg）</strong>，动物蛋白不超过一半：优先保证每日 <strong>300–500 mL 脱脂或低脂奶制品</strong>（乳蛋白可促进尿酸排泄，且随餐提供 800–1000 mg 正常膳食钙以在肠道结合草酸、减少结石复发），常吃<strong>豆腐、豆干</strong>（加工后水溶性嘌呤已大幅降低，且每天摄入含 25 g 大豆蛋白的食物有助于降低心血管风险），适量摄入去皮禽肉与低中嘌呤淡水/深海鱼（肉类先焯水弃汤），严禁动物内脏、浓肉汤及高嘌呤甲壳贝类（来源：《成人高尿酸血症与痛风食养指南（2024年版）》《成人高脂血症食养指南（2023年版）》《成人慢性肾脏病食养指南（2024年版）》，<strong>证据等级：1级</strong>）。</li><li value="4"><strong>减钠增钾、低草酸烹调，兼顾降压、降同型半胱氨酸与防结石</strong>：依据《成人高血压食养指南（2023年版）》与《Dietary Guidelines for Americans 2025-2030》，全天食盐摄入量逐步降至 <strong>5 g 以下（钠 &lt; 2000 mg/天）</strong>，不仅能降低血压，还能减少肾小管钠-钙协同排泄引起的“高尿钙”，预防右肾结石增大。同时每日摄入 500 g 新鲜蔬菜（深色占一半以上）与 <strong>200–250 g 新鲜完整水果</strong>以补充钾、镁及天然叶酸（改善 Hcy 20.0 μmol/L）。针对“深绿叶菜富含叶酸钾但部分草酸高”的冲突，日常主力选用油菜（上海青）、西兰花、芥蓝、生菜、白菜等低草酸蔬菜，若食用菠菜、苋菜、竹笋等高草酸涩味蔬菜，<strong>烹调前必须沸水焯烫（飞水）弃汤</strong>以去除大部分草酸和钾、磷（来源：《成人高血压食养指南（2023年版）》《成人慢性肾脏病食养指南（2024年版）》《Dietary Guidelines for Americans 2025-2030》，<strong>证据等级：1级</strong>）。</li><li value="5"><strong>足量分段饮水、严禁添加糖与果糖饮料、彻底戒酒</strong>：依据《成人高尿酸血症与痛风食养指南（2024年版）》，在心肾功能正常前提下，每日定时规律饮水 <strong>2000–3000 mL</strong>（维持每日尿量 <strong>&gt; 2000 mL</strong>），优先选用白水、淡柠檬水（补充天然枸橼酸抑制结石）或纸滤无糖黑咖啡；严格限制含果糖较高的食品（含糖饮料、鲜榨果汁、果葡糖浆、蜂蜜、果脯蜜饯），因为果糖既会诱发胰岛素抵抗和内源性尿酸生成，又会加重脂肪肝与高甘油三酯；同时酒精会升高乳酸抑制尿酸排泄、直接升高甘油三酯与血压并损伤肝细胞，应严格戒酒（来源：《成人高尿酸血症与痛风食养指南（2024年版）》《成人高脂血症食养指南（2023年版）》《成人高血压食养指南（2023年版）》《成人糖尿病食养指南（2023年版）》，<strong>证据等级：1级</strong>）。</li></ol>
@@ -749,7 +889,22 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <h4 id="t2-cl-0-h6">指南之间的分歧</h4>
 <div class="tw"><table><thead><tr><th>议题</th><th>分歧所在</th><th>我的取舍</th></tr></thead><tbody><tr><td>蛋白质</td><td>报告原文写「高蛋白」；DGA 2025–2030（补充参考）为 1.2–1.6 g/kg；中国指南为供能 15–20%；EAU 为动物蛋白 ≤1 g/kg</td><td>约 70–85 g/天，以奶、豆、蛋、鱼为主</td></tr><tr><td>奶类脂肪</td><td>DGA 倾向全脂；中国指南倾向低脂</td><td>选低脂，因为 LDL-C 是 5.03</td></tr><tr><td>饮水</td><td>高血压食养指南对轻体力活动给出 1,500–1,700 mL；高尿酸指南 2,000–3,000 mL；AUA 以尿量 2.5 L 为目标</td><td>2.5–3 L，主要在傍晚前喝完，因为有结石。前列腺方面的保留见 3.2。</td></tr><tr><td>鸡蛋</td><td>指南示范食谱为每天 1 个；胆固醇 &lt;200 mg；肥胖指南上限 7 个/周</td><td>3–5 个/周</td></tr><tr><td>全谷物占比</td><td>≥30%（高尿酸）、≥1/4–1/2（高血压）、至少一半（肥胖、血脂）</td><td>至少一半</td></tr><tr><td>富钾蔬菜</td><td>高血压指南列出菠菜与苋菜</td><td>在明确结石成分前改用低草酸绿叶菜</td></tr><tr><td>减重方式</td><td>肥胖指南允许在专业人员指导下采用高蛋白、低碳水或间歇性断食</td><td>不建议你采用：这是我的专家判断（3级），断食与生酮可升高尿酸并有利于尿酸结石形成</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
 <hr></div></div></details></div>
-<div class="topic-pane" data-pane="3"><details class="mcard" open style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">运动、作息、饮水节律、家庭血压与体重监测 · 1,649 字</span></summary><div class="mbody"><div class="raw"><h3 id="t3-oe-0-h1">三、生活方式干预方案</h3>
+<div class="topic-pane" data-pane="3"><p class="fine">本主题五家原文并列，默认展开 <b>ChatGPT</b> 一份；七个主题按五家轮换默认展开，点任意卡片可换读，也可用「展开全部」一次看齐。</p><details class="mcard" style="--mc:#be123c"><summary><span class="badge">AFU</span><span>蚂蚁阿福</span><span class="mdesc">运动、作息、饮水节律、家庭血压与体重监测 · 978 字</span></summary><div class="mbody"><div class="raw"><h3 id="t3-af-0-h1">三、生活方式干预方案</h3>
+<h4 id="t3-af-0-h2">3.1 运动建议</h4>
+<ul class="lst"><li><strong>运动类型</strong>：以有氧运动为主，如快走、慢跑、骑行、游泳；配合抗阻训练与柔韧平衡训练。</li><li><strong>频次与时长</strong>：每周至少 150 分钟中等强度有氧运动，或 75 分钟高强度有氧运动，并每周进行 2 到 3 次抗阻训练。</li><li><strong>强度判断</strong>：中等强度通常为运动时呼吸加快、微汗，但仍能说话。</li></ul>
+<p><strong>针对本例的要点</strong></p>
+<ul class="lst"><li>脂肪肝与超重：规律运动有助于减少肝脂肪并改善代谢，即使体重下降不明显也可能获益。</li><li>高血压：运动前建议先完成血压确认与分层；若静息血压明显升高，先控制后再逐步增加强度。</li><li>肾结石：规律中等强度运动与结石风险降低相关；但“跳跃、拍打排石”的证据并不一致，若考虑采用，建议先与泌尿外科确认结石位置、大小与梗阻风险。</li></ul>
+<p><strong>风险与禁忌</strong></p>
+<ul class="lst"><li>出现胸痛、明显气短、头晕、心悸或血压显著升高时，应停止运动并就医评估。</li><li>结石相关腰腹绞痛、肉眼血尿、发热时，应先就医处理，再恢复运动。</li></ul>
+<h4 id="t3-af-0-h3">3.2 作息与其他习惯</h4>
+<ol class="lst"><li value="1"><strong>饮水</strong></li></ol>
+<p>结石预防强调足量饮水，目标是增加尿量、降低尿液过饱和状态；临床常以每日尿量达到约 2.0 到 2.5 L 作为目标，但需结合心肾功能个体化。<br>✅ 潜在获益：降低结石复发风险。<br>⚠️ 注意事项：若存在心衰、肾功能不全或夜尿明显，应个体化调整饮水时间与总量。</p>
+<ol class="lst"><li value="2"><strong>睡眠与打鼾筛查</strong></li></ol>
+<p>规律作息、保证睡眠时长，有助于血压与代谢管理。若存在打鼾、憋醒、白天嗜睡，建议进一步评估睡眠呼吸暂停风险。<br>✅ 潜在获益：有助于血压控制与代谢改善。<br>⚠️ 注意事项：睡眠问题常与高血压、肥胖并存，需综合管理。</p>
+<ol class="lst"><li value="3"><strong>戒烟限酒</strong></li></ol>
+<p>建议戒烟并避免二手烟暴露；酒精应尽量不饮，尤其高尿酸与脂肪肝人群。<br>✅ 潜在获益：降低心脑血管与肝脏相关风险。<br>⚠️ 注意事项：如已存在酒精依赖，应在专业支持下戒酒。</p>
+<ol class="lst"><li value="4"><strong>体重管理</strong></li></ol>
+<p>建议以 3 到 6 个月减重 5% 到 10% 作为阶段性目标，并长期维持。<br>✅ 潜在获益：可改善血压、血脂、脂肪肝与尿酸。<br>⚠️ 注意事项：避免快速减重与极端饮食。</p></div></div></details><details class="mcard" style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">运动、作息、饮水节律、家庭血压与体重监测 · 1,649 字</span></summary><div class="mbody"><div class="raw"><h3 id="t3-oe-0-h1">三、生活方式干预方案</h3>
 <h4 id="t3-oe-0-h2">3.1 运动建议</h4>
 <p><strong>靶心率（46 岁、静息心率 89 次/分）：</strong></p>
 <ul class="lst"><li>计算公式：(220 − 46 − 89) × 40–60% + 89。</li><li>前 4–8 周控制在 <strong>123–140 次/分</strong>，自觉用力程度（RPE）12–13 分，即"能说话、但不能唱歌"。<sup class="cite" data-ref="36">36</sup></li></ul>
@@ -764,7 +919,7 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <hr>
 <h4 id="t3-ge-0-h3">3.2 作息与其他习惯</h4>
 <ul class="lst"><li><strong>1. 科学饮水节律（调和“肾结石睡前多饮水”与“前列腺增大防夜尿”的冲突）</strong></li><li><strong>具体建议</strong>：全天饮水 <strong>2000–3000 mL</strong>（建议 2500–2800 mL），维持每日尿量 <strong>&gt; 2000 mL</strong>（《成人高尿酸血症与痛风食养指南（2024年版）》，<strong>证据等级：1级</strong>）。针对原报告“睡前多饮水”与您“前列腺增大（50×42 mm）及高血压需防夜尿打断睡眠”的矛盾，采取“白天前置、晚间递减、按夜尿次数微调”的折中方案（<strong>证据等级：3级</strong>）：</li><li>将全天 <strong>80% 的饮水量（约 2000–2200 mL）安排在 07:00–19:00 之间</strong>，每 1–1.5 小时主动喝水 200–250 mL；</li><li>若您目前<strong>无排尿困难且每晚夜尿 ≤ 1 次</strong>，可在睡前 1–1.5 小时小口饮水 150–200 mL，或在半夜自然起夜排尿后顺便喝 100 mL 温水；</li><li>若您<strong>每晚夜尿 ≥ 2 次或伴有尿频、排尿费力</strong>，则应在<strong>睡前 2–3 小时停止大量饮水</strong>（仅在口干时抿少许水），并尽快前往泌尿外科评估前列腺症状。</li><li><strong>✅ 潜在获益</strong>：既能保证全天尿液充分稀释（使尿色保持极浅淡黄色、降低尿比重），有效冲刷肾盂预防结石增大并促进尿酸排泄，又能避免夜间膀胱过度充盈导致的频繁起夜、睡眠碎片化及夜间血压波动。</li><li><strong>⚠️ 注意事项</strong>：不要等到口渴才一次性猛灌大量水；避免饮用生冷冰水（易诱发尿酸盐结晶及损伤脾胃）；若未来出现肾功能不全、心力衰竭或下肢水肿，需立即遵医嘱改为“量出为入”限制饮水。</li><li><strong>2. 睡眠管理与睡眠呼吸暂停（OSA）筛查</strong></li><li><strong>具体建议</strong>：遵循昼夜生物节律，固定作息，<strong>每晚 23:00 前上床入睡，保证每日 7–8 小时充足睡眠</strong>，不熬夜（《成人肥胖食养指南（2024年版）》《成人高血压食养指南（2023年版）》，<strong>证据等级：1级</strong>）。若平时有打鼾、夜间憋醒、晨起口干头痛或白天嗜睡，建议采用侧卧睡姿，并在就医时请医生使用 <strong>STOP-BANG 问卷</strong>或便携式睡眠监测筛查是否合并阻塞性睡眠呼吸暂停综合征（OSAS）（《肥胖症诊疗指南（2024年版）》，<strong>证据等级：1级</strong>）。</li><li><strong>✅ 潜在获益</strong>：规律充足睡眠可调节胃饥饿素与瘦素平衡（减少夜间食欲与“过劳肥”），降低交感神经张力，改善静息心率（89 次/分）与全天血压水平（随机对照研究显示延长睡眠不足者的睡眠时间有助于降低 24 小时血压，<strong>证据等级：2级</strong>）；筛查并改善夜间缺氧还可减少因细胞缺氧分解 ATP 产生的内源性尿酸及红细胞代偿性增多。</li><li><strong>⚠️ 注意事项</strong>：睡前 2 小时避免使用电子产品及剧烈运动，下午 14:00 后避免饮用咖啡或茶水；睡眠时间也不宜过长（避免超过 9 小时长期卧床处于低能耗状态）。</li><li><strong>3. 彻底戒烟限酒与呼吸环境防护</strong></li><li><strong>具体建议</strong>：<strong>严格限制饮酒直至彻底戒酒（零饮酒）</strong>，包括啤酒、黄酒、白酒、红酒（《成人高脂血症食养指南（2023年版）》《成人高尿酸血症与痛风食养指南（2024年版）》《成人高血压食养指南（2023年版）》，<strong>证据等级：1级</strong>）。若吸烟，<strong>彻底戒烟并远离二手烟</strong>；日常烹饪时全程开启抽油烟机，减少高温油烟吸入。</li><li><strong>✅ 潜在获益</strong>：戒酒可同时消除尿酸排泄受抑、甘油三酯升高、血压上升、肝细胞炎症损伤（尤其本例 AST/ALT &gt; 1）及前列腺充血五大诱因；戒烟与防油烟可降低肺部磨玻璃结节受刺激的风险，保护血管内皮，改善 HDL-C 并辅助降低 Hcy 水平（<strong>证据等级：1级</strong>）。</li><li><strong>⚠️ 注意事项</strong>：不存在“喝红酒软化血管”或“只喝白酒不喝啤酒就不升尿酸”的安全侥幸——白酒酒精度高，极易引起体内乳酸堆积抑制尿酸排泄；《成人高脂血症食养指南（2023年版）》亦明确指出即使少量饮酒也会使高甘油三酯血症人群的甘油三酯进一步升高。</li><li><strong>4. 规范家庭血压监测（HBPM）与体重腰围自我监测</strong></li><li><strong>具体建议</strong>：</li><li><strong>家庭血压监测</strong>：选用经认证的<strong>上臂式电子血压计</strong>及合适尺寸袖带。初诊确认阶段<strong>连续测量 5–7 天</strong>，每天早（起床排尿后、早餐和服药前）、晚（睡前）各测 1 次；测前 30 分钟不吸烟、不喝咖啡/茶、不运动，安静坐于有靠背椅上休息 5 分钟，双脚平放不交叉；每次连续测 <strong>2–3 遍，间隔 1–2 分钟，记录平均值</strong>（部分指南建议弃去第 1 天数据取后 6 天均值，或每次取后 2 遍均值，建议将全部原始读数和心率一并记录带给心内科医生）；血压稳定后每周测 1–2 天（<a href="http://www.chl-bha.org.cn/Public/ueditor/php/upload/20240815/17236841017752.pdf" target="_blank" rel="noopener">《中国高血压防治指南（2024年修订版）》</a>，<strong>证据等级：1级</strong>）。</li><li><strong>体重、腰围与关节保暖</strong>：每周固定同一天清晨空腹排尿后穿单衣称重，每月测量 1 次腰围（使用皮尺在腋中线肋弓下缘和髂嵴连线中点水平环绕腹部一周，男性目标 <strong>&lt; 85–90 cm</strong>，《成人肥胖食养指南（2024年版）》附录5）；日常注意四肢远端关节及会阴部保暖，夏季空调温度不宜过低、冷风不直吹足踝（防止低温下尿酸盐结晶析出诱发痛风，《成人高尿酸血症与痛风食养指南（2024年版）》，<strong>证据等级：3级</strong>）。</li><li><strong>情绪管理</strong>：保持心理平衡，避免长期精神紧张激活交感神经导致血压波动（《成人高血压食养指南（2023年版）》，<strong>证据等级：3级</strong>；关于特定呼吸法或冥想对本例多重代谢问题的直接改善效应，<strong>目前证据不足，暂不作为核心推荐</strong>，可作为日常放松参考）。</li><li><strong>✅ 潜在获益</strong>：家庭血压监测可排除“诊室白大衣高血压”或识别“隐蔽性高血压”，为医生提供最真实的 24 小时血压评估依据（家庭血压平均 <strong>≥ 135/85 mmHg</strong> 即达高血压诊断界值）；自我监测体重与饮食记录能显著提高长期减重依从性（<strong>证据等级：1级</strong>）。</li><li><strong>⚠️ 注意事项</strong>：切勿因为某一次测得血压偏高而反复连续测量十余次，这会引起焦虑导致血压越测越高；测量时袖带位置应与心脏处于同一水平。</li></ul>
-<hr></div></div></details><details class="mcard" style="--mc:#059669"><summary><span class="badge">CHATGPT</span><span>ChatGPT</span><span class="mdesc">运动、作息、饮水节律、家庭血压与体重监测 · 1,491 字</span></summary><div class="mbody"><div class="raw"><h3 id="t3-cg-0-h1">三、生活方式干预方案</h3>
+<hr></div></div></details><details class="mcard" open style="--mc:#059669"><summary><span class="badge">CHATGPT</span><span>ChatGPT</span><span class="mdesc">运动、作息、饮水节律、家庭血压与体重监测 · 1,491 字</span></summary><div class="mbody"><div class="raw"><h3 id="t3-cg-0-h1">三、生活方式干预方案</h3>
 <h4 id="t3-cg-0-h2">3.1 运动建议</h4>
 <p><strong>方案：</strong>先从平地步行开始。第 1–2 周每次 15–20 分钟、每周 5 天；之后逐步增加到每次 30 分钟以上，每周累计至少 <strong>150 分钟中等强度有氧活动</strong>。中等强度用谈话测试即可：能说完整句子，但不太能唱歌。若适应良好，可逐步增加总量，不需要追求固定心率；报告缺年龄，无法计算个人靶心率。<strong>潜在获益：</strong>有助于血压、体重、血脂和脂肪肝管理。<strong>注意事项：</strong>避免突然做高强度间歇或憋气负重；逐步增加时长和强度。<strong>证据：1级，国内高血压、高尿酸和肥胖运动建议。</strong><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11937835/" target="_blank" rel="noopener">中国高血压防治指南（2024年修订版）</a>**</p>
 <p>血压复核完成前，先做轻至中等强度步行，避免高强度训练和憋气力量动作；若静息收缩压反复 ≥160 mmHg，应先咨询医生再做剧烈运动；运动前达到 ≥180/110 mmHg 时暂缓运动并联系医疗人员。运动中出现胸痛、异常气短、头晕或心悸，应停止并就医。<strong>证据：1级指南。</strong></p>
@@ -779,7 +934,12 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <h4 id="t3-cl-0-h3">3.2 日常习惯</h4>
 <div class="tw"><table><thead><tr><th>习惯</th><th>建议</th><th>✅ 获益</th><th>⚠️ 注意</th></tr></thead><tbody><tr><td><strong>家庭血压</strong></td><td>连续 7 天早晚各测，每次 2–3 遍，弃用第 1 天，其余取平均。家庭血压 ≥135/85 即为偏高。使用上臂式袖带。</td><td>确认或排除高血压</td><td>单次读数会误导</td></tr><tr><td><strong>饮水</strong></td><td>全天约 2.5–3 L 分散饮用（起床约 250 mL，其后随三餐及上午、下午各一次）。约 20:00 后逐步减少。</td><td>稀释尿液，兼顾结石与尿酸</td><td>前列腺夜尿：若影响睡眠，请咨询泌尿外科（专家意见，证据不足）</td></tr><tr><td><strong>烟酒</strong></td><td>不饮酒。若吸烟则戒烟。</td><td>降低 TG、尿酸、血压与肝损伤；烟酒也会升高同型半胱氨酸。</td><td>不适用</td></tr><tr><td><strong>睡眠</strong></td><td>约 7 小时，23:00 前上床。若打鼾或白天嗜睡，请要求做睡眠呼吸暂停筛查。</td><td>有利体重、血压与肝脏</td><td>筛查建议为 3级</td></tr><tr><td><strong>压力</strong></td><td>做好压力管理，必要时用认知行为技术（高血压食养指南）</td><td>可能减少血压波动</td><td>慢呼吸训练的证据有限</td></tr><tr><td><strong>自我监测</strong></td><td>每周称体重，每月量腰围，记录 2–4 周饮食（肥胖指南，1级）</td><td>提高依从性</td><td>留意不要过度执着于记录</td></tr><tr><td><strong>前列腺相关习惯</strong></td><td>不要长时间憋尿；有排尿症状时少吃辛辣（专家意见，证据不足）</td><td>舒适度</td><td>直接证据很少</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
 <hr></div></div></details></div>
-<div class="topic-pane" data-pane="4"><details class="mcard" open style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">药物类别与相互作用 —— 仅为科普，不是处方 · 3,704 字</span></summary><div class="mbody"><div class="raw"><h3 id="t4-oe-0-h1">四、用药相关循证科普提示</h3>
+<div class="topic-pane" data-pane="4"><p class="fine">本主题五家原文并列，默认展开 <b>Claude</b> 一份；七个主题按五家轮换默认展开，点任意卡片可换读，也可用「展开全部」一次看齐。</p><details class="mcard" style="--mc:#be123c"><summary><span class="badge">AFU</span><span>蚂蚁阿福</span><span class="mdesc">药物类别与相互作用 —— 仅为科普，不是处方 · 967 字</span></summary><div class="mbody"><div class="raw"><h3 id="t4-af-0-h1">四、用药相关循证科普提示</h3>
+<p>重要声明：以下仅为药物类别科普，不构成用药建议，具体用药必须经医生评估后开具处方。</p>
+<h4 id="t4-af-0-h2">4.1 对应指标的常用干预药物类别</h4>
+<div class="tw"><table><thead><tr><th>异常指标</th><th>常用药物类别</th><th>循证获益</th><th>常见不良反应与禁忌</th><th>适用人群提示</th></tr></thead><tbody><tr><td>低密度脂蛋白胆固醇升高</td><td>他汀类为基础，必要时联合胆固醇吸收抑制剂或前蛋白转化酶枯草溶菌9抑制剂</td><td>可降低动脉粥样硬化性心血管疾病事件风险，指南推荐以低密度脂蛋白胆固醇为首要靶点并分层达标</td><td>可能出现肝酶升高、肌痛等；需结合基线肝功能与症状监测</td><td>低密度脂蛋白胆固醇达到或超过 4.9 mmol/L 者通常需要结合总体风险积极评估与管理</td></tr><tr><td>高血压</td><td>常用降压药包括钙通道阻滞剂、血管紧张素转换酶抑制剂或血管紧张素受体阻滞剂、利尿剂等</td><td>降压治疗可降低心脑血管事件风险，治疗时机与目标需结合危险分层</td><td>不同类别药物不良反应不同，如利尿剂可能影响尿酸，需个体化选择</td><td>需先完成家庭血压或动态血压确认，并评估靶器官损害与合并症</td></tr><tr><td>高尿酸血症</td><td>抑制尿酸生成药物与促进尿酸排泄药物</td><td>对反复痛风发作、痛风石、尿酸性结石或高危人群，降尿酸治疗可降低发作与结石相关风险；无症状人群是否用药存在指南差异</td><td>可能出现皮疹、肝肾功能异常等，需监测</td><td>合并肾结石、高血压等人群，在非药物治疗后仍持续升高时，是否启动药物需专科评估</td></tr><tr><td>同型半胱氨酸升高</td><td>叶酸及维生素B族补充</td><td>在部分人群中可降低同型半胱氨酸水平，但对心脑血管硬终点的获益证据并不一致</td><td>大剂量补充可能掩盖维生素B12缺乏，需先评估缺乏风险</td><td>更适合在明确缺乏或特定高危人群中，由医生评估后使用</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
+<h4 id="t4-af-0-h3">4.2 药物联用与食物相互作用提示</h4>
+<ul class="lst"><li><strong>降压药与高尿酸</strong>：部分利尿剂可能升高尿酸，合并高尿酸或痛风者应告知医生，以便个体化选择。</li><li><strong>他汀与肝功能</strong>：脂肪肝并非他汀绝对禁忌，但用药前后需结合肝功能与症状监测。</li><li><strong>补充剂与结石</strong>：大剂量维生素C补充剂可能增加结石风险，不建议自行长期大剂量服用。</li><li><strong>低钠盐与肾功能</strong>：如考虑使用低钠盐或含钾盐，需结合肾功能与用药情况，由医生评估后决定。</li></ul></div></div></details><details class="mcard" style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">药物类别与相互作用 —— 仅为科普，不是处方 · 3,704 字</span></summary><div class="mbody"><div class="raw"><h3 id="t4-oe-0-h1">四、用药相关循证科普提示</h3>
 <blockquote>⚠️ <strong>重要声明：以下仅为药物类别科普，不构成用药建议。是否用药、用哪一类，必须由医生评估后开具处方。本节不涉及任何具体剂量、服用方法或疗程。</strong></blockquote>
 <p>下图来自 NEJM 痛风综述，展示了降压、降脂、降糖等药物与尿酸之间的双向影响。本例多病共存，用药选择正需要考虑这种相互影响：</p>
 <p>Figure 2<br>Potential for Dual Benefit or Adverse Effects Associated with Medications Used in Gout and Gout-Related Conditions. ACE denotes angiotensin-converting enzyme, ARB angiotensin-receptor blocker, NSAID nonsteroidal antiinflammatory drug, and SGLT2 sodium–glucose transport protein 2. Colchicine should be used with caution if agents that strongly inhibit both cytochrome P450 3A4 and P-glycoprotein (e.g., itraconazole and clarithromycin) are used concurrently. A question mark in parentheses indicates that the potential benefit of the agent is less well established.</p>
@@ -810,7 +970,7 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <h4 id="t4-cg-0-h3">4.2 药物联用与食物相互作用提示</h4>
 <p>报告没有提供你正在服用的药物清单，因此无法判断具体食物—药物相互作用，也不应假设你正在服用某类药物。</p>
 <ul class="lst"><li>就诊时带上处方药、非处方药、维生素、草药和保健品清单；任何药物相互作用需按<strong>具体药物</strong>由医生或药师核对。<strong>证据：1级用药安全原则。</strong></li><li>若正在使用影响血钾或肾功能的降压药物类别，不要自行把普通盐换成含钾低钠盐；高血压食养指南也要求肾功能异常者补钾前先咨询医生。<strong>证据：1级。</strong></li><li>不要因为开始饮食运动干预而自行停药、减药或改变服药时间；也不要用保健品替代降脂、降压或结石评估。</li></ul>
-<hr></div></div></details><details class="mcard" style="--mc:#ea580c"><summary><span class="badge">CLAUDE</span><span>Claude</span><span class="mdesc">药物类别与相互作用 —— 仅为科普，不是处方 · 2,087 字</span></summary><div class="mbody"><div class="raw"><h3 id="t4-cl-0-h1">四、用药相关循证科普提示</h3>
+<hr></div></div></details><details class="mcard" open style="--mc:#ea580c"><summary><span class="badge">CLAUDE</span><span>Claude</span><span class="mdesc">药物类别与相互作用 —— 仅为科普，不是处方 · 2,087 字</span></summary><div class="mbody"><div class="raw"><h3 id="t4-cl-0-h1">四、用药相关循证科普提示</h3>
 <p><strong>这里只列举药物类别，不是用药建议。任何药物都必须由医生选择。</strong></p>
 <h4 id="t4-cl-0-h2">4.1 按异常指标分列的药物类别</h4>
 <div class="tw"><table><thead><tr><th>指标</th><th>类别与作用机制</th><th>证据</th><th>常见不良反应与禁忌</th><th>适用与否</th></tr></thead><tbody><tr><td><strong>LDL-C 5.03</strong></td><td><strong>他汀类</strong>减少肝脏胆固醇合成。中国指南在生活方式基础上以中等强度他汀起始，必要时加用胆固醇吸收抑制剂和／或 PCSK9 抑制剂。<strong>PCSK9 抑制剂</strong>增加 LDL 受体循环利用。</td><td>1级。PCSK9 抗体用于家族性高胆固醇血症及其他高危患者。</td><td>他汀：肌肉症状（一篇综述报告 1.5–10%）、肝酶升高、血糖轻度升高。吸收抑制剂：胃肠道反应。PCSK9 制剂：注射部位反应、费用。妊娠与活动性肝病为他汀禁忌。</td><td>你的 AST 47 需要在起始前评估。</td></tr><tr><td><strong>TG 1.82</strong></td><td>轻度升高，通常以控制体重、酒精和糖为主。</td><td>1级</td><td>重度高 TG 可用贝特类、处方 ω-3 与烟酸。ω-3 可升高 LDL-C，烟酸可升高尿酸并损害糖耐量。</td><td>以你的尿酸水平，烟酸并不合适</td></tr><tr><td><strong>血压（若确诊）</strong></td><td>五大类（ACE 抑制剂、ARB、钙通道阻滞剂、β 受体阻滞剂、利尿剂）</td><td>1级，2024 版指南。目标 &lt;140/90，耐受时 &lt;130/80。</td><td>ACE 抑制剂：咳嗽、高钾、血管性水肿。ARB：高钾。钙通道阻滞剂：踝部水肿。β 受体阻滞剂：心率慢、乏力。噻嗪类利尿剂倾向升高尿酸（3级）。</td><td>类别选择要与你的尿酸、结石、前列腺情况权衡。妊娠禁用 ACE 抑制剂与 ARB。</td></tr><tr><td><strong>尿酸</strong></td><td><strong>黄嘌呤氧化酶抑制剂</strong>减少尿酸生成；<strong>促尿酸排泄药</strong>增加肾脏排泄；尿酸结石用<strong>尿液碱化剂</strong>。</td><td>1级，但存在分歧。中国 2019 指南对合并高血压、血脂异常或尿酸结石等情况者，≥480 即考虑用药（目标 &lt;360）。ACR 2020 有条件地反对对无症状高尿酸血症启动药物治疗。</td><td>皮疹与超敏反应（汉族患者用其中一种药前需检测基因标志物）、肝酶升高、起始时诱发急性发作。促尿酸排泄药升高尿尿酸，是结石方面的顾虑。</td><td>取决于复查尿酸、肾功能与 24 小时尿。尿尿酸偏高、复发性草酸钙结石且尿钙正常时，用黄嘌呤氧化酶抑制剂。</td></tr><tr><td><strong>同型半胱氨酸 20.0</strong></td><td><strong>B 族维生素（叶酸、B6、B12）</strong>参与同型半胱氨酸代谢。</td><td>Cochrane（1级）：心肌梗死与死亡无差异；卒中略有获益。中国一项 RCT（2级）发现降压治疗加叶酸可降低卒中。</td><td>剂量—效应存在平台。叶酸可掩盖 B12 缺乏。</td><td>先查 B12、叶酸、甲状腺与肾功能。不要自行补充。</td></tr><tr><td><strong>脂肪肝、BMI 27</strong></td><td><strong>GLP-1 受体激动剂</strong>、<strong>GLP-1/GIP 双激动剂</strong>、<strong>脂肪酶抑制剂</strong>。2024 版肥胖指南允许在 BMI ≥24 且合并并发症（高血压、血脂异常、脂肪肝）、生活方式干预无效时用药。其表中相对安慰剂的减重幅度：GLP-1 激动剂约 3–12%，双激动剂 11.9–17.8%，脂肪酶抑制剂 3.1%。</td><td>1级</td><td>胃肠道反应、罕见胰腺炎。本人或家族有甲状腺髓样癌、MEN2 史者禁用。脂肪酶抑制剂：脂肪泻，胆汁淤积时避免。停药后体重回升。</td><td>由医生主导，在生活方式尝试之后</td></tr><tr><td><strong>肾结石</strong></td><td>依据 24 小时尿与结石成分选择。AUA 对高尿钙合并复发性含钙结石提供噻嗪类药物；尿酸结石用碱化剂。</td><td>1级</td><td>噻嗪类：低钾、尿酸升高。碱化剂：需监测尿 pH，并带来钠负荷。</td><td>由泌尿外科决定</td></tr><tr><td><strong>前列腺</strong></td><td>α 受体阻滞剂与 5-α 还原酶抑制剂，仅在症状困扰时使用</td><td>1级（凭记忆，本次未检索）</td><td>α 受体阻滞剂会叠加降压药的头晕。5-α 还原酶抑制剂会降低 PSA（判读 PSA 时要考虑这一点，故先测基线值）。</td><td>以症状驱动</td></tr><tr><td><strong>肺结节、肝囊肿</strong></td><td>无药物治疗，影像随访</td><td>不适用</td><td>不适用</td><td>不适用</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
@@ -818,7 +978,13 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <p>你没有列出正在使用的药物，因此以下是一般性提醒：</p>
 <ul class="lst"><li><strong>西柚与柚子</strong>会与某些降脂药、降压药相互作用。指南把西柚列为可选水果，所以一旦开始用药，请先咨询药师再依赖它（3级）。</li><li><strong>富钾代盐或富钾食物</strong>与 ACE 抑制剂、ARB 合用，或存在肾功能减退时，可导致高钾。高血压食养指南不建议自行服钾补充剂。</li><li><strong>酒精</strong>增加肝脏负担并升高尿酸。</li><li><strong>维生素 C 补充剂</strong>会增加草酸负荷。未经医师意见，不要超过 1,000 mg/天。</li><li><strong>非处方药：</strong> 抗炎止痛药会升高血压并加重肾脏负担；减充血剂会升高血压，在前列腺增大时还可能引起尿潴留（3级）。</li><li><strong>草药类产品：</strong> 血脂指南指出，正在服药者使用食药物质须在医师或药师指导下进行。</li></ul>
 <hr></div></div></details></div>
-<div class="topic-pane" data-pane="5"><details class="mcard" open style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">急症红旗、就诊科室、复查随访节奏 · 853 字</span></summary><div class="mbody"><div class="raw"><h3 id="t5-oe-0-h1">五、风险预警与就医建议</h3>
+<div class="topic-pane" data-pane="5"><p class="fine">本主题五家原文并列，默认展开 <b>蚂蚁阿福</b> 一份；七个主题按五家轮换默认展开，点任意卡片可换读，也可用「展开全部」一次看齐。</p><details class="mcard" open style="--mc:#be123c"><summary><span class="badge">AFU</span><span>蚂蚁阿福</span><span class="mdesc">急症红旗、就诊科室、复查随访节奏 · 608 字</span></summary><div class="mbody"><div class="raw"><h3 id="t5-af-0-h1">五、风险预警与就医建议</h3>
+<h4 id="t5-af-0-h2">1. 需要立即就医的情况</h4>
+<ul class="lst"><li>血压显著升高并伴胸痛、呼吸困难、神经系统症状等。</li><li>结石相关：突发剧烈腰腹绞痛、肉眼血尿、发热寒战、少尿或无尿。</li><li>急性痛风样关节炎发作，尤其首次发作或伴发热需鉴别感染。</li></ul>
+<h4 id="t5-af-0-h3">2. 需要尽快就诊评估的情况</h4>
+<ul class="lst"><li><strong>心血管内科</strong>：确认高血压诊断并完成危险分层；评估低密度脂蛋白胆固醇明显升高的管理策略。</li><li><strong>泌尿外科</strong>：右肾多发结石进一步评估结石成分、代谢因素与复发预防。</li><li><strong>肝病或消化内科</strong>：脂肪肝合并转氨酶异常模式需进一步评估肝纤维化风险。</li><li><strong>营养科或体重管理门诊</strong>：多病共存时的个体化饮食与运动处方。</li></ul>
+<h4 id="t5-af-0-h4">3. 建议复查的指标</h4>
+<ul class="lst"><li><strong>血压</strong>：家庭血压连续 5 到 7 天，早晚各测，取平均值用于诊断与随访。</li><li><strong>血脂</strong>：生活方式干预后约 3 个月复查；若启动降脂治疗，按医嘱更早复查并监测安全性。</li><li><strong>尿酸与肾功能</strong>：3 到 6 个月复查；若启动降尿酸治疗或出现症状，按医嘱更密切复查。</li><li><strong>肝功能与肝脏评估</strong>：结合脂肪肝与转氨酶情况，按医生建议复查并评估肝纤维化风险。</li><li><strong>泌尿系影像与代谢评估</strong>：按泌尿外科建议复查超声，并完善结石成分与 24 小时尿代谢评估。</li><li><strong>肺结节</strong>：按 Lung-RADS 2 类建议年度复查。</li></ul></div></div></details><details class="mcard" style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">急症红旗、就诊科室、复查随访节奏 · 853 字</span></summary><div class="mbody"><div class="raw"><h3 id="t5-oe-0-h1">五、风险预警与就医建议</h3>
 <p><strong>出现以下情况必须立即就医：</strong></p>
 <ul class="lst"><li>剧烈腰腹绞痛，伴发热寒战或血尿，提示结石梗阻合并感染。<sup class="cite" data-ref="7">7</sup></li><li>血压 ≥180/110 mmHg（3 级高血压），或伴胸痛、剧烈头痛、肢体无力、言语不清。（知识库·高血压食养指南附录 5）</li><li>完全排不出尿；咯血。</li><li>关节突然红肿热痛（提示痛风急性发作）。</li><li>戒酒后出现明显手抖、出汗、心慌或幻觉。</li></ul>
 <p><strong>建议尽快（2–4 周内）就诊的科室：</strong></p>
@@ -847,13 +1013,33 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <p><strong>随访安排：</strong></p>
 <div class="tw"><table><thead><tr><th>时间点</th><th>项目</th></tr></thead><tbody><tr><td>现在至 4 周</td><td>7 天家庭血压；非同日诊室血压；复查空腹尿酸、肌酐/eGFR、尿常规；空腹血脂加 apoB 与一次性 Lp(a)；TSH、血钙、B12/叶酸；尿白蛋白肌酐比；游离与总 PSA；向放射科索取结节尺寸</td></tr><tr><td>1–3 个月</td><td>FIB-4 与肝弹性检测；24 小时尿代谢评估（在平常饮食状态下留取 1–2 次）</td></tr><tr><td>8–12 周</td><td>血脂、AST/ALT/GGT、尿酸、同型半胱氨酸、体重、腰围</td></tr><tr><td>3–6 个月</td><td>复查体重与代谢指标（肥胖指南建议每 3–6 个月一次）</td></tr><tr><td>6–12 个月</td><td>腹部与泌尿系超声</td></tr><tr><td>12 个月</td><td>胸部低剂量 CT（有症状时提前）。Fleischner 2017 对 ≥6 mm 的单发纯磨玻璃结节安排不同：6–12 个月复查 CT，之后每 2 年一次。</td></tr><tr><td>每年</td><td>血糖或 HbA1c、全套化验、血压复核</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
 <hr></div></div></details></div>
-<div class="topic-pane" data-pane="6"><details class="mcard" open style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">分歧裁定、证据来源、参考文献、免责声明 · 19,149 字</span></summary><div class="mbody"><div class="raw"><h3 id="t6-oe-0-h1">六、附：对多模型分歧的裁定（基于用户提供的对比知识库）</h3>
+<div class="topic-pane" data-pane="6"><p class="fine">本主题五家原文并列，默认展开 <b>OpenEvidence</b> 一份；七个主题按五家轮换默认展开，点任意卡片可换读，也可用「展开全部」一次看齐。</p><details class="mcard" style="--mc:#be123c"><summary><span class="badge">AFU</span><span>蚂蚁阿福</span><span class="mdesc">分歧裁定、证据来源、参考文献、免责声明 · 1,180 字</span></summary><div class="mbody"><div class="raw"><h3 id="t6-af-0-h1">证据来源汇总</h3>
+<ul class="lst"><li>《中国血脂管理指南（2023年）》</li><li>《中国高血压防治指南（2024年修订版）》</li><li>《慢性肾脏病早期筛查、诊断及防治指南（2022年版）》关于高尿酸血症定义与危害</li><li>《高危高尿酸血症药物降尿酸治疗专家共识（2025版）》关于合并肾结石、高血压等人群降尿酸治疗启动时机与目标</li><li>《成人高血压食养指南（2023年版）》</li><li>《成人高脂血症食养指南（2023年版）》</li><li>《成人高尿酸血症与痛风食养指南（2024年版）》</li><li>《体重管理指导原则（2024年版）》</li><li>体检报告原始数据与影像结论</li></ul>
+<h3 id="t6-af-1-h1">强制免责声明</h3>
+<p>以上内容为基于指南与循证证据的健康科普信息整理，不能替代执业医师、临床药师的面对面诊疗与处方决策。若出现胸痛、呼吸困难、神经系统症状、剧烈腰腹绞痛、发热或肉眼血尿等情况，请及时就医。</p>
+<p>全部引用</p>
+<ol class="lst"><li value="1">中国血脂管理指南（2023 年）</li></ol>
+<p>链接：https://mdn.alipayobjects.com/medlib_data/afts/file/sjTYQJTuSbkAAAAAgBAAAAgAnJhPAQFr</p>
+<ol class="lst"><li value="2">中国脑血管病临床管理指南（第2版）（节选）——第3章脑血管病高危人群管理</li></ol>
+<p>链接：https://guide.medlive.cn/guideline/29777</p>
+<ol class="lst"><li value="3">中国高血压防治指南(2024年修订版)</li></ol>
+<p>链接：</p>
+<ol class="lst"><li value="4">慢性肾脏病早期筛查、诊断及防治指南（2022年版）</li></ol>
+<p>链接：</p>
+<ol class="lst"><li value="5">高尿酸血症与痛风健康管理指南</li></ol>
+<p>链接：https://mdn.alipayobjects.com/medlib_data/afts/file/olUeSaZE3sAAAAAAgEAAAAgAnJhPAQFr</p>
+<ol class="lst"><li value="6">Moderate-Intensity Statin Plus Ezetimibe: Time to Rethink it as an Optimal Initial Lipid-Lowering Strategy</li></ol>
+<p>链接：https://mdn.alipayobjects.com/medlib_data/afts/file/mEoVTorLucQAAAAAfaAAAAgAnJhPAQFr</p>
+<ol class="lst"><li value="7">中国糖尿病防治指南（2024版）</li></ol>
+<p>链接：https://mdn.alipayobjects.com/medlib_data/afts/file/m3XsSIDR2g4AAAAAgPAAAAgAnJhPAQFr</p>
+<ol class="lst"><li value="8">[Expert consensus on urate-lowering therapy for high-risk hyperuricemia (2025 edition)].</li></ol>
+<p>链接：https://rs.yiigle.com/cmaid/1547438</p></div></div></details><details class="mcard" open style="--mc:#2563eb"><summary><span class="badge">OE</span><span>OpenEvidence</span><span class="mdesc">分歧裁定、证据来源、参考文献、免责声明 · 19,149 字</span></summary><div class="mbody"><div class="raw"><h3 id="t6-oe-0-h1">六、附：对多模型分歧的裁定（基于用户提供的对比知识库）</h3>
 <div class="tw"><table><thead><tr><th>分歧点</th><th>本方案采用</th><th>依据</th></tr></thead><tbody><tr><td>跳跃 / 跳绳排石</td><td>不作为常规手段，如需尝试先经泌尿外科同意</td><td>没有针对原位无症状结石的高质量证据，且有引发肾绞痛的风险<sup class="cite" data-ref="7">7</sup></td></tr><tr><td>每周全蛋数量</td><td>每周 3–4 个，其余天数吃蛋白</td><td>本例 LDL-C &gt;4.9，按高脂血症食养指南"胆固醇 &lt;200 mg/天"执行</td></tr><tr><td>每日蛋白质</td><td>约 70–80 g，动物蛋白不超过一半</td><td>兼顾减重保肌、结石和尿酸三方面要求<sup class="cite" data-ref="23">23</sup></td></tr><tr><td>靶心率</td><td>按 46 岁计算为 123–140 次/分</td><td>用心率储备公式计算，不使用固定区间</td></tr><tr><td>生酮 / 断食警示</td><td>明确不推荐</td><td>补上此前 OpenEvidence 版本缺少的警示<sup class="cite" data-ref="28">28</sup>, <sup class="cite" data-ref="35">35</sup></td></tr><tr><td>咖啡</td><td>每天 1–2 杯纸滤咖啡，14 点前喝完</td><td>兼顾夜尿和睡眠；夜尿增多时再减少</td></tr><tr><td>急诊血压阈值</td><td>≥180/110 mmHg</td><td>对应中国标准的 3 级高血压界值</td></tr><tr><td>结石类型</td><td>不推定为尿酸结石，等待成分分析</td><td>结石类型直接影响降尿酸药物类别的选择<sup class="cite" data-ref="56">56</sup></td></tr><tr><td>H 型高血压的同型半胱氨酸阈值</td><td>不同共识定为 ≥10 或 &gt;15 μmol/L，本例 20.0 在两种标准下都符合</td><td>3 级（专家共识），本次检索未再核对共识原文</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
 <hr>
 <p><strong>免责声明：</strong> 本内容根据体检报告原文、附件中的国家卫健委食养指南知识库和公开文献整理，仅作健康科普参考，<strong>不构成诊断或处方</strong>。涉及的药物仅为类别和机制介绍，不含任何剂量、用法或疗程；是否用药、选哪一类，必须由接诊医师评估后决定。证据等级和指南分歧已逐条标注，实际执行以医生判断为准。</p>
 <p>肝弹性和睡眠监测结果出来后，可以根据结果（例如肝硬度 ≥8 kPa，或确诊中重度睡眠呼吸暂停）重新调整减重目标、运动强度和是否需要药物评估。需要时我可以把这一套方案整理成一页患者随身执行清单，方便他每天对照。</p>
 <h4 id="t6-oe-0-h2">References</h4>
-<ol class="lst"><li value="1">Alcohol Intake and Risk of Incident Gout in Men: A Prospective Study. Choi HK, Atkinson K, Karlson EW, Willett W, Curhan G. Lancet (London, England). 2004;363(9417):1277-81. doi:10.1016/S0140-6736(04)16000-5.</li><li value="2">STOP-Bang Questionnaire: A Practical Approach to Screen for Obstructive Sleep Apnea. Chung F, Abdullah HR, Liao P. Chest. 2016;149(3):631-8. doi:10.1378/chest.15-0903.</li><li value="3">Effects of Cuisine-Based Chinese Heart-Healthy Diet in Lowering Blood Pressure Among Adults in China: Multicenter, Single-Blind, Randomized, Parallel Controlled Feeding Trial. Wang Y, Feng L, Zeng G, et al. Circulation. 2022;146(4):303-315. doi:10.1161/CIRCULATIONAHA.122.059045.</li><li value="4">Calorie-Restricted DASH, Carbohydrate-Restricted, and Low-Purine Diets for Weight Loss and Urate Control in Men With Overweight or Obesity and Hyperuricemia: A Randomized Trial. Liu S, Yan L, Huang Y, et al. Diabetes Care. 2026;:dc261241. doi:10.2337/dc26-1241.</li><li value="5">Management of cardiometabolic risk factors in cardiovascular high-risk populations with varying cognitive levels. Shen T, Zhao M, Qiao S, et al. Aging Clinical and Experimental Research. 2025;38(1):8. doi:10.1007/s40520-025-03241-y.</li><li value="6">Medical Management of Kidney Stones: AUA Guideline (2026). American Urological Association. 2019.</li><li value="7">Kidney stone disease: risk factors, pathophysiology and management. Bargagli M, Scoglio M, Howles SA, Fuster DG. Nature Reviews. Nephrology. 2025;21(11):794-808. doi:10.1038/s41581-025-00990-x.</li><li value="8">2019 ESC/EAS Guidelines for the Management of Dyslipidaemias: Lipid Modification to Reduce Cardiovascular Risk. Mach F, Baigent C, Catapano AL, et al. European Heart Journal. 2020;41(1):111-188. doi:10.1093/eurheartj/ehz455.</li><li value="9">Strategies for screening for familial hypercholesterolaemia in primary care and other community settings. Nadeem Qureshi, Maria Luisa R Da Silva, Hasidah Abdul-Hamid, et al. Cochrane Database of Systematic Reviews. 2021. doi:10.1002/14651858.cd012985.pub2.</li><li value="10">Highlights of the 2024 Chinese Hypertension Guidelines. Liu J. Hypertension Research : Official Journal of the Japanese Society of Hypertension. 2025;48(3):1048-1053. doi:10.1038/s41440-024-02070-2.</li><li value="11">2019 Chinese Hypertension League guidelines on home blood pressure monitoring. Wang JG, Bu PL, Chen LY, et al. Journal of Clinical Hypertension (Greenwich, Conn.). 2020;22(3):378-383. doi:10.1111/jch.13779.</li><li value="12">Effects of uric acid-lowering therapy (ULT) on renal outcomes in CKD patients with asymptomatic hyperuricemia: a systematic review and meta-analysis. Luo Y, Song Q, Li J, et al. BMC Nephrology. 2024;25(1):63. doi:10.1186/s12882-024-03491-4.</li><li value="13">Evaluation of Abnormal Liver Biochemical Test Results. Kwo PY, Masuoka HC, Schaefer EA, Friedman LS. Gastroenterology. 2026;170(7):1457-1472. doi:10.1053/j.gastro.2025.12.041.</li><li value="14">The Ratio of Aspartate Aminotransferase to Alanine Aminotransferase: Potential Value in Differentiating Nonalcoholic Steatohepatitis From Alcoholic Liver Disease. Sorbi D, Boynton J, Lindor KD. The American Journal of Gastroenterology. 1999;94(4):1018-22. doi:10.1111/j.1572-0241.1999.01006.x.</li><li value="15">A Clinical Update on MASLD. Zhang GY, Brandman D. JAMA Internal Medicine. 2025;185(1):105-107. doi:10.1001/jamainternmed.2024.6431.</li><li value="16">EASL–EASD–EASO Clinical Practice Guidelines on the management of metabolic dysfunction-associated steatotic liver disease (MASLD): Executive Summary. European Association for the Study of the Liver, European Association for the Study of Diabetes, European Association for the Study of Obesity. Diabetologia. 2024;67(11):2375-2392. doi:10.1007/s00125-024-06196-3.</li><li value="17">MetALD: Does it require a different therapeutic option?. Marek GW, Malhi H. Hepatology (Baltimore, Md.). 2024;80(6):1424-1440. doi:10.1097/HEP.0000000000000935.</li><li value="18">Efficacy of Folic Acid Therapy in Primary Prevention of Stroke Among Adults With Hypertension in China: The CSPPT Randomized Clinical Trial. Huo Y, Li J, Qin X, et al. JAMA. 2015;313(13):1325-35. doi:10.1001/jama.2015.2274.</li><li value="19">Homocysteine‐lowering interventions for preventing cardiovascular events. Arturo J Martí-Carvajal, Ivan Solà, Dimitrios Lathyris, et al. Cochrane Database of Systematic Reviews. 2017. doi:10.1002/14651858.cd006612.pub5.</li><li value="20">Obstructive Sleep Apnea and Cardiovascular Disease: A Scientific Statement From the American Heart Association. Yeghiazarians Y, Jneid H, Tietjens JR, et al. Circulation. 2021;144(3):e56-e67. doi:10.1161/CIR.0000000000000988.</li><li value="21">Management of Lower Urinary Tract Symptoms Attributed to Benign Prostatic Hyperplasia: AUA Guideline (2026). American Urological Association. 2026.</li><li value="22">Screening for Lung Cancer: 2023 Guideline Update From the American Cancer Society. Wolf AMD, Oeffinger KC, Shih TY, et al. CA: A Cancer Journal for Clinicians. 2024 Jan-Feb;74(1):50-81. doi:10.3322/caac.21811.</li><li value="23">Associations of Total Protein or Animal Protein Intake and Animal Protein Sources With Risk of Kidney Stones: A Systematic Review and Dose-Response Meta-Analysis. Asoudeh F, Talebi S, Jayedi A, et al. Advances in Nutrition (Bethesda, Md.). 2022;13(3):821-832. doi:10.1093/advances/nmac013.</li><li value="24">Cherry consumption and decreased risk of recurrent gout attacks. Zhang Y, Neogi T, Chen C, et al. Arthritis and Rheumatism. 2012;64(12):4004-11. doi:10.1002/art.34677.</li><li value="25">Dietary Factors and Risk of Gout and Hyperuricemia: A Meta-Analysis and Systematic Review. Li R, Yu K, Li C. Asia Pacific Journal of Clinical Nutrition. 2018;27(6):1344-1356. doi:10.6133/apjcn.201811_27(6).0022.</li><li value="26">Effect of Beer on the Plasma Concentrations of Uridine and Purine Bases. Yamamoto T, Moriwaki Y, Takahashi S, et al. Metabolism: Clinical and Experimental. 2002;51(10):1317-23. doi:10.1053/meta.2002.34041.</li><li value="27">Do restaurants comply with reduced salt requests from consumers ordering on meal delivery apps?. Song C, Li W, Cui Y, et al. BMC Public Health. 2023;23(1):2000. doi:10.1186/s12889-023-16939-3.</li><li value="28">The effect of dietary approaches to stop hypertension and ketogenic diets intervention on serum uric acid concentration: a systematic review and meta-analysis of randomized controlled trials. Gohari S, Ghobadi S, Jafari A, et al. Scientific Reports. 2023;13(1):10492. doi:10.1038/s41598-023-37672-2.</li><li value="29">Effect of Modified Chinese Diet Is Comparable to Antihypertensives. Slomski A. JAMA. 2022;328(8):700. doi:10.1001/jama.2022.14322.</li><li value="30">Alcohol Use and Cardiovascular Disease: A Scientific Statement From the American Heart Association. Piano MR, Marcus GM, Aycock DM, et al. Circulation. 2025;152(1):e7-e21. doi:10.1161/CIR.0000000000001341.</li><li value="31">Low-to-Moderate Alcohol Consumption Is Associated With Increased Fibrosis in Individuals With Metabolic Dysfunction-Associated Steatotic Liver Disease. Marti-Aguado D, Calleja JL, Vilar-Gomez E, et al. Journal of Hepatology. 2024;81(6):930-940. doi:10.1016/j.jhep.2024.06.036.</li><li value="32">Even Lower Alcohol Intake Might Be Harmful for East Asian Males With MASLD Spectrum. Yun B, Oh J, Park H, et al. Clinical Gastroenterology and Hepatology : The Official Clinical Practice Journal of the American Gastroenterological Association. 2026;24(6):1644-1653. doi:10.1016/j.cgh.2025.09.030.</li><li value="33">AGA Clinical Practice Update on Lifestyle Modification Using Diet and Exercise to Achieve Weight Loss in the Management of Nonalcoholic Fatty Liver Disease: Expert Review. Younossi ZM, Corey KE, Lim JK. Gastroenterology. 2021;160(3):912-918. doi:10.1053/j.gastro.2020.11.051.</li><li value="34">Dose-Response Relationship Between Weight Loss and Improvements in Obstructive Sleep Apnea Severity After a Diet/Lifestyle Interventions: Secondary Analyses of the "MIMOSA" Randomized Clinical Trial. Georgoulis M, Yiannakouris N, Kechribari I, et al. Journal of Clinical Sleep Medicine : JCSM : Official Publication of the American Academy of Sleep Medicine. 2022;18(5):1251-1261. doi:10.5664/jcsm.9834.</li><li value="35">Calorie Restriction with or without Time-Restricted Eating in Weight Loss. Liu D, Huang Y, Huang C, et al. The New England Journal of Medicine. 2022;386(16):1495-1504. doi:10.1056/NEJMoa2114833.</li><li value="36">Exercise Prescription in Patients with Different Combinations of Cardiovascular Disease Risk Factors: A Consensus Statement from the EXPERT Working Group. Hansen D, Niebauer J, Cornelissen V, et al. Sports Medicine (Auckland, N.Z.). 2018;48(8):1781-1797. doi:10.1007/s40279-018-0930-4.</li><li value="37">Intensity-Specific Physical Activity Measured by Accelerometer, Genetic Susceptibility, and the Risk of Kidney Stone Disease: Results From the UK Biobank. Liu Y, Ku PW, Li Z, et al. American Journal of Kidney Diseases : The Official Journal of the National Kidney Foundation. 2024;84(4):437-446.e1. doi:10.1053/j.ajkd.2024.03.022.</li><li value="38">Effects of Exercise on Patients With Obstructive Sleep Apnea: A Systematic Review and Meta-Analysis. Peng J, Yuan Y, Zhao Y, Ren H. International Journal of Environmental Research and Public Health. 2022;19(17):10845. doi:10.3390/ijerph191710845.</li><li value="39">2024 ESC Guidelines for the Management of Elevated Blood Pressure and Hypertension. McEvoy JW, McCarthy CP, Bruno RM, et al. European Heart Journal. 2024;45(38):3912-4018. doi:10.1093/eurheartj/ehae178.</li><li value="40">Alcohol Intake and Risk of Hypertension: A Systematic Review and Dose-Response Meta-Analysis of Nonexperimental Cohort Studies. Cecchini M, Filippini T, Whelton PK, et al. Hypertension (Dallas, Tex. : 1979). 2024;81(8):1701-1715. doi:10.1161/HYPERTENSIONAHA.124.22703.</li><li value="41">The Impact of Alcohol on Breathing Parameters During Sleep: A Systematic Review and Meta-Analysis. Kolla BP, Foroughi M, Saeidifard F, et al. Sleep Medicine Reviews. 2018;42:59-67. doi:10.1016/j.smrv.2018.05.007.</li><li value="42">Positional therapy for obstructive sleep apnoea. P R Srijithesh, Rajeswari Aghoram, Amit Goel, et al. Cochrane Database of Systematic Reviews. 2019. doi:10.1002/14651858.cd010990.pub2.</li><li value="43">Joint Consensus Statement of the American Academy of Sleep Medicine and Sleep Research Society on the Recommended Amount of Sleep for a Healthy Adult: Methodology and Discussion. Consensus Conference Panel, Watson NF, Badr MS, et al. Journal of Clinical Sleep Medicine : JCSM : Official Publication of the American Academy of Sleep Medicine. 2015;11(8):931-52. doi:10.5664/jcsm.4950.</li><li value="44">Strategies to Cut Down Drinking, Alcohol Consumption, and Usual Drinking Frequency: Evidence From a British Online Market Research Survey. Sasso A, Hernández-Alava M, Holmes J, et al. Social Science &amp; Medicine (1982). 2022;310:115280. doi:10.1016/j.socscimed.2022.115280.</li><li value="45">Gout. Mikuls TR. The New England Journal of Medicine. 2022;387(20):1877-1887. doi:10.1056/NEJMcp2203385.</li><li value="46">Long-Term Efficacy and Safety of Moderate-Intensity Statin With Ezetimibe Combination Therapy Versus High-Intensity Statin Monotherapy in Patients With Atherosclerotic Cardiovascular Disease (RACING): A Randomised, Open-Label, Non-Inferiority Trial. Kim BK, Hong SJ, Lee YJ, et al. Lancet (London, England). 2022;400(10349):380-390. doi:10.1016/S0140-6736(22)00916-3.</li><li value="47">Combination Therapy With Lower Statin Dose and the Race to LDL-C Goal: A Clear Winner?. Ben-Yehuda O. Journal of the American College of Cardiology. 2023;82(5):411-413. doi:10.1016/j.jacc.2023.06.003.</li><li value="48">New and Emerging Therapies for Reduction of LDL-Cholesterol and Apolipoprotein B: JACC Focus Seminar 1/4. Nurmohamed NS, Navar AM, Kastelein JJP. Journal of the American College of Cardiology. 2021;77(12):1564-1575. doi:10.1016/j.jacc.2020.11.079.</li><li value="49">Lipid Management in Patients With Endocrine Disorders: An Endocrine Society Clinical Practice Guideline. Newman CB, Blaha MJ, Boord JB, et al. The Journal of Clinical Endocrinology and Metabolism. 2020;105(12):dgaa674. doi:10.1210/clinem/dgaa674.</li><li value="50">AASLD Practice Guidance on the Clinical Assessment and Management of Nonalcoholic Fatty Liver Disease. Rinella ME, Neuschwander-Tetri BA, Siddiqui MS, et al. Hepatology (Baltimore, Md.). 2023;77(5):1797-1835. doi:10.1097/HEP.0000000000000323.</li><li value="51">Prescribing cascades of antigout medications from thiazide diuretics in gout-naïve hypertensive adults receiving first-line pharmacological management. Lu SY, Hsu HY, Hsieh YW, et al. Scientific Reports. 2024;14(1):7402. doi:10.1038/s41598-024-58153-0.</li><li value="52">Losartan, Uric Acid, and Cardiometabolic Disease: Beyond Blood Pressure Control. Kuwabara M, Hamano T, Ae R. Hypertension Research : Official Journal of the Japanese Society of Hypertension. 2026;49(10):2904-2907. doi:10.1038/s41440-026-02756-9.</li><li value="53">Antihypertensive drugs for hyperuricemia in patients with hypertension: a systematic review and network meta-analysis of Chinese trials. Wu J, Di H, Zhang Y, Zeng X. BMC Cardiovascular Disorders. 2025;25(1):856. doi:10.1186/s12872-025-05339-7.</li><li value="54">2020 American College of Rheumatology Guideline for the Management of Gout. FitzGerald JD, Dalbeth N, Mikuls T, et al. Arthritis &amp; Rheumatology (Hoboken, N.J.). 2020;72(6):879-895. doi:10.1002/art.41247.</li><li value="55">Incidence and Risk of Nephrolithiasis With Uricosuric Therapies for the Treatment of Gout: A Systematic Review and Meta-Analysis of Randomized Controlled Trials and Cohort Studies. Dahanayake C, Bajpai R, Lambie M, Jordan KM, Roddy E. Rheumatology (Oxford, England). 2026;65(2):keaf577. doi:10.1093/rheumatology/keaf577.</li><li value="56">2020 American College of Rheumatology Guideline for the Management of Gout. FitzGerald JD, Dalbeth N, Mikuls T, et al. Arthritis Care &amp; Research. 2020;72(6):744-760. doi:10.1002/acr.24180.</li><li value="57">Risk of Urolithiasis Associated With Allopurinol Versus Benzbromarone Among Patients With Gout: A Population-Based Cohort Study. Kang EH, Shin A, Park CS, et al. Rheumatology (Oxford, England). 2024;63(9):2433-2441. doi:10.1093/rheumatology/keae262.</li><li value="58">Long-Term Cardiovascular Safety of Febuxostat Compared With Allopurinol in Patients With Gout (FAST): A Multicentre, Prospective, Randomised, Open-Label, Non-Inferiority Trial. Mackenzie IS, Ford I, Nuki G, et al. Lancet (London, England). 2020;396(10264):1745-1757. doi:10.1016/S0140-6736(20)32234-0.</li><li value="59">Considerations for Choosing First-Line Urate-Lowering Treatment in Older Patients with Comorbid Conditions. Kang EH. Drugs &amp; Aging. 2022;39(12):923-933. doi:10.1007/s40266-022-00986-3.</li><li value="60">Semaglutide and Tirzepatide for the Treatment of Obesity and Weight-Related Comorbidities: A Narrative Review. Saeed ZI, Apovian CM. Current Atherosclerosis Reports. 2025;28(1):2. doi:10.1007/s11883-025-01369-w.</li><li value="61">Semaglutide for Metabolic Dysfunction–Associated Steatohepatitis. Simon TG. The New England Journal of Medicine. 2025;392(21):2160-2161. doi:10.1056/NEJMe2504717.</li><li value="62">FDA Orange Book. FDA Orange Book.</li><li value="63">Tirzepatide for the Treatment of Obstructive Sleep Apnea and Obesity. Malhotra A, Grunstein RR, Fietze I, et al. The New England Journal of Medicine. 2024;391(13):1193-1205. doi:10.1056/NEJMoa2404881.</li><li value="64">Glucagon-Like Peptide-1 Receptor Agonists for Obstructive Sleep Apnea: A Review. Harris A, Kaffenberger T. JAMA Otolaryngology-- Head &amp; Neck Surgery. 2026;152(10):992-1000. doi:10.1001/jamaoto.2026.2266.</li><li value="65">Orthostatic Hypotension in Adults With Hypertension: A Scientific Statement From the American Heart Association. Juraschek SP, Cortez MM, Flack JM, et al. Hypertension (Dallas, Tex. : 1979). 2024;81(3):e16-e30. doi:10.1161/HYP.0000000000000236.</li><li value="66">Drug-Related Orthostatic Hypotension: Beyond Anti-Hypertensive Medications. Rivasi G, Rafanelli M, Mossello E, Brignole M, Ungar A. Drugs &amp; Aging. 2020;37(10):725-738. doi:10.1007/s40266-020-00796-5.</li><li value="67">Prostate Cancer Early Detection. National Comprehensive Cancer Network. Updated 2026-02-18.</li><li value="68">Lower Urinary Tract Symptoms in Men: A Review. Wei JT, Dauw CA, Brodsky CN. JAMA. 2025;334(9):809-821. doi:10.1001/jama.2025.7045.</li><li value="69">Statin Safety and Associated Adverse Events: A Scientific Statement From the American Heart Association. Newman CB, Preiss D, Tobert JA, et al. Arteriosclerosis, Thrombosis, and Vascular Biology. 2019;39(2):e38-e81. doi:10.1161/ATV.0000000000000073.</li><li value="70">Use of Herbal Products and Potential Interactions in Patients With Cardiovascular Diseases. Tachjian A, Maria V, Jahangir A. Journal of the American College of Cardiology. 2010;55(6):515-25. doi:10.1016/j.jacc.2009.07.074.</li><li value="71">Grapefruit Juice and Statins. Lee JW, Morris JK, Wald NJ. The American Journal of Medicine. 2016;129(1):26-9. doi:10.1016/j.amjmed.2015.07.036.</li><li value="72">Adequate Intake of Potassium Does Not Cause Hyperkalemia in Hypertensive Individuals Taking Medications That Antagonize the Renin Angiotensin Aldosterone System. Malta D, Arcand J, Ravindran A, et al. The American Journal of Clinical Nutrition. 2016;104(4):990-994. doi:10.3945/ajcn.115.129635.</li><li value="73">Potassium-Enriched Salt Substitutes as a Means to Lower Blood Pressure: Benefits and Risks. Greer RC, Marklund M, Anderson CAM, et al. Hypertension (Dallas, Tex. : 1979). 2020;75(2):266-274. doi:10.1161/HYPERTENSIONAHA.119.13241.</li><li value="74">Potassium Disorders: Hypokalemia and Hyperkalemia. Kim MJ, Valerio C, Knobloch GK. American Family Physician. 2023;107(1):59-70.</li><li value="75">Efficacy, side effects, adherence, affordability, and procurement of dietary supplements for treating hypercholesterolemia: a narrative review. von Känel-Cordoba I, Wirnitzer K, Weiss K, et al. Journal of Health, Population, and Nutrition. 2024;43(1):189. doi:10.1186/s41043-024-00679-0.</li><li value="76">Effect of long-term marine Omega-3 fatty acids supplementation on the risk of atrial fibrillation in randomized controlled trials of cardiovascular outcomes: a systematic review and meta-analysis. Gencer B, Djousse L, Al-Ramady OT, et al. Circulation. 2021;144(25):1981-1990. doi:10.1161/CIRCULATIONAHA.121.055654.</li><li value="77">Omega-3 Fatty Acids and Atrial Fibrillation: Current Evidence and Expert Opinion. Harris WS, De Caterina R, Nattel S, et al. European Journal of Preventive Cardiology. 2026;:zwag577. doi:10.1093/eurjpc/zwag577.</li><li value="78">Total, Dietary, and Supplemental Vitamin C Intake and Risk of Incident Kidney Stones. Ferraro PM, Curhan GC, Gambaro G, Taylor EN. American Journal of Kidney Diseases : The Official Journal of the National Kidney Foundation. 2016;67(3):400-7. doi:10.1053/j.ajkd.2015.09.005.</li><li value="79">Ascorbic Acid Supplements and Kidney Stone Incidence Among Men: A Prospective Study. Thomas LD, Elinder CG, Tiselius HG, Wolk A, Akesson A. JAMA Internal Medicine. 2013;173(5):386-8. doi:10.1001/jamainternmed.2013.2296.</li></ol></div></div></details><details class="mcard" style="--mc:#7c3aed"><summary><span class="badge">GEMINI</span><span>Gemini</span><span class="mdesc">本模型没有对应章节</span></summary><div class="mbody"><p class="fine">该模型原文中未出现这一主题的独立章节，相关内容可能散在其他章节，请见「四家全文」。</p></div></details><details class="mcard" style="--mc:#059669"><summary><span class="badge">CHATGPT</span><span>ChatGPT</span><span class="mdesc">分歧裁定、证据来源、参考文献、免责声明 · 2,478 字</span></summary><div class="mbody"><div class="raw"><h3 id="t6-cg-0-h1">六、复查随访计划表</h3>
+<ol class="lst"><li value="1">Alcohol Intake and Risk of Incident Gout in Men: A Prospective Study. Choi HK, Atkinson K, Karlson EW, Willett W, Curhan G. Lancet (London, England). 2004;363(9417):1277-81. doi:10.1016/S0140-6736(04)16000-5.</li><li value="2">STOP-Bang Questionnaire: A Practical Approach to Screen for Obstructive Sleep Apnea. Chung F, Abdullah HR, Liao P. Chest. 2016;149(3):631-8. doi:10.1378/chest.15-0903.</li><li value="3">Effects of Cuisine-Based Chinese Heart-Healthy Diet in Lowering Blood Pressure Among Adults in China: Multicenter, Single-Blind, Randomized, Parallel Controlled Feeding Trial. Wang Y, Feng L, Zeng G, et al. Circulation. 2022;146(4):303-315. doi:10.1161/CIRCULATIONAHA.122.059045.</li><li value="4">Calorie-Restricted DASH, Carbohydrate-Restricted, and Low-Purine Diets for Weight Loss and Urate Control in Men With Overweight or Obesity and Hyperuricemia: A Randomized Trial. Liu S, Yan L, Huang Y, et al. Diabetes Care. 2026;:dc261241. doi:10.2337/dc26-1241.</li><li value="5">Management of cardiometabolic risk factors in cardiovascular high-risk populations with varying cognitive levels. Shen T, Zhao M, Qiao S, et al. Aging Clinical and Experimental Research. 2025;38(1):8. doi:10.1007/s40520-025-03241-y.</li><li value="6">Medical Management of Kidney Stones: AUA Guideline (2026). American Urological Association. 2019.</li><li value="7">Kidney stone disease: risk factors, pathophysiology and management. Bargagli M, Scoglio M, Howles SA, Fuster DG. Nature Reviews. Nephrology. 2025;21(11):794-808. doi:10.1038/s41581-025-00990-x.</li><li value="8">2019 ESC/EAS Guidelines for the Management of Dyslipidaemias: Lipid Modification to Reduce Cardiovascular Risk. Mach F, Baigent C, Catapano AL, et al. European Heart Journal. 2020;41(1):111-188. doi:10.1093/eurheartj/ehz455.</li><li value="9">Strategies for screening for familial hypercholesterolaemia in primary care and other community settings. Nadeem Qureshi, Maria Luisa R Da Silva, Hasidah Abdul-Hamid, et al. Cochrane Database of Systematic Reviews. 2021. doi:10.1002/14651858.cd012985.pub2.</li><li value="10">Highlights of the 2024 Chinese Hypertension Guidelines. Liu J. Hypertension Research : Official Journal of the Japanese Society of Hypertension. 2025;48(3):1048-1053. doi:10.1038/s41440-024-02070-2.</li><li value="11">2019 Chinese Hypertension League guidelines on home blood pressure monitoring. Wang JG, Bu PL, Chen LY, et al. Journal of Clinical Hypertension (Greenwich, Conn.). 2020;22(3):378-383. doi:10.1111/jch.13779.</li><li value="12">Effects of uric acid-lowering therapy (ULT) on renal outcomes in CKD patients with asymptomatic hyperuricemia: a systematic review and meta-analysis. Luo Y, Song Q, Li J, et al. BMC Nephrology. 2024;25(1):63. doi:10.1186/s12882-024-03491-4.</li><li value="13">Evaluation of Abnormal Liver Biochemical Test Results. Kwo PY, Masuoka HC, Schaefer EA, Friedman LS. Gastroenterology. 2026;170(7):1457-1472. doi:10.1053/j.gastro.2025.12.041.</li><li value="14">The Ratio of Aspartate Aminotransferase to Alanine Aminotransferase: Potential Value in Differentiating Nonalcoholic Steatohepatitis From Alcoholic Liver Disease. Sorbi D, Boynton J, Lindor KD. The American Journal of Gastroenterology. 1999;94(4):1018-22. doi:10.1111/j.1572-0241.1999.01006.x.</li><li value="15">A Clinical Update on MASLD. Zhang GY, Brandman D. JAMA Internal Medicine. 2025;185(1):105-107. doi:10.1001/jamainternmed.2024.6431.</li><li value="16">EASL–EASD–EASO Clinical Practice Guidelines on the management of metabolic dysfunction-associated steatotic liver disease (MASLD): Executive Summary. European Association for the Study of the Liver, European Association for the Study of Diabetes, European Association for the Study of Obesity. Diabetologia. 2024;67(11):2375-2392. doi:10.1007/s00125-024-06196-3.</li><li value="17">MetALD: Does it require a different therapeutic option?. Marek GW, Malhi H. Hepatology (Baltimore, Md.). 2024;80(6):1424-1440. doi:10.1097/HEP.0000000000000935.</li><li value="18">Efficacy of Folic Acid Therapy in Primary Prevention of Stroke Among Adults With Hypertension in China: The CSPPT Randomized Clinical Trial. Huo Y, Li J, Qin X, et al. JAMA. 2015;313(13):1325-35. doi:10.1001/jama.2015.2274.</li><li value="19">Homocysteine‐lowering interventions for preventing cardiovascular events. Arturo J Martí-Carvajal, Ivan Solà, Dimitrios Lathyris, et al. Cochrane Database of Systematic Reviews. 2017. doi:10.1002/14651858.cd006612.pub5.</li><li value="20">Obstructive Sleep Apnea and Cardiovascular Disease: A Scientific Statement From the American Heart Association. Yeghiazarians Y, Jneid H, Tietjens JR, et al. Circulation. 2021;144(3):e56-e67. doi:10.1161/CIR.0000000000000988.</li><li value="21">Management of Lower Urinary Tract Symptoms Attributed to Benign Prostatic Hyperplasia: AUA Guideline (2026). American Urological Association. 2026.</li><li value="22">Screening for Lung Cancer: 2023 Guideline Update From the American Cancer Society. Wolf AMD, Oeffinger KC, Shih TY, et al. CA: A Cancer Journal for Clinicians. 2024 Jan-Feb;74(1):50-81. doi:10.3322/caac.21811.</li><li value="23">Associations of Total Protein or Animal Protein Intake and Animal Protein Sources With Risk of Kidney Stones: A Systematic Review and Dose-Response Meta-Analysis. Asoudeh F, Talebi S, Jayedi A, et al. Advances in Nutrition (Bethesda, Md.). 2022;13(3):821-832. doi:10.1093/advances/nmac013.</li><li value="24">Cherry consumption and decreased risk of recurrent gout attacks. Zhang Y, Neogi T, Chen C, et al. Arthritis and Rheumatism. 2012;64(12):4004-11. doi:10.1002/art.34677.</li><li value="25">Dietary Factors and Risk of Gout and Hyperuricemia: A Meta-Analysis and Systematic Review. Li R, Yu K, Li C. Asia Pacific Journal of Clinical Nutrition. 2018;27(6):1344-1356. doi:10.6133/apjcn.201811_27(6).0022.</li><li value="26">Effect of Beer on the Plasma Concentrations of Uridine and Purine Bases. Yamamoto T, Moriwaki Y, Takahashi S, et al. Metabolism: Clinical and Experimental. 2002;51(10):1317-23. doi:10.1053/meta.2002.34041.</li><li value="27">Do restaurants comply with reduced salt requests from consumers ordering on meal delivery apps?. Song C, Li W, Cui Y, et al. BMC Public Health. 2023;23(1):2000. doi:10.1186/s12889-023-16939-3.</li><li value="28">The effect of dietary approaches to stop hypertension and ketogenic diets intervention on serum uric acid concentration: a systematic review and meta-analysis of randomized controlled trials. Gohari S, Ghobadi S, Jafari A, et al. Scientific Reports. 2023;13(1):10492. doi:10.1038/s41598-023-37672-2.</li><li value="29">Effect of Modified Chinese Diet Is Comparable to Antihypertensives. Slomski A. JAMA. 2022;328(8):700. doi:10.1001/jama.2022.14322.</li><li value="30">Alcohol Use and Cardiovascular Disease: A Scientific Statement From the American Heart Association. Piano MR, Marcus GM, Aycock DM, et al. Circulation. 2025;152(1):e7-e21. doi:10.1161/CIR.0000000000001341.</li><li value="31">Low-to-Moderate Alcohol Consumption Is Associated With Increased Fibrosis in Individuals With Metabolic Dysfunction-Associated Steatotic Liver Disease. Marti-Aguado D, Calleja JL, Vilar-Gomez E, et al. Journal of Hepatology. 2024;81(6):930-940. doi:10.1016/j.jhep.2024.06.036.</li><li value="32">Even Lower Alcohol Intake Might Be Harmful for East Asian Males With MASLD Spectrum. Yun B, Oh J, Park H, et al. Clinical Gastroenterology and Hepatology : The Official Clinical Practice Journal of the American Gastroenterological Association. 2026;24(6):1644-1653. doi:10.1016/j.cgh.2025.09.030.</li><li value="33">AGA Clinical Practice Update on Lifestyle Modification Using Diet and Exercise to Achieve Weight Loss in the Management of Nonalcoholic Fatty Liver Disease: Expert Review. Younossi ZM, Corey KE, Lim JK. Gastroenterology. 2021;160(3):912-918. doi:10.1053/j.gastro.2020.11.051.</li><li value="34">Dose-Response Relationship Between Weight Loss and Improvements in Obstructive Sleep Apnea Severity After a Diet/Lifestyle Interventions: Secondary Analyses of the "MIMOSA" Randomized Clinical Trial. Georgoulis M, Yiannakouris N, Kechribari I, et al. Journal of Clinical Sleep Medicine : JCSM : Official Publication of the American Academy of Sleep Medicine. 2022;18(5):1251-1261. doi:10.5664/jcsm.9834.</li><li value="35">Calorie Restriction with or without Time-Restricted Eating in Weight Loss. Liu D, Huang Y, Huang C, et al. The New England Journal of Medicine. 2022;386(16):1495-1504. doi:10.1056/NEJMoa2114833.</li><li value="36">Exercise Prescription in Patients with Different Combinations of Cardiovascular Disease Risk Factors: A Consensus Statement from the EXPERT Working Group. Hansen D, Niebauer J, Cornelissen V, et al. Sports Medicine (Auckland, N.Z.). 2018;48(8):1781-1797. doi:10.1007/s40279-018-0930-4.</li><li value="37">Intensity-Specific Physical Activity Measured by Accelerometer, Genetic Susceptibility, and the Risk of Kidney Stone Disease: Results From the UK Biobank. Liu Y, Ku PW, Li Z, et al. American Journal of Kidney Diseases : The Official Journal of the National Kidney Foundation. 2024;84(4):437-446.e1. doi:10.1053/j.ajkd.2024.03.022.</li><li value="38">Effects of Exercise on Patients With Obstructive Sleep Apnea: A Systematic Review and Meta-Analysis. Peng J, Yuan Y, Zhao Y, Ren H. International Journal of Environmental Research and Public Health. 2022;19(17):10845. doi:10.3390/ijerph191710845.</li><li value="39">2024 ESC Guidelines for the Management of Elevated Blood Pressure and Hypertension. McEvoy JW, McCarthy CP, Bruno RM, et al. European Heart Journal. 2024;45(38):3912-4018. doi:10.1093/eurheartj/ehae178.</li><li value="40">Alcohol Intake and Risk of Hypertension: A Systematic Review and Dose-Response Meta-Analysis of Nonexperimental Cohort Studies. Cecchini M, Filippini T, Whelton PK, et al. Hypertension (Dallas, Tex. : 1979). 2024;81(8):1701-1715. doi:10.1161/HYPERTENSIONAHA.124.22703.</li><li value="41">The Impact of Alcohol on Breathing Parameters During Sleep: A Systematic Review and Meta-Analysis. Kolla BP, Foroughi M, Saeidifard F, et al. Sleep Medicine Reviews. 2018;42:59-67. doi:10.1016/j.smrv.2018.05.007.</li><li value="42">Positional therapy for obstructive sleep apnoea. P R Srijithesh, Rajeswari Aghoram, Amit Goel, et al. Cochrane Database of Systematic Reviews. 2019. doi:10.1002/14651858.cd010990.pub2.</li><li value="43">Joint Consensus Statement of the American Academy of Sleep Medicine and Sleep Research Society on the Recommended Amount of Sleep for a Healthy Adult: Methodology and Discussion. Consensus Conference Panel, Watson NF, Badr MS, et al. Journal of Clinical Sleep Medicine : JCSM : Official Publication of the American Academy of Sleep Medicine. 2015;11(8):931-52. doi:10.5664/jcsm.4950.</li><li value="44">Strategies to Cut Down Drinking, Alcohol Consumption, and Usual Drinking Frequency: Evidence From a British Online Market Research Survey. Sasso A, Hernández-Alava M, Holmes J, et al. Social Science &amp; Medicine (1982). 2022;310:115280. doi:10.1016/j.socscimed.2022.115280.</li><li value="45">Gout. Mikuls TR. The New England Journal of Medicine. 2022;387(20):1877-1887. doi:10.1056/NEJMcp2203385.</li><li value="46">Long-Term Efficacy and Safety of Moderate-Intensity Statin With Ezetimibe Combination Therapy Versus High-Intensity Statin Monotherapy in Patients With Atherosclerotic Cardiovascular Disease (RACING): A Randomised, Open-Label, Non-Inferiority Trial. Kim BK, Hong SJ, Lee YJ, et al. Lancet (London, England). 2022;400(10349):380-390. doi:10.1016/S0140-6736(22)00916-3.</li><li value="47">Combination Therapy With Lower Statin Dose and the Race to LDL-C Goal: A Clear Winner?. Ben-Yehuda O. Journal of the American College of Cardiology. 2023;82(5):411-413. doi:10.1016/j.jacc.2023.06.003.</li><li value="48">New and Emerging Therapies for Reduction of LDL-Cholesterol and Apolipoprotein B: JACC Focus Seminar 1/4. Nurmohamed NS, Navar AM, Kastelein JJP. Journal of the American College of Cardiology. 2021;77(12):1564-1575. doi:10.1016/j.jacc.2020.11.079.</li><li value="49">Lipid Management in Patients With Endocrine Disorders: An Endocrine Society Clinical Practice Guideline. Newman CB, Blaha MJ, Boord JB, et al. The Journal of Clinical Endocrinology and Metabolism. 2020;105(12):dgaa674. doi:10.1210/clinem/dgaa674.</li><li value="50">AASLD Practice Guidance on the Clinical Assessment and Management of Nonalcoholic Fatty Liver Disease. Rinella ME, Neuschwander-Tetri BA, Siddiqui MS, et al. Hepatology (Baltimore, Md.). 2023;77(5):1797-1835. doi:10.1097/HEP.0000000000000323.</li><li value="51">Prescribing cascades of antigout medications from thiazide diuretics in gout-naïve hypertensive adults receiving first-line pharmacological management. Lu SY, Hsu HY, Hsieh YW, et al. Scientific Reports. 2024;14(1):7402. doi:10.1038/s41598-024-58153-0.</li><li value="52">Losartan, Uric Acid, and Cardiometabolic Disease: Beyond Blood Pressure Control. Kuwabara M, Hamano T, Ae R. Hypertension Research : Official Journal of the Japanese Society of Hypertension. 2026;49(10):2904-2907. doi:10.1038/s41440-026-02756-9.</li><li value="53">Antihypertensive drugs for hyperuricemia in patients with hypertension: a systematic review and network meta-analysis of Chinese trials. Wu J, Di H, Zhang Y, Zeng X. BMC Cardiovascular Disorders. 2025;25(1):856. doi:10.1186/s12872-025-05339-7.</li><li value="54">2020 American College of Rheumatology Guideline for the Management of Gout. FitzGerald JD, Dalbeth N, Mikuls T, et al. Arthritis &amp; Rheumatology (Hoboken, N.J.). 2020;72(6):879-895. doi:10.1002/art.41247.</li><li value="55">Incidence and Risk of Nephrolithiasis With Uricosuric Therapies for the Treatment of Gout: A Systematic Review and Meta-Analysis of Randomized Controlled Trials and Cohort Studies. Dahanayake C, Bajpai R, Lambie M, Jordan KM, Roddy E. Rheumatology (Oxford, England). 2026;65(2):keaf577. doi:10.1093/rheumatology/keaf577.</li><li value="56">2020 American College of Rheumatology Guideline for the Management of Gout. FitzGerald JD, Dalbeth N, Mikuls T, et al. Arthritis Care &amp; Research. 2020;72(6):744-760. doi:10.1002/acr.24180.</li><li value="57">Risk of Urolithiasis Associated With Allopurinol Versus Benzbromarone Among Patients With Gout: A Population-Based Cohort Study. Kang EH, Shin A, Park CS, et al. Rheumatology (Oxford, England). 2024;63(9):2433-2441. doi:10.1093/rheumatology/keae262.</li><li value="58">Long-Term Cardiovascular Safety of Febuxostat Compared With Allopurinol in Patients With Gout (FAST): A Multicentre, Prospective, Randomised, Open-Label, Non-Inferiority Trial. Mackenzie IS, Ford I, Nuki G, et al. Lancet (London, England). 2020;396(10264):1745-1757. doi:10.1016/S0140-6736(20)32234-0.</li><li value="59">Considerations for Choosing First-Line Urate-Lowering Treatment in Older Patients with Comorbid Conditions. Kang EH. Drugs &amp; Aging. 2022;39(12):923-933. doi:10.1007/s40266-022-00986-3.</li><li value="60">Semaglutide and Tirzepatide for the Treatment of Obesity and Weight-Related Comorbidities: A Narrative Review. Saeed ZI, Apovian CM. Current Atherosclerosis Reports. 2025;28(1):2. doi:10.1007/s11883-025-01369-w.</li><li value="61">Semaglutide for Metabolic Dysfunction–Associated Steatohepatitis. Simon TG. The New England Journal of Medicine. 2025;392(21):2160-2161. doi:10.1056/NEJMe2504717.</li><li value="62">FDA Orange Book. FDA Orange Book.</li><li value="63">Tirzepatide for the Treatment of Obstructive Sleep Apnea and Obesity. Malhotra A, Grunstein RR, Fietze I, et al. The New England Journal of Medicine. 2024;391(13):1193-1205. doi:10.1056/NEJMoa2404881.</li><li value="64">Glucagon-Like Peptide-1 Receptor Agonists for Obstructive Sleep Apnea: A Review. Harris A, Kaffenberger T. JAMA Otolaryngology-- Head &amp; Neck Surgery. 2026;152(10):992-1000. doi:10.1001/jamaoto.2026.2266.</li><li value="65">Orthostatic Hypotension in Adults With Hypertension: A Scientific Statement From the American Heart Association. Juraschek SP, Cortez MM, Flack JM, et al. Hypertension (Dallas, Tex. : 1979). 2024;81(3):e16-e30. doi:10.1161/HYP.0000000000000236.</li><li value="66">Drug-Related Orthostatic Hypotension: Beyond Anti-Hypertensive Medications. Rivasi G, Rafanelli M, Mossello E, Brignole M, Ungar A. Drugs &amp; Aging. 2020;37(10):725-738. doi:10.1007/s40266-020-00796-5.</li><li value="67">Prostate Cancer Early Detection. National Comprehensive Cancer Network. Updated 2026-02-18.</li><li value="68">Lower Urinary Tract Symptoms in Men: A Review. Wei JT, Dauw CA, Brodsky CN. JAMA. 2025;334(9):809-821. doi:10.1001/jama.2025.7045.</li><li value="69">Statin Safety and Associated Adverse Events: A Scientific Statement From the American Heart Association. Newman CB, Preiss D, Tobert JA, et al. Arteriosclerosis, Thrombosis, and Vascular Biology. 2019;39(2):e38-e81. doi:10.1161/ATV.0000000000000073.</li><li value="70">Use of Herbal Products and Potential Interactions in Patients With Cardiovascular Diseases. Tachjian A, Maria V, Jahangir A. Journal of the American College of Cardiology. 2010;55(6):515-25. doi:10.1016/j.jacc.2009.07.074.</li><li value="71">Grapefruit Juice and Statins. Lee JW, Morris JK, Wald NJ. The American Journal of Medicine. 2016;129(1):26-9. doi:10.1016/j.amjmed.2015.07.036.</li><li value="72">Adequate Intake of Potassium Does Not Cause Hyperkalemia in Hypertensive Individuals Taking Medications That Antagonize the Renin Angiotensin Aldosterone System. Malta D, Arcand J, Ravindran A, et al. The American Journal of Clinical Nutrition. 2016;104(4):990-994. doi:10.3945/ajcn.115.129635.</li><li value="73">Potassium-Enriched Salt Substitutes as a Means to Lower Blood Pressure: Benefits and Risks. Greer RC, Marklund M, Anderson CAM, et al. Hypertension (Dallas, Tex. : 1979). 2020;75(2):266-274. doi:10.1161/HYPERTENSIONAHA.119.13241.</li><li value="74">Potassium Disorders: Hypokalemia and Hyperkalemia. Kim MJ, Valerio C, Knobloch GK. American Family Physician. 2023;107(1):59-70.</li><li value="75">Efficacy, side effects, adherence, affordability, and procurement of dietary supplements for treating hypercholesterolemia: a narrative review. von Känel-Cordoba I, Wirnitzer K, Weiss K, et al. Journal of Health, Population, and Nutrition. 2024;43(1):189. doi:10.1186/s41043-024-00679-0.</li><li value="76">Effect of long-term marine Omega-3 fatty acids supplementation on the risk of atrial fibrillation in randomized controlled trials of cardiovascular outcomes: a systematic review and meta-analysis. Gencer B, Djousse L, Al-Ramady OT, et al. Circulation. 2021;144(25):1981-1990. doi:10.1161/CIRCULATIONAHA.121.055654.</li><li value="77">Omega-3 Fatty Acids and Atrial Fibrillation: Current Evidence and Expert Opinion. Harris WS, De Caterina R, Nattel S, et al. European Journal of Preventive Cardiology. 2026;:zwag577. doi:10.1093/eurjpc/zwag577.</li><li value="78">Total, Dietary, and Supplemental Vitamin C Intake and Risk of Incident Kidney Stones. Ferraro PM, Curhan GC, Gambaro G, Taylor EN. American Journal of Kidney Diseases : The Official Journal of the National Kidney Foundation. 2016;67(3):400-7. doi:10.1053/j.ajkd.2015.09.005.</li><li value="79">Ascorbic Acid Supplements and Kidney Stone Incidence Among Men: A Prospective Study. Thomas LD, Elinder CG, Tiselius HG, Wolk A, Akesson A. JAMA Internal Medicine. 2013;173(5):386-8. doi:10.1001/jamainternmed.2013.2296.</li></ol></div></div></details><details class="mcard" style="--mc:#7c3aed"><summary><span class="badge">GEMINI</span><span>Gemini</span><span class="mdesc">本模型没有对应章节</span></summary><div class="mbody"><p class="fine">该模型原文中未出现这一主题的独立章节，相关内容可能散在其他章节，请见「五家全文」。</p></div></details><details class="mcard" style="--mc:#059669"><summary><span class="badge">CHATGPT</span><span>ChatGPT</span><span class="mdesc">分歧裁定、证据来源、参考文献、免责声明 · 2,478 字</span></summary><div class="mbody"><div class="raw"><h3 id="t6-cg-0-h1">六、复查随访计划表</h3>
 <div class="tw"><table><thead><tr><th>时间</th><th>建议检查或行动</th><th>证据／说明</th></tr></thead><tbody><tr><td><strong>现在开始，连续 5–7 天</strong></td><td>家庭血压早晚记录，每次测 2 次</td><td><strong>1级</strong>；用于确认诊室单次高值。<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11937835/" target="_blank" rel="noopener">中国高血压防治指南（2024年修订版）</a></td></tr><tr><td><strong>近期门诊</strong></td><td>复查完整血脂；医生结合家族史、血压、吸烟史等评估整体风险及继发原因</td><td><strong>1级</strong>；LDL-C 和总胆固醇均达到指南高危分层条件。<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10568545/" target="_blank" rel="noopener">中国血脂管理指南（2023年）</a></td></tr><tr><td><strong>近期门诊／按医生安排</strong></td><td>非同日空腹复查血尿酸；评估肾功能、尿液及结石成分</td><td><strong>1级</strong>；诊断标准需要两次非同日空腹结果，结石成分未知。<a href="https://www.nhc.gov.cn/cms-search/downFiles/5d8a03a81dd949158e7d66283c0f1849.pdf" target="_blank" rel="noopener">成人高尿酸血症与痛风食养指南（2024年版）</a></td></tr><tr><td><strong>开始降脂治疗后约 4–6 周</strong></td><td>血脂、肝酶；医生视情况加查肌酸激酶</td><td><strong>1级指南监测建议。</strong><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10498001/" target="_blank" rel="noopener">中国血脂管理指南（2023年）</a></td></tr><tr><td><strong>以生活方式干预为主时，约 3–6 个月</strong></td><td>复查血脂、体重、血压；尿酸按医生安排复查</td><td><strong>1级指南</strong>支持定期复评；但本例 LDL-C 数值应先近期就诊，不宜等到该节点才首次评估。</td></tr><tr><td><strong>约 1–3 个月或按临床安排</strong></td><td>复核 ALT、AST（先核对项目名称），必要时评估肝纤维化</td><td><strong>1级指南</strong>；报告仅有轻度肝酶偏高，具体时间由门诊医生决定。</td></tr><tr><td><strong>约 3–6 个月</strong></td><td>同型半胱氨酸复查；视医生判断检查叶酸、维生素 B12、甲状腺功能等</td><td><strong>1级综述</strong>不支持单凭数值自行补充；应先查原因。</td></tr><tr><td><strong>按泌尿科制定的间隔</strong></td><td>肾脏超声或其他影像、尿液代谢检查</td><td>报告没有提供具体随访周期；结石大小、位置和变化决定间隔。</td></tr><tr><td><strong>约 12 个月</strong></td><td>胸部 CT，尽量与这次影像比较</td><td><strong>本报告的建议</strong>；结节尺寸和影像分类需带原片由专科核对。</td></tr><tr><td><strong>下一次腹部影像／按医生建议</strong></td><td>复看脂肪肝、肝囊肿、肾结石和前列腺</td><td>报告没有为肝囊肿给出具体复查日期；无需自行加密检查，除非症状或影像改变。</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
 <h3 id="t6-cg-1-h1">七、主要证据来源</h3>
 <ul class="lst"><li>国家卫健委：《成人高尿酸血症与痛风食养指南（2024年版）》。<a href="https://www.nhc.gov.cn/cms-search/downFiles/5d8a03a81dd949158e7d66283c0f1849.pdf" target="_blank" rel="noopener">官方全文</a></li><li>国家卫健委：《成人高脂血症食养指南（2023年版）》。<a href="https://www.nhc.gov.cn/wjw/c100378/202301/7faed9993c9b45aea158c5335346f282/files/1732844468018_41219.pdf" target="_blank" rel="noopener">官方全文</a></li><li>国家卫健委：《成人高血压食养指南（2023年版）》。<a href="https://www.nhc.gov.cn/cms-search/downFiles/63f752a17cfd4b4781f744477561866f.pdf" target="_blank" rel="noopener">官方全文</a></li><li>国家卫健委：《成人肥胖食养指南（2024年版）》《体重管理指导原则（2024年版）》。<a href="https://www.nhc.gov.cn/wjw/c100378/202312/3fbdf286857a4235be5749ca7a7b2ac9.shtml" target="_blank" rel="noopener">肥胖食养指南通知</a>；<a href="https://www.nhc.gov.cn/wjw/ylyjs/gzdt/202407/256b4eb8398440a8811344c7be50a333/files/1734003012304_36543.pdf" target="_blank" rel="noopener">体重管理指导原则</a></li><li>中国血脂管理指南（2023年）、中国高血压防治指南（2024年修订版）。<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10568545/" target="_blank" rel="noopener">血脂指南</a>；<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11937835/" target="_blank" rel="noopener">高血压指南</a></li><li>欧洲泌尿外科学会尿路结石指南；美国肝病研究学会脂肪肝指导文件。<a href="https://uroweb.org/guidelines/urolithiasis/chapter/metabolic-evaluation-and-recurrence-prevention" target="_blank" rel="noopener">EAU 结石指南</a>；<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10735173/" target="_blank" rel="noopener">AASLD 脂肪肝指导</a></li><li>Cochrane 同型半胱氨酸降低干预系统综述。<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6483699/" target="_blank" rel="noopener">全文</a></li><li>DGA 2025–2030 官方页面，仅作为一般膳食补充参考。<a href="https://odphp.health.gov/our-work/nutrition-physical-activity/dietary-guidelines" target="_blank" rel="noopener">官方页面</a></li></ul>
@@ -871,10 +1057,104 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 <p>如果你愿意提供年龄、吸烟饮酒史、家族史与症状，我可以把热量目标、FIB-4 与心率区间算得更准；也可以按你的需要整理成可编辑的文档。</p></div></div></details></div>
 </section>
 <section id="tab-full" class="panel hide-brief full-print">
-  <h2 class="sec-title">四家原文全文（逐字照录）</h2>
-  <p class="lead">点模型名切换。标题与表格做了排版，文字未增删改。Claude 一份为英文原文的完整中文译文，点面板上方按钮可切回英文原句核对。</p>
-  <div class="chips no-print" id="modelChips"><button class="chip" data-model="oe" type="button">OpenEvidence</button><button class="chip" data-model="ge" type="button">Gemini</button><button class="chip" data-model="cg" type="button">ChatGPT</button><button class="chip" data-model="cl" type="button">Claude</button></div>
-  <!-- BEGIN_PANE:oe --><div class="full-pane" data-pane="oe"><p class="fine">以下为 <b>OpenEvidence</b> 原文全文，除 Markdown 排版外未改动任何文字。共 32,230 字符。循证篇幅最全，附 79 条文献与 1–3 级证据标注</p><div class="model-toc"></div><div class="raw" style="--mc:#2563eb"><p>这次的建议取决于几件事：哪些药物类别适合这位患者同时存在的问题（尿酸、结石、肝脏、前列腺），饮食与药物、化验之间的相互作用，以及知识库里各病种食养指南的具体条文。下面先查药物类别的证据，同时核对知识库原文。</p>
+  <h2 class="sec-title">五家原文全文（逐字照录）</h2>
+  <p class="lead">点模型名切换。标题与表格做了排版，文字未增删改。蚂蚁阿福为本次更新新增；Claude 一份为英文原文的完整中文译文，点面板上方按钮可切回英文原句核对。</p>
+  <div class="chips no-print" id="modelChips"><button class="chip" data-model="af" type="button">蚂蚁阿福</button><button class="chip" data-model="oe" type="button">OpenEvidence</button><button class="chip" data-model="ge" type="button">Gemini</button><button class="chip" data-model="cg" type="button">ChatGPT</button><button class="chip" data-model="cl" type="button">Claude</button></div>
+  <!-- BEGIN_PANE:af --><div class="full-pane" data-pane="af"><p class="fine">以下为 <b>蚂蚁阿福</b> 原文全文，除 Markdown 排版外未改动任何文字。共 6,752 字符。本次新增：官方食养指南整合版，附 8 条引用与药物相互作用表</p><div class="model-toc"></div><div class="raw" style="--mc:#be123c"><p>这份体检结果提示“代谢异常聚集”：超重、1级高血压、以低密度脂蛋白胆固醇升高为主的血脂异常、尿酸升高、同型半胱氨酸升高，同时合并脂肪肝和右肾多发结石。当前最有证据、也最能同时改善多项问题的措施是：限盐、减重、规律运动、足量饮水、优化饮食结构、限酒，并尽快完成血压与血脂的规范评估与分层管理。</p>
+<h3 id="full-af-h1">一、异常指标梳理与风险提示</h3>
+<p>本部分为指标解读，不构成疾病诊断。</p>
+<h4 id="full-af-h2">1. 需要优先关注的异常</h4>
+<ul class="lst"><li><strong>低密度脂蛋白胆固醇 5.03 mmol/L，总胆固醇 7.87 mmol/L</strong></li></ul>
+<p>低密度脂蛋白胆固醇是动脉粥样硬化性心血管疾病的重要危险因素，指南将其作为血脂干预的首要靶点。当低密度脂蛋白胆固醇达到或超过 4.9 mmol/L 时，通常需要结合总体心血管风险进行更积极的评估与管理。<br>潜在风险：动脉粥样硬化性心血管疾病风险升高。</p>
+<ul class="lst"><li><strong>血压 150/89 mmHg</strong></li></ul>
+<p>高血压诊断需依据规范测量，不能仅凭单次体检读数；家庭血压连续 5 到 7 天平均达到或超过 135/85 mmHg 可作为诊断依据之一。<br>潜在风险：心脑血管事件风险升高，且风险会随合并危险因素增加而进一步上升。</p>
+<ul class="lst"><li><strong>尿酸 504 μmol/L</strong></li></ul>
+<p>高尿酸血症常用定义为正常嘌呤饮食状态下，非同日 2 次空腹血尿酸大于 420 μmol/L。<br>潜在风险：与痛风、尿酸性肾结石、肾功能损害及心血管事件风险相关。</p>
+<ul class="lst"><li><strong>右肾多发结石，较大者约 6×4 mm，无输尿管扩张</strong></li></ul>
+<p>多发结石提示复发风险需要重视，建议泌尿外科进一步评估结石成分与代谢因素。<br>潜在风险：肾绞痛、梗阻、感染、复发。</p>
+<h4 id="full-af-h3">2. 需要同步管理的异常</h4>
+<ul class="lst"><li><strong>脂肪肝，丙氨酸氨基转移酶 27 U/L，天冬氨酸氨基转移酶同工酶 47 U/L</strong></li></ul>
+<p>脂肪肝常与肥胖、血脂异常、高血压、糖代谢异常并存，需要综合代谢管理。<br>潜在风险：部分患者可进展为脂肪性肝炎、肝纤维化，且心血管疾病风险增加。</p>
+<ul class="lst"><li><strong>同型半胱氨酸 20.0 μmol/L</strong></li></ul>
+<p>与高血压并存时，脑卒中风险可能增加；其升高与饮食、维生素状态、肾功能、甲状腺功能和药物等因素相关。<br>潜在风险：心脑血管事件风险可能增加，但干预获益需结合人群与基线营养状态判断。</p>
+<ul class="lst"><li><strong>超重，BMI 27.22 kg/m²</strong></li></ul>
+<p>超重与高血压、血脂异常、脂肪肝、高尿酸、结石风险均相关。<br>潜在风险：代谢综合征相关疾病风险升高。</p>
+<h4 id="full-af-h4">3. 以随访为主的发现</h4>
+<ul class="lst"><li><strong>双肺多发微小结节，Lung-RADS 2 类</strong>：建议年度复查。</li><li><strong>左肝囊肿约 10×10 mm</strong>：小且无症状者多定期复查。</li><li><strong>前列腺增大伴多发钙化灶</strong>：无明显排尿症状者可先观察，出现夜尿增多、排尿困难等再就诊。</li></ul>
+<h3 id="full-af-h5">二、个性化膳食干预方案</h3>
+<p>以下建议优先依据内置知识库中的官方食养指南整合，并兼顾高血压、血脂异常、脂肪肝、高尿酸与肾结石的多目标管理。</p>
+<h4 id="full-af-h6">2.1 核心膳食原则</h4>
+<ol class="lst"><li value="1"><strong>控制总能量摄入，循序渐进减重</strong></li></ol>
+<p>超重和肥胖管理强调通过控制总能量摄入并增加身体活动实现体重下降，长期维持健康体重。<br>✅ 潜在获益：有助于降低血压、改善血脂、减轻脂肪肝、降低尿酸与结石风险。<br>⚠️ 注意事项：避免极端节食与快速减重，以免营养不足、尿酸波动或胆结石风险增加。</p>
+<ol class="lst"><li value="2"><strong>限盐，优先选择天然低钠食物</strong></li></ol>
+<p>高血压食养强调限制钠盐摄入，减少腌制食品、加工食品与高盐调味品。<br>✅ 潜在获益：有助于降低血压，并可能减少尿钙排泄，从而对结石预防有利。<br>⚠️ 注意事项：若考虑使用低钠盐或含钾盐，需结合肾功能与用药情况，由医生评估后决定。</p>
+<ol class="lst"><li value="3"><strong>优化脂肪结构，减少饱和脂肪与反式脂肪</strong></li></ol>
+<p>高脂血症食养强调减少饱和脂肪与反式脂肪，增加富含不饱和脂肪酸的食物来源。<br>✅ 潜在获益：有助于降低低密度脂蛋白胆固醇与总体心血管风险。<br>⚠️ 注意事项：控制总脂肪摄入，避免以高脂加工食品替代健康脂肪来源。</p>
+<ol class="lst"><li value="4"><strong>增加蔬菜、水果、全谷物与豆类，保证膳食纤维</strong></li></ol>
+<p>高血压与高脂血症食养均强调多蔬果、全谷物与豆类，增加膳食纤维摄入。<br>✅ 潜在获益：有助于血压、血脂与体重管理。<br>⚠️ 注意事项：合并肾结石者应优先选择低草酸蔬菜，并保证正常膳食钙摄入，避免“低钙饮食”增加草酸吸收。</p>
+<ol class="lst"><li value="5"><strong>限制高嘌呤食物与酒精，避免含糖饮料与高果糖负荷</strong></li></ol>
+<p>高尿酸血症与痛风食养强调限制高嘌呤食物、限制饮酒，减少含糖饮料与高果糖摄入。<br>✅ 潜在获益：有助于降低尿酸水平并减少痛风发作风险。<br>⚠️ 注意事项：避免以果汁替代整果；酒精应尽量不饮，尤其避免暴饮。</p>
+<h4 id="full-af-h7">2.2 食物选择清单</h4>
+<div class="tw"><table><thead><tr><th>食物类别</th><th>推荐食用</th><th>限量食用</th><th>不推荐/避免</th></tr></thead><tbody><tr><td>谷薯类</td><td>全谷物、杂豆、薯类替代部分精白米面</td><td>白米饭、白面馒头、精制糕点</td><td>含糖饮料、甜点、油条、酥皮点心</td></tr><tr><td>蔬菜水果类</td><td>多样化蔬菜，优先低草酸蔬菜；整果适量</td><td>高糖水果、果汁、果脯</td><td>腌制蔬菜、咸菜、泡菜</td></tr><tr><td>肉蛋水产类</td><td>去皮禽肉、鱼虾适量，豆制品替代部分红肉</td><td>红肉、动物内脏、浓肉汤、部分高嘌呤海鲜</td><td>沙丁鱼、凤尾鱼、贝类、动物内脏、火锅老汤</td></tr><tr><td>奶豆类</td><td>低脂或脱脂奶、酸奶，大豆及其制品</td><td>全脂奶、加糖酸奶、炼乳</td><td>奶精、植脂末、高糖奶饮</td></tr><tr><td>油脂/调味品</td><td>植物油适量，清淡烹调</td><td>动物油、黄油、奶油、椰子油</td><td>反式脂肪来源、重口味蘸料、咸味零食</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
+<h4 id="full-af-h8">2.3 一日膳食参考</h4>
+<p>以下为多病共存人群的示例框架，可按口味替换同类食物，但尽量保持结构与份量。</p>
+<div class="tw"><table><thead><tr><th>餐次</th><th>示例搭配</th><th>说明</th></tr></thead><tbody><tr><td>早餐</td><td>燕麦或全麦主食 + 低脂奶或无糖酸奶 + 水煮蛋 1 个 + 凉拌蔬菜</td><td>主食尽量全谷物，蛋量结合血脂情况个体化</td></tr><tr><td>加餐</td><td>整果 1 份</td><td>优先柑橘类、苹果、梨等，避免果汁</td></tr><tr><td>午餐</td><td>杂粮饭 + 清蒸鱼或去皮禽肉 + 清炒低草酸蔬菜 + 豆腐汤</td><td>少油少盐，不喝浓肉汤</td></tr><tr><td>加餐</td><td>无糖酸奶或一小把坚果</td><td>坚果控制总量，避免盐焗与糖衣</td></tr><tr><td>晚餐</td><td>荞麦面或玉米糁 + 豆制品或少量瘦肉 + 大量蔬菜 + 番茄蛋花汤</td><td>晚餐清淡，避免夜宵与酒精</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
+<h4 id="full-af-h9">2.4 膳食干预的获益与注意事项</h4>
+<ul class="lst"><li><strong>获益</strong></li></ul>
+<p>以限盐、多蔬果、全谷物、低饱和脂肪、限制酒精与含糖饮料为核心的饮食模式，可同时改善血压、血脂、体重与尿酸水平，属于多项指南共同推荐的生活方式基础。</p>
+<ul class="lst"><li><strong>注意事项</strong></li></ul>
+<ol class="lst"><li class="li-sub" value="1">肾结石患者不宜盲目低钙饮食，应保证正常膳食钙摄入，并尽量随餐摄入，以减少草酸吸收。</li><li class="li-sub" value="2">高尿酸人群应避免暴饮暴食与快速减重，以免诱发尿酸波动。</li><li class="li-sub" value="3">若合并肾功能异常或正在使用影响血钾的药物，调整低钠盐、补钾或补充剂前需先咨询医生。</li></ol>
+<h3 id="full-af-h10">三、生活方式干预方案</h3>
+<h4 id="full-af-h11">3.1 运动建议</h4>
+<ul class="lst"><li><strong>运动类型</strong>：以有氧运动为主，如快走、慢跑、骑行、游泳；配合抗阻训练与柔韧平衡训练。</li><li><strong>频次与时长</strong>：每周至少 150 分钟中等强度有氧运动，或 75 分钟高强度有氧运动，并每周进行 2 到 3 次抗阻训练。</li><li><strong>强度判断</strong>：中等强度通常为运动时呼吸加快、微汗，但仍能说话。</li></ul>
+<p><strong>针对本例的要点</strong></p>
+<ul class="lst"><li>脂肪肝与超重：规律运动有助于减少肝脂肪并改善代谢，即使体重下降不明显也可能获益。</li><li>高血压：运动前建议先完成血压确认与分层；若静息血压明显升高，先控制后再逐步增加强度。</li><li>肾结石：规律中等强度运动与结石风险降低相关；但“跳跃、拍打排石”的证据并不一致，若考虑采用，建议先与泌尿外科确认结石位置、大小与梗阻风险。</li></ul>
+<p><strong>风险与禁忌</strong></p>
+<ul class="lst"><li>出现胸痛、明显气短、头晕、心悸或血压显著升高时，应停止运动并就医评估。</li><li>结石相关腰腹绞痛、肉眼血尿、发热时，应先就医处理，再恢复运动。</li></ul>
+<h4 id="full-af-h12">3.2 作息与其他习惯</h4>
+<ol class="lst"><li value="1"><strong>饮水</strong></li></ol>
+<p>结石预防强调足量饮水，目标是增加尿量、降低尿液过饱和状态；临床常以每日尿量达到约 2.0 到 2.5 L 作为目标，但需结合心肾功能个体化。<br>✅ 潜在获益：降低结石复发风险。<br>⚠️ 注意事项：若存在心衰、肾功能不全或夜尿明显，应个体化调整饮水时间与总量。</p>
+<ol class="lst"><li value="2"><strong>睡眠与打鼾筛查</strong></li></ol>
+<p>规律作息、保证睡眠时长，有助于血压与代谢管理。若存在打鼾、憋醒、白天嗜睡，建议进一步评估睡眠呼吸暂停风险。<br>✅ 潜在获益：有助于血压控制与代谢改善。<br>⚠️ 注意事项：睡眠问题常与高血压、肥胖并存，需综合管理。</p>
+<ol class="lst"><li value="3"><strong>戒烟限酒</strong></li></ol>
+<p>建议戒烟并避免二手烟暴露；酒精应尽量不饮，尤其高尿酸与脂肪肝人群。<br>✅ 潜在获益：降低心脑血管与肝脏相关风险。<br>⚠️ 注意事项：如已存在酒精依赖，应在专业支持下戒酒。</p>
+<ol class="lst"><li value="4"><strong>体重管理</strong></li></ol>
+<p>建议以 3 到 6 个月减重 5% 到 10% 作为阶段性目标，并长期维持。<br>✅ 潜在获益：可改善血压、血脂、脂肪肝与尿酸。<br>⚠️ 注意事项：避免快速减重与极端饮食。</p>
+<h3 id="full-af-h13">四、用药相关循证科普提示</h3>
+<p>重要声明：以下仅为药物类别科普，不构成用药建议，具体用药必须经医生评估后开具处方。</p>
+<h4 id="full-af-h14">4.1 对应指标的常用干预药物类别</h4>
+<div class="tw"><table><thead><tr><th>异常指标</th><th>常用药物类别</th><th>循证获益</th><th>常见不良反应与禁忌</th><th>适用人群提示</th></tr></thead><tbody><tr><td>低密度脂蛋白胆固醇升高</td><td>他汀类为基础，必要时联合胆固醇吸收抑制剂或前蛋白转化酶枯草溶菌9抑制剂</td><td>可降低动脉粥样硬化性心血管疾病事件风险，指南推荐以低密度脂蛋白胆固醇为首要靶点并分层达标</td><td>可能出现肝酶升高、肌痛等；需结合基线肝功能与症状监测</td><td>低密度脂蛋白胆固醇达到或超过 4.9 mmol/L 者通常需要结合总体风险积极评估与管理</td></tr><tr><td>高血压</td><td>常用降压药包括钙通道阻滞剂、血管紧张素转换酶抑制剂或血管紧张素受体阻滞剂、利尿剂等</td><td>降压治疗可降低心脑血管事件风险，治疗时机与目标需结合危险分层</td><td>不同类别药物不良反应不同，如利尿剂可能影响尿酸，需个体化选择</td><td>需先完成家庭血压或动态血压确认，并评估靶器官损害与合并症</td></tr><tr><td>高尿酸血症</td><td>抑制尿酸生成药物与促进尿酸排泄药物</td><td>对反复痛风发作、痛风石、尿酸性结石或高危人群，降尿酸治疗可降低发作与结石相关风险；无症状人群是否用药存在指南差异</td><td>可能出现皮疹、肝肾功能异常等，需监测</td><td>合并肾结石、高血压等人群，在非药物治疗后仍持续升高时，是否启动药物需专科评估</td></tr><tr><td>同型半胱氨酸升高</td><td>叶酸及维生素B族补充</td><td>在部分人群中可降低同型半胱氨酸水平，但对心脑血管硬终点的获益证据并不一致</td><td>大剂量补充可能掩盖维生素B12缺乏，需先评估缺乏风险</td><td>更适合在明确缺乏或特定高危人群中，由医生评估后使用</td></tr></tbody></table></div><p class="swipe-hint">↔ 表格较宽，可左右滑动查看</p>
+<h4 id="full-af-h15">4.2 药物联用与食物相互作用提示</h4>
+<ul class="lst"><li><strong>降压药与高尿酸</strong>：部分利尿剂可能升高尿酸，合并高尿酸或痛风者应告知医生，以便个体化选择。</li><li><strong>他汀与肝功能</strong>：脂肪肝并非他汀绝对禁忌，但用药前后需结合肝功能与症状监测。</li><li><strong>补充剂与结石</strong>：大剂量维生素C补充剂可能增加结石风险，不建议自行长期大剂量服用。</li><li><strong>低钠盐与肾功能</strong>：如考虑使用低钠盐或含钾盐，需结合肾功能与用药情况，由医生评估后决定。</li></ul>
+<h3 id="full-af-h16">五、风险预警与就医建议</h3>
+<h4 id="full-af-h17">1. 需要立即就医的情况</h4>
+<ul class="lst"><li>血压显著升高并伴胸痛、呼吸困难、神经系统症状等。</li><li>结石相关：突发剧烈腰腹绞痛、肉眼血尿、发热寒战、少尿或无尿。</li><li>急性痛风样关节炎发作，尤其首次发作或伴发热需鉴别感染。</li></ul>
+<h4 id="full-af-h18">2. 需要尽快就诊评估的情况</h4>
+<ul class="lst"><li><strong>心血管内科</strong>：确认高血压诊断并完成危险分层；评估低密度脂蛋白胆固醇明显升高的管理策略。</li><li><strong>泌尿外科</strong>：右肾多发结石进一步评估结石成分、代谢因素与复发预防。</li><li><strong>肝病或消化内科</strong>：脂肪肝合并转氨酶异常模式需进一步评估肝纤维化风险。</li><li><strong>营养科或体重管理门诊</strong>：多病共存时的个体化饮食与运动处方。</li></ul>
+<h4 id="full-af-h19">3. 建议复查的指标</h4>
+<ul class="lst"><li><strong>血压</strong>：家庭血压连续 5 到 7 天，早晚各测，取平均值用于诊断与随访。</li><li><strong>血脂</strong>：生活方式干预后约 3 个月复查；若启动降脂治疗，按医嘱更早复查并监测安全性。</li><li><strong>尿酸与肾功能</strong>：3 到 6 个月复查；若启动降尿酸治疗或出现症状，按医嘱更密切复查。</li><li><strong>肝功能与肝脏评估</strong>：结合脂肪肝与转氨酶情况，按医生建议复查并评估肝纤维化风险。</li><li><strong>泌尿系影像与代谢评估</strong>：按泌尿外科建议复查超声，并完善结石成分与 24 小时尿代谢评估。</li><li><strong>肺结节</strong>：按 Lung-RADS 2 类建议年度复查。</li></ul>
+<h3 id="full-af-h20">证据来源汇总</h3>
+<ul class="lst"><li>《中国血脂管理指南（2023年）》</li><li>《中国高血压防治指南（2024年修订版）》</li><li>《慢性肾脏病早期筛查、诊断及防治指南（2022年版）》关于高尿酸血症定义与危害</li><li>《高危高尿酸血症药物降尿酸治疗专家共识（2025版）》关于合并肾结石、高血压等人群降尿酸治疗启动时机与目标</li><li>《成人高血压食养指南（2023年版）》</li><li>《成人高脂血症食养指南（2023年版）》</li><li>《成人高尿酸血症与痛风食养指南（2024年版）》</li><li>《体重管理指导原则（2024年版）》</li><li>体检报告原始数据与影像结论</li></ul>
+<h3 id="full-af-h21">强制免责声明</h3>
+<p>以上内容为基于指南与循证证据的健康科普信息整理，不能替代执业医师、临床药师的面对面诊疗与处方决策。若出现胸痛、呼吸困难、神经系统症状、剧烈腰腹绞痛、发热或肉眼血尿等情况，请及时就医。</p>
+<p>全部引用</p>
+<ol class="lst"><li value="1">中国血脂管理指南（2023 年）</li></ol>
+<p>链接：https://mdn.alipayobjects.com/medlib_data/afts/file/sjTYQJTuSbkAAAAAgBAAAAgAnJhPAQFr</p>
+<ol class="lst"><li value="2">中国脑血管病临床管理指南（第2版）（节选）——第3章脑血管病高危人群管理</li></ol>
+<p>链接：https://guide.medlive.cn/guideline/29777</p>
+<ol class="lst"><li value="3">中国高血压防治指南(2024年修订版)</li></ol>
+<p>链接：</p>
+<ol class="lst"><li value="4">慢性肾脏病早期筛查、诊断及防治指南（2022年版）</li></ol>
+<p>链接：</p>
+<ol class="lst"><li value="5">高尿酸血症与痛风健康管理指南</li></ol>
+<p>链接：https://mdn.alipayobjects.com/medlib_data/afts/file/olUeSaZE3sAAAAAAgEAAAAgAnJhPAQFr</p>
+<ol class="lst"><li value="6">Moderate-Intensity Statin Plus Ezetimibe: Time to Rethink it as an Optimal Initial Lipid-Lowering Strategy</li></ol>
+<p>链接：https://mdn.alipayobjects.com/medlib_data/afts/file/mEoVTorLucQAAAAAfaAAAAgAnJhPAQFr</p>
+<ol class="lst"><li value="7">中国糖尿病防治指南（2024版）</li></ol>
+<p>链接：https://mdn.alipayobjects.com/medlib_data/afts/file/m3XsSIDR2g4AAAAAgPAAAAgAnJhPAQFr</p>
+<ol class="lst"><li value="8">[Expert consensus on urate-lowering therapy for high-risk hyperuricemia (2025 edition)].</li></ol>
+<p>链接：https://rs.yiigle.com/cmaid/1547438</p></div></div><!-- END_PANE:af -->
+<!-- BEGIN_PANE:oe --><div class="full-pane" data-pane="oe"><p class="fine">以下为 <b>OpenEvidence</b> 原文全文，除 Markdown 排版外未改动任何文字。共 32,230 字符。循证篇幅最全，附 79 条文献与 1–3 级证据标注</p><div class="model-toc"></div><div class="raw" style="--mc:#2563eb"><p>这次的建议取决于几件事：哪些药物类别适合这位患者同时存在的问题（尿酸、结石、肝脏、前列腺），饮食与药物、化验之间的相互作用，以及知识库里各病种食养指南的具体条文。下面先查药物类别的证据，同时核对知识库原文。</p>
 <p>药物类别还剩两点待确认：中国指南在合并结石时首选哪类降尿酸药，以及患者可能自行购买的"天然降脂"产品的安全性。</p>
 <h2 id="full-oe-h1">46 岁男性多重代谢异常：循证膳食、生活方式与药物科普方案</h2>
 <h3 id="full-oe-h2">先说结论</h3>
@@ -1198,11 +1478,11 @@ footer{max-width:820px; margin:2rem auto 0; padding:1.2rem .9rem 2rem;
 </main></div>
 <button class="fab no-print" id="fab" type="button" aria-label="回到顶部">↑</button>
 <footer>
-  <b>免责声明</b>：本页是对四份 AI 生成文本的整理与横向对照，不构成临床诊断、处方或个体化治疗方案，
+  <b>免责声明</b>：本页是对五份 AI 生成文本的整理与横向对照，不构成临床诊断、处方或个体化治疗方案，
   不推荐任何具体药物、剂量或疗程。文中所有数值、阈值、指南名称均为各模型自述，未经独立核实；
-  原始体检报告未随附，无法验证任何化验值。四家存在分歧的结论须回溯原始指南或由接诊医师判断。
+  原始体检报告未随附，无法验证任何化验值。五家存在分歧的结论须回溯原始指南或由接诊医师判断。
   出现急症表现请立即就医。<br>
-  来源文件：<code>C:\Users\jing\Downloads\建议.txt</code>（101,178 字符，四家合计）。
+  来源文件：<code>C:\Users\jing\Downloads\建议.txt</code>（107,936 字符，五家合计；本次更新新增蚂蚁阿福段）。
   原始文件未改动，副本见 <code>原文备份/</code>。生成脚本见 <code>_scripts/</code>。
 </footer>
 <script>
